@@ -1,3 +1,3 @@
-public class producto {
+public class Producto {
     private String titulo;
 }
