@@ -4,11 +4,11 @@ public class Cliente {
     private String nombre;
     private String dni;
     private String correo;
-    private int clave;
+    private String clave;
     private String ubicacion;
     private int tarjeta;
     
-    public Cliente(String nombre, String dni, String correo, int clave, String ubicacion, int tarjeta) {
+    public Cliente(String nombre, String dni, String correo, String clave, String ubicacion, int tarjeta) {
 		this.nombre = nombre;
 		this.dni = dni;
 		this.correo = correo;
@@ -43,11 +43,11 @@ public class Cliente {
         this.correo = correo;
     }
 
-    public int getClave() {
+    public String getClave() {
         return clave;
     }
 
-    public void setClave(int clave) {
+    public void setClave(String clave) {
         this.clave = clave;
     }
 
