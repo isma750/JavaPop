@@ -1,4 +1,5 @@
 
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -40,9 +41,27 @@ public class UtilProductos {
         return productos;
     }
 
-
-
     public static void setProductos(ArrayList<Producto> p) {
         productos = p;
     }
+
+    public static ArrayList<Producto> BuscarProductos(String titulo){ //Devuelve un arraylist con productos cuyo titulo contenga las palabras clave especificadas en el string
+        //Establecemos el comparador
+        ArrayList<Producto> productosCoinciden = new ArrayList<>();
+        String[] palabrasClave = titulo.split(""); //Sacamos las palabras clave del titulo
+
+        for(int i=0;i==productos.size();i++){ //por cada producto en productos
+            for(int j=0;j==palabrasClave.length;j++){ // por cada palabra clave en el titulo
+                if (productos.get(i).getTitulo().contains(palabrasClave[j])){ // si el titulo contiene la palabra
+                    productosCoinciden.add(productos.get(i)); // añadimos el producto al arraylist de productos que buscamos
+                }
+
+            }
+        }
+
+        return productosCoinciden;
+    }
+
+
+
 }
