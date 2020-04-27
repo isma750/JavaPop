@@ -45,15 +45,17 @@ public class UtilProductos {
         productos = p;
     }
 
-    public static ArrayList<Producto> BuscarProductos(String titulo){ //Devuelve un arraylist con productos cuyo titulo contenga las palabras clave especificadas en el string
+    public static ArrayList<Producto> BuscarProductosTitulo(String titulo){ //Devuelve un arraylist con productos cuyo titulo contenga las palabras clave especificadas en el string
         //Establecemos el comparador
         ArrayList<Producto> productosCoinciden = new ArrayList<>();
-        String[] palabrasClave = titulo.split(""); //Sacamos las palabras clave del titulo
+        String[] palabrasClave = titulo.split(" "); //Sacamos las palabras clave del titulo
 
-        for(int i=0;i==productos.size();i++){ //por cada producto en productos
-            for(int j=0;j==palabrasClave.length;j++){ // por cada palabra clave en el titulo
+        for(int i=0;i<productos.size();i++){ //por cada producto en productos
+            for(int j=0;j<palabrasClave.length;j++){ // por cada palabra clave en el titulo
                 if (productos.get(i).getTitulo().contains(palabrasClave[j])){ // si el titulo contiene la palabra
-                    productosCoinciden.add(productos.get(i)); // añadimos el producto al arraylist de productos que buscamos
+                    if(!productosCoinciden.contains(productos.get(i))) { // si no esta en el arraylist de productos que buscamos
+                        productosCoinciden.add(productos.get(i)); // añadimos el producto al arraylist de productos que buscamos
+                    }
                 }
 
             }
@@ -61,6 +63,17 @@ public class UtilProductos {
 
         return productosCoinciden;
     }
+    public static ArrayList<Producto> BuscarProductosCategoria(String categoria){ //Busca productos por categoria
+        ArrayList<Producto> productosCoinciden = new ArrayList<>();
+        for(int i=0; i<productos.size();i++){
+            if(productos.get(i).getCategoria().equals(categoria)){
+                productosCoinciden.add(productos.get(i));
+            }
+        }
+        return productosCoinciden;
+    }
+
+
 
 
 
