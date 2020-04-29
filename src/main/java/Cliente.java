@@ -1,5 +1,8 @@
 
-public class Cliente {
+import java.util.ArrayList;
+
+
+public class Cliente{
 
     private String nombre;
     private String dni;
@@ -7,6 +10,7 @@ public class Cliente {
     private String clave;
     private String ubicacion;
     private int tarjeta;
+    private ArrayList<UtilProductos> productos;
     
     public Cliente(String nombre, String dni, String correo, String clave, String ubicacion, int tarjeta) {
 		this.nombre = nombre;
@@ -15,6 +19,7 @@ public class Cliente {
 		this.clave = clave;
                 this.ubicacion = ubicacion;
                 this.tarjeta = tarjeta;
+                this.productos = null;
 	}
     
     
@@ -66,10 +71,25 @@ public class Cliente {
     public void setTarjeta(int tarjeta) {
         this.tarjeta = tarjeta;
     }
-    
+
     @Override
     public String toString() {
             return "\n\tCliente{" + "nombre=" + nombre + ", dni=" + dni + ", correo=" + correo + ", clave=" + ", ubicación=" + ubicacion + ", tarjeta=" + tarjeta + "}";
+    }
+    
+    public void añadirProducto (UtilProductos productos) {
+        if (this.productos == null) {
+            this.productos = new ArrayList<UtilProductos>();
+        }
+        this.productos.add(new UtilProductos(this));  
+    }
+    
+    public void quitarProducto (UtilProductos producto) {
+        if (this.productos != null){
+            if(this.productos.contains(producto)) {
+                this.productos.remove(producto);
+            }
+        }
     }
     
     
