@@ -72,6 +72,22 @@ public class UtilProductos {
         }
         return productosCoinciden;
     }
+    public static String anadirProducto(Producto producto){
+        if (!productos.contains(producto)){
+            productos.add(producto);
+            return "Producto añadido correctamente";
+        } else {
+            return "ERROR:El producto especificado ya existe";
+        }
+    }
+    public static String eliminarProducto(Producto producto){
+        if (productos.contains(producto)){
+            productos.remove(producto);
+            return "Producto eliminado correctamente";
+        } else {
+            return "ERROR:El producto especificado no está en la base de datos";
+        }
+    }
 
 
 

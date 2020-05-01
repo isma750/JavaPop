@@ -94,7 +94,20 @@ public class Producto implements Comparable<Producto> {
         this.urgente = urgente;
     }
 
-
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "titulo='" + titulo + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", categoria='" + categoria + '\'' +
+                ", estado='" + estado + '\'' +
+                ", precio=" + precio +
+                ", fecha=" + fecha +
+                ", fotografia=" + fotografia +
+                ", ubicacion='" + ubicacion + '\'' +
+                ", urgente=" + urgente +
+                '}';
+    }
 
     @Override
     public int compareTo(Producto o) {
