@@ -7,6 +7,7 @@ public class Administrador {
     private String correo;
     private String clave;
     private ArrayList<Cliente> clientes;
+    private ArrayList<UtilProductos> productos;
     
     public Administrador (String correo, String clave){
         this.correo = correo;
@@ -40,6 +41,12 @@ public class Administrador {
             System.out.println (clientes);
             
         }
-}
+    }
+    public void muestraProductos (UtilProductos producto) {
+        
+        for (var cadaproducto : productos ){
+            System.out.println (productos);
+        }
+    }
     
 }
