@@ -7,6 +7,7 @@ import java.util.Comparator;
 public class UtilProductos {
     private static ArrayList<Producto> productos = new ArrayList<>();
     private static Producto productoejemplo;
+    private Cliente cliente;
 
     public static ArrayList<Producto> getProductos() {  // Devuelve los productos ordenados por distancia teniendo preferencia por los urgentes
         //Establecemos el comparador
@@ -89,8 +90,16 @@ public class UtilProductos {
         }
     }
 
+    public UtilProductos (Cliente cliente){
+        this.cliente = cliente;
+        
+    }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
 
-
-
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 }
