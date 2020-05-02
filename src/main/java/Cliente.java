@@ -2,21 +2,19 @@
 import java.util.ArrayList;
 
 
-public class Cliente{
+public class Cliente extends Usuario{
 
     private String nombre;
     private String dni;
-    private String correo;
-    private String clave;
     private String ubicacion;
     private int tarjeta;
-    private ArrayList<UtilProductos> productos;
+    private ArrayList<Producto> productos;
     
     public Cliente(String nombre, String dni, String correo, String clave, String ubicacion, int tarjeta) {
+                super(correo,clave);
+                
 		this.nombre = nombre;
 		this.dni = dni;
-		this.correo = correo;
-		this.clave = clave;
                 this.ubicacion = ubicacion;
                 this.tarjeta = tarjeta;
                 this.productos = null;
@@ -38,23 +36,6 @@ public class Cliente{
     public void setDni(String dni) {
         this.dni = dni;
     }
-    
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getClave() {
-        return clave;
-    }
-
-    public void setClave(String clave) {
-        this.clave = clave;
-    }
 
     public String getUbicacion() {
         return ubicacion;
@@ -74,14 +55,14 @@ public class Cliente{
 
     @Override
     public String toString() {
-            return "\n\tCliente{" + "nombre=" + nombre + ", dni=" + dni + ", correo=" + correo + ", clave=" + ", ubicación=" + ubicacion + ", tarjeta=" + tarjeta + "}";
+            return "\n\tCliente{" + "nombre=" + nombre + ", dni=" + dni + ", ubicación=" + ubicacion + ", tarjeta=" + tarjeta + "}";
     }
     
-    public void añadirProducto (UtilProductos productos) {
+    public void añadirProducto (Producto productos) {
         if (this.productos == null) {
-            this.productos = new ArrayList<UtilProductos>();
+            this.productos = new ArrayList<Producto>();
         }
-        this.productos.add(new UtilProductos(this));  
+        this.productos.add(new Producto(this));  
     }
     
     public void quitarProducto (UtilProductos producto) {

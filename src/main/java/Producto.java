@@ -21,7 +21,9 @@ public class Producto implements Comparable<Producto> {
         this.urgente = urgente;
     }
 
-
+    Producto(Cliente aThis) {
+       
+    }
 
     public String getTitulo() {
         return titulo;

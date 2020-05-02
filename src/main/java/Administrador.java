@@ -2,37 +2,15 @@
 import java.util.ArrayList;
 
 
-public class Administrador {
+public class Administrador extends Usuario {
 
-    private String correo;
-    private String clave;
+    
     private ArrayList<Cliente> clientes;
-    private ArrayList<UtilProductos> productos;
+    private ArrayList<Producto> productos;
     
     public Administrador (String correo, String clave){
-        this.correo = correo;
-        this.clave = clave;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getClave() {
-        return clave;
-    }
-
-    public void setClave(String clave) {
-        this.clave = clave;
-    }
-    
-    @Override
-    public String toString(){
-        return "\n\tAdministrador{" + "correo=" + correo + ", clave=" + clave + "}";
+       super(correo,clave);
+           
     }
     
     public void muestraClientes (Cliente cliente) {
@@ -42,7 +20,7 @@ public class Administrador {
             
         }
     }
-    public void muestraProductos (UtilProductos producto) {
+    public void muestraProductos (Producto producto) {
         
         for (var cadaproducto : productos ){
             System.out.println (productos);
