@@ -12,6 +12,7 @@ public class Producto implements Comparable<Producto> {
     private BufferedImage fotografia;
     private String ubicacion;
     private boolean urgente;
+    private String correoClienteAsociado;
 
     public Producto(String titulo, String categoria, String ubicacion, boolean urgente) {
         this.titulo = titulo;
@@ -93,6 +94,27 @@ public class Producto implements Comparable<Producto> {
     public void setUrgente(boolean urgente) {
         this.urgente = urgente;
     }
+
+    public String getCorreoClienteAsociado() {
+        return correoClienteAsociado;
+    }
+
+    public void setCorreoClienteAsociado(String correoClienteAsociado) {
+        this.correoClienteAsociado = correoClienteAsociado;
+    }
+    public String calcularProximidad(Cliente cliente){ // Calcula la proximidad entre el cliente y el producto especificado
+        if (this.ubicacion.substring(0, 2).equals(cliente.getUbicacion().substring(0, 2))){
+            if (this.ubicacion.charAt(2)==cliente.getUbicacion().charAt(2)){
+                return "Muy próximo";
+            }
+            return "Próximo";
+        }
+        else{
+            return "Remoto";
+        }
+    }
+
+
 
     @Override
     public String toString() {
