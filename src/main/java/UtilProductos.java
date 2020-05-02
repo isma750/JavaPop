@@ -32,7 +32,7 @@ public class UtilProductos {
         return productosCoinciden;
     }
 
-    public static ArrayList<Producto> BuscarProductosCategoria(String categoria) { //Busca productos por categoria
+    public static ArrayList<Producto> BuscarProductosCategoria(Producto.categoria categoria) { //Busca productos por categoria
         ArrayList<Producto> productosCoinciden = new ArrayList<>();
         for (int i = 0; i < productos.size(); i++) {
             if (productos.get(i).getCategoria().equals(categoria)) {

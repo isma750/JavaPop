@@ -5,8 +5,24 @@ import java.time.LocalDateTime;
 public class Producto implements Comparable<Producto> {
     private String titulo;
     private String descripcion;
-    private String categoria;
-    private String estado;
+    public enum categoria{
+        MODAYACCESORIOS,
+        TVAUDIOYFOTO,
+        MOVILESYTELFONIA,
+        INFORMATICAYELECTRONICA,
+        CONSOLASYVIDEOJUEGOS,
+        DEPORTEYOCIO
+    }
+    private categoria categoria;
+
+    public enum estado{
+        NUEVO,
+        COMONUEVO,
+        BUENO,
+        ACEPTABLE,
+        REGULAR
+    }
+    private estado estado;
     private double precio;
     private LocalDateTime fecha;
     private BufferedImage fotografia;
@@ -14,7 +30,7 @@ public class Producto implements Comparable<Producto> {
     private boolean urgente;
     private String correoClienteAsociado;
 
-    public Producto(String titulo, String categoria, String ubicacion, boolean urgente) {
+    public Producto(String titulo,categoria categoria, String ubicacion, boolean urgente) {
         this.titulo = titulo;
         this.categoria = categoria;
         this.ubicacion = ubicacion;
@@ -41,19 +57,19 @@ public class Producto implements Comparable<Producto> {
         this.descripcion = descripcion;
     }
 
-    public String getCategoria() {
+    public Producto.categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(Producto.categoria categoria) {
         this.categoria = categoria;
     }
 
-    public String getEstado() {
+    public Producto.estado getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(Producto.estado estado) {
         this.estado = estado;
     }
 
