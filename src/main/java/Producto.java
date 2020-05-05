@@ -30,16 +30,27 @@ public class Producto implements Comparable<Producto> {
     private boolean urgente;
     private String correoClienteAsociado;
 
-    public Producto(String titulo,categoria categoria, String ubicacion, boolean urgente) {
+    public Producto(String titulo,categoria categoria, String ubicacion, boolean urgente, String CorreoClienteAsociado) {
         this.titulo = titulo;
         this.categoria = categoria;
         this.ubicacion = ubicacion;
         this.urgente = urgente;
+        this.correoClienteAsociado = CorreoClienteAsociado;
     }
 
-    Producto(Cliente aThis) {
-       
+    public Producto(String titulo, String descripcion, Producto.categoria categoria, Producto.estado estado, double precio, LocalDateTime fecha, String ubicacion, boolean urgente, String correoClienteAsociado) {
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.estado = estado;
+        this.precio = precio;
+        this.fecha = fecha;
+        this.ubicacion = ubicacion;
+        this.urgente = urgente;
+        this.correoClienteAsociado = correoClienteAsociado;
     }
+
+
 
     public String getTitulo() {
         return titulo;
