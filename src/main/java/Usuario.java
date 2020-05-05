@@ -1,6 +1,6 @@
 public class Usuario{
-    private String correo;
-    private String clave;
+    public String correo;
+    public String clave;
 
     public Usuario(String correo, String clave) {
         this.correo = correo;

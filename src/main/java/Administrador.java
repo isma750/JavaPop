@@ -10,6 +10,8 @@ public class Administrador extends Usuario {
     
     public Administrador (String correo, String clave){
        super(correo,clave);
+       this.correo = "admin@javapop.com";
+       this.clave = "admin";
            
     }
     
