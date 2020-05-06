@@ -29,6 +29,7 @@ public class Producto implements Comparable<Producto> {
     private String ubicacion;
     private boolean urgente;
     private String correoClienteAsociado;
+    private boolean marcadoParaVenta;
 
     public Producto(String titulo,categoria categoria, String ubicacion, boolean urgente, String CorreoClienteAsociado) {
         this.titulo = titulo;
@@ -49,6 +50,7 @@ public class Producto implements Comparable<Producto> {
         this.urgente = urgente;
         this.correoClienteAsociado = correoClienteAsociado;
     }
+
 
 
 
@@ -131,6 +133,15 @@ public class Producto implements Comparable<Producto> {
     public void setCorreoClienteAsociado(String correoClienteAsociado) {
         this.correoClienteAsociado = correoClienteAsociado;
     }
+
+    public boolean isMarcadoParaVenta() {
+        return marcadoParaVenta;
+    }
+
+    public void setMarcadoParaVenta(boolean marcadoParaVenta) {
+        this.marcadoParaVenta = marcadoParaVenta;
+    }
+
     public String calcularProximidad(Cliente cliente){ // Calcula la proximidad entre el cliente y el producto especificado
         if (this.ubicacion.substring(0, 2).equals(cliente.getUbicacion().substring(0, 2))){
             if (this.ubicacion.charAt(2)==cliente.getUbicacion().charAt(2)){
