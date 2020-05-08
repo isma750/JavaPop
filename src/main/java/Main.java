@@ -10,6 +10,7 @@ public class Main {
         Cliente cliente3 = new Cliente("Juan","03445771B","juan35@gmail-com","juanito22","19129, Pareja",667892341);
         ClienteProfesional cliente4 = new ClienteProfesional ("Andrea","75612062Z","andrea_21@hotmail.com","225547","19200,Azuqueca de Henares",83425014,"Venta de moviles","9:00-20:00","626789432","movilesAzuqeca.com");
         ClienteProfesional cliente5 = new ClienteProfesional ("Raúl","09346581P","raul.fernandez@hotmail.com","raulitoo","28001, Madrid", 58791674, "Venta de televisiones","10:00-19:00","687945362","televisionesraul.com");
+        Administrador admin = new Administrador("admin@javapop.com", "admin");
         
         Producto producto1 = new Producto("Camiseta blanca", Producto.categoria.MODAYACCESORIOS,"19004,Guadalajara",true,"antonio01@yahoo.com");
         Producto producto2 = new Producto("Camiseta negra", Producto.categoria.MODAYACCESORIOS,"19004,Guadalajara",false,"antonio01@yahoo.com");
@@ -47,6 +48,23 @@ public class Main {
            System.out.println("Introduce tu contraseña:");
            String clavePedida = entrada.next();
            
+           Cliente registrado = new Cliente("Ismael","654855365B", correoPedido, clavePedida, "Salmeron", 26956845);
+           if (correoPedido == registrado.getCorreo()){
+               System.out.println("Correo correcto"); 
+           } else {
+               System.out.println("Correo incorrecto, vuelva a introducirlo");
+               System.out.println("Introduce tu correo:");
+               correoPedido = entrada.next();
+           }
+           if (clavePedida == registrado.getClave()) {
+               System.out.println("Clave correcta");
+           } else {
+               System.out.println("Clave incorrecta, vuelva a introducirla");
+               System.out.println("Introduce tu contraseña:");
+               clavePedida = entrada.next();
+           }
+           
+         
            
          }
     }   
