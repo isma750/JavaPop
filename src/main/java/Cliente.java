@@ -56,6 +56,14 @@ public class Cliente extends Usuario{
         this.tarjeta = tarjeta;
     }
 
+    public ArrayList<Producto> getProductos() {
+        return Productos;
+    }
+
+    public void setProductos(ArrayList<Producto> productos) {
+        Productos = productos;
+    }
+
     @Override
     public String toString() {
             return "\n\tCliente{" + "nombre=" + nombre + ", dni=" + dni + ", ubicación=" + ubicacion + ", tarjeta=" + tarjeta + "}";

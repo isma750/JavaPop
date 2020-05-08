@@ -28,18 +28,18 @@ public class Producto implements Comparable<Producto> {
     private BufferedImage fotografia;
     private String ubicacion;
     private boolean urgente;
-    private String correoClienteAsociado; //Sustituir por cliente
+    private Cliente clienteAsociado; //Sustituir por cliente
     private boolean marcadoParaVenta;
 
-    public Producto(String titulo,categoria categoria, String ubicacion, boolean urgente, String CorreoClienteAsociado) {
+    public Producto(String titulo,categoria categoria, String ubicacion, boolean urgente, Cliente clienteAsociado) {
         this.titulo = titulo;
         this.categoria = categoria;
         this.ubicacion = ubicacion;
         this.urgente = urgente;
-        this.correoClienteAsociado = CorreoClienteAsociado;
+        this.clienteAsociado = clienteAsociado;
     }
 
-    public Producto(String titulo, String descripcion, Producto.categoria categoria, Producto.estado estado, double precio, LocalDateTime fecha, String ubicacion, boolean urgente, String correoClienteAsociado) {
+    public Producto(String titulo, String descripcion, Producto.categoria categoria, Producto.estado estado, double precio, LocalDateTime fecha, String ubicacion, boolean urgente, Cliente clienteAsociado) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.categoria = categoria;
@@ -48,7 +48,7 @@ public class Producto implements Comparable<Producto> {
         this.fecha = fecha;
         this.ubicacion = ubicacion;
         this.urgente = urgente;
-        this.correoClienteAsociado = correoClienteAsociado;
+        this.clienteAsociado = clienteAsociado;
     }
 
 
@@ -126,12 +126,12 @@ public class Producto implements Comparable<Producto> {
         this.urgente = urgente;
     }
 
-    public String getCorreoClienteAsociado() {
-        return correoClienteAsociado;
+    public Cliente getClienteAsociado() {
+        return clienteAsociado;
     }
 
-    public void setCorreoClienteAsociado(String correoClienteAsociado) {
-        this.correoClienteAsociado = correoClienteAsociado;
+    public void setClienteAsociado(Cliente clienteAsociado) {
+        this.clienteAsociado = clienteAsociado;
     }
 
     public boolean isMarcadoParaVenta() {

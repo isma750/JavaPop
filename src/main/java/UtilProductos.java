@@ -13,7 +13,7 @@ public class UtilProductos {
         productos = p;
     }
 
-    public static ArrayList<Producto> BuscarProductosTitulo(String titulo) { //Devuelve un arraylist con productos cuyo titulo contenga las palabras clave especificadas en el string
+    public static void BuscarProductosTitulo(String titulo) { //Devuelve un arraylist con productos cuyo titulo contenga las palabras clave especificadas en el string
         //Establecemos el comparador
         ArrayList<Producto> productosCoinciden = new ArrayList<>();
         String[] palabrasClave = titulo.split(" "); //Sacamos las palabras clave del titulo
@@ -29,26 +29,20 @@ public class UtilProductos {
             }
         }
 
-        return productosCoinciden;
+        productos = productosCoinciden;
     }
 
-    public static ArrayList<Producto> BuscarProductosCategoria(Producto.categoria categoria) { //Busca productos por categoria
+    public static void BuscarProductosCategoria(Producto.categoria categoria) { //Busca productos por categoria
         ArrayList<Producto> productosCoinciden = new ArrayList<>();
         for (int i = 0; i < productos.size(); i++) {
             if (productos.get(i).getCategoria().equals(categoria)) {
                 productosCoinciden.add(productos.get(i));
             }
         }
-        return productosCoinciden;
+        productos = productosCoinciden;
     }
-    public static ArrayList<Producto> BuscarProductosUsuario(String correo) { //Busca productos por el correo de un usuario
-        ArrayList<Producto> productosCoinciden = new ArrayList<>();
-        for (int i = 0; i < productos.size(); i++) {
-            if (productos.get(i).getCorreoClienteAsociado().equals(correo)) {
-                productosCoinciden.add(productos.get(i));
-            }
-        }
-        return productosCoinciden;
+    public static void BuscarProductosUsuario(Cliente cliente) { //Busca los productos de un cliente
+        productos = cliente.getProductos();
     }
 
     public static void OrdenarPorProximidad (Cliente cliente){ //Ordena los productos que hay en el utilproductos por la proximidad a un cliente
