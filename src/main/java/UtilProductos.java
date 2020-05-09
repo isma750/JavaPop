@@ -90,6 +90,7 @@ public class UtilProductos {
         }
     }
     public static void imprimirResultados(Cliente cliente){
+        System.out.println("Resultados de la búsqueda");
         for (int i=0;i<productos.size();i++){
             System.out.println(productos.get(i).toString() + productos.get(i).calcularProximidad(cliente));
         }
