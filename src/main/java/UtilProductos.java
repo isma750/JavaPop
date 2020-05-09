@@ -20,7 +20,7 @@ public class UtilProductos {
 
         for (int i = 0; i < productos.size(); i++) { //por cada producto en productos
             for (int j = 0; j < palabrasClave.length; j++) { // por cada palabra clave en el titulo
-                if (productos.get(i).getTitulo().contains(palabrasClave[j])) { // si el titulo contiene la palabra
+                if (productos.get(i).getTitulo().toLowerCase().contains(palabrasClave[j].toLowerCase())) { // si el titulo contiene la palabra
                     if (!productosCoinciden.contains(productos.get(i))) { // si no esta en el arraylist de productos que buscamos
                         productosCoinciden.add(productos.get(i)); // añadimos el producto al arraylist de productos que buscamos
                     }
@@ -87,6 +87,11 @@ public class UtilProductos {
             return "Producto eliminado correctamente";
         } else {
             return "ERROR:El producto especificado no está en la base de datos";
+        }
+    }
+    public static void imprimirResultados(Cliente cliente){
+        for (int i=0;i<productos.size();i++){
+            System.out.println(productos.get(i).toString() + productos.get(i).calcularProximidad(cliente));
         }
     }
 

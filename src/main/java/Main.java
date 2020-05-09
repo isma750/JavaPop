@@ -1,3 +1,5 @@
+import jdk.jshell.execution.Util;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -17,7 +19,7 @@ public class Main {
         Administrador admin = new Administrador("admin@javapop.com", "admin");
         javaPop.anadirUsuario(admin);
         Producto producto1 = new Producto("Camiseta blanca", Producto.categoria.MODAYACCESORIOS,"19003,Guadalajara",true,cliente1);
-        Producto producto2 = new Producto("Camiseta negra", Producto.categoria.MODAYACCESORIOS,"19003,Guadalajara",false,cliente1);
+        Producto producto2 = new Producto("Camiseta negra", Producto.categoria.MODAYACCESORIOS,"19203,Guadalajara",false,cliente1);
         Producto producto3 = new Producto("Raqueta de tenis", Producto.categoria.DEPORTEYOCIO,"19004,Guadalajara",true,cliente2);
         Producto producto4 = new Producto("Playstation 5", Producto.categoria.CONSOLASYVIDEOJUEGOS,"19004,Guadalajara",true,cliente2);
         Producto producto5 = new Producto("Television 49 pulgadas Sony", Producto.categoria.TVAUDIOYFOTO,"19004, Guadalajara",false,cliente2);
@@ -38,13 +40,15 @@ public class Main {
             System.out.println(productos.get(i).toString());
         }
 
-        //Utilizamos UtilProductos para realizar la busqueda
-        UtilProductos.BuscarProductosUsuario(cliente1);
-        ArrayList<Producto> productosCoinciden = UtilProductos.getProductos();
+        //Ejemplo: el cliente2 quiere comprar una "camiseta"
+        UtilProductos.setProductos(productos);
+        UtilProductos.BuscarProductosCategoria(Producto.categoria.MODAYACCESORIOS);
+        UtilProductos.BuscarProductosTitulo("camiseta");
+        UtilProductos.OrdenarPorProximidad(cliente2);
+        UtilProductos.imprimirResultados(cliente2);
 
-        for (int i=0;i<productosCoinciden.size();i++){
-            System.out.println(productosCoinciden.get(i).toString());
-        }
+
+
 
 
         }
