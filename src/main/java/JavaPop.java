@@ -5,9 +5,8 @@ import java.io.*;
 public class JavaPop {
 
     private ArrayList<Usuario> usuarios;
-    private ArrayList<Producto> productos; //He pensado que igual en JavaPop habria que almacenar los productos, ya que es la aplicacion.
     private ArrayList<Venta> ventas;
-    private ArrayList<Cliente> Cliente;
+    private ArrayList<Producto> productos;
 
     public void comprarProducto(Cliente comprador,Cliente vendedor,Producto producto){
         if (producto.isMarcadoParaVenta()){
@@ -39,12 +38,53 @@ public class JavaPop {
             Venta venta = new Venta(LocalDateTime.now(),producto,vendedor.getNombre(),comprador.getNombre());
             ventas.add(venta); // registramos la venta
             productos.remove(producto);
+            comprador.quitarProducto(producto);
 
         }
 
     }
 
+    public ArrayList<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(ArrayList<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+    public ArrayList<Producto> getProductos(){
+        return productos;
+    }
+
+
+    /* BUSCA LOS PRODUCTOS DE TODOS LOS CLIENTES Y ESTABLECE LOS PRODUCTOS DE LA APLICACION*/
+    public void setProductos() {
+        this.productos = new ArrayList<>();
+        for (int i = 0; i < usuarios.size(); i++) {
+            if (usuarios.get(i).getClass().getSimpleName().equals("Cliente") || usuarios.get(i).getClass().getSimpleName().equals("ClienteProfesional") ) {
+                Cliente cliente = (Cliente) usuarios.get(i);
+                ArrayList<Producto> productosCliente = (cliente.getProductos());
+                for (int j = 0; j < productosCliente.size(); j++) {
+                    this.productos.add(productosCliente.get(j));
+                }
+
+            }
+        }
+    }
+
+
+    public ArrayList<Venta> getVentas() {
+        return ventas;
+    }
+
+    public void setVentas(ArrayList<Venta> ventas) {
+        this.ventas = ventas;
+    }
+
+
     public void anadirUsuario(Usuario usuario)throws UsuarioExiste{
+        if (this.usuarios == null){
+            this.usuarios = new ArrayList<Usuario>();
+        }
         if (usuarios.contains(usuario)){
             throw new UsuarioExiste();
         }
@@ -79,6 +119,7 @@ public class JavaPop {
             throw new ProductoNoExiste();
         }
     }
+
     class UsuarioExiste extends Exception{
         public UsuarioExiste(){
             super ("ERROR:El usuario ya existe.");

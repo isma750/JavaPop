@@ -57,6 +57,9 @@ public class Cliente extends Usuario{
     }
 
     public ArrayList<Producto> getProductos() {
+        if (this.Productos == null) {
+            this.Productos = new ArrayList<Producto>();
+        }
         return Productos;
     }
 
@@ -69,11 +72,11 @@ public class Cliente extends Usuario{
             return "\n\tCliente{" + "nombre=" + nombre + ", dni=" + dni + ", ubicación=" + ubicacion + ", tarjeta=" + tarjeta + "}";
     }
     
-    public void RegristarUsuario (String correoPedido, String clavePedida, Usuario usuario){
+    public void RegistrarUsuario (String correoPedido, String clavePedida, Usuario usuario){
        if (correoPedido == usuario.getCorreo()){
            System.out.println("Usuario correcto");
        } else {
-           System.out.println("Usiario incorrecto");
+           System.out.println("Usuario incorrecto");
        }
          
     } 
@@ -117,6 +120,7 @@ public class Cliente extends Usuario{
             System.out.println("Su producto vendido ha quedado registrado");
         }
     }
+
     
     
     
