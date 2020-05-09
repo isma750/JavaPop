@@ -12,9 +12,16 @@ public class JavaPop {
         if (producto.isMarcadoParaVenta()){
             // Aquí va lo de generar el fichero //
             try {
-                String ruta = "C:/Users/Carlos/Desktop/factura.txt";
-                String contenido = "FACTURA DE COMPRA\n" + 
-                                   "Datos del producto: " + producto.toString() + "\n" +
+                String ruta = "C:\\Users\\ismae\\OneDrive\\Escritorio\\texto\\factura.txt";
+                String contenido = "FACTURA DE COMPRA\n" +
+                                   "\n" +
+                                   "Datos del producto: " + "\n" +
+                                   "Titulo: " + producto.getTitulo() + "\n" +
+                                   "Descripcion: " + producto.getDescripcion() + "\n" +
+                                   "Categoria: " + producto.getCategoria() + "\n" +
+                                   "Precio: " + producto.getPrecio() + "\n " + 
+                                   "Ubicacion: " + producto.getUbicacion() + "\n" + 
+                                   
                                    "Fecha de venta: " + LocalDateTime.now() + "\n" +
                                    "\n" +
                                    "DNI vendedor: " +  vendedor.getDni() + "\n" +

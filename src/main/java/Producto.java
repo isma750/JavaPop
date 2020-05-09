@@ -32,12 +32,16 @@ public class Producto implements Comparable<Producto> {
     private boolean marcadoParaVenta;
     private boolean marcadoParaCompra;
 
-    public Producto(String titulo,categoria categoria, String ubicacion, boolean urgente, Cliente clienteAsociado) {
+    public Producto(String titulo,String descripcion,categoria categoria, String ubicacion, boolean urgente, Cliente clienteAsociado, estado estado, double precio, LocalDateTime fecha) {
         this.titulo = titulo;
+        this.descripcion = descripcion;
         this.categoria = categoria;
         this.ubicacion = ubicacion;
         this.urgente = urgente;
         this.clienteAsociado = clienteAsociado;
+        this.estado = estado;
+        this.precio = precio;
+        this.fecha = fecha;
     }
 
     public Producto(String titulo, String descripcion, Producto.categoria categoria, Producto.estado estado, double precio, LocalDateTime fecha, String ubicacion, boolean urgente, Cliente clienteAsociado) {
