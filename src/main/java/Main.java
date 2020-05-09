@@ -40,7 +40,7 @@ public class Main {
             System.out.println(productos.get(i).toString());
         }
 
-        //Ejemplo: el cliente2 quiere comprar una "camiseta"
+        //Ejemplo: el cliente2 quiere comprar una "camiseta".
         UtilProductos.setProductos(productos);
         UtilProductos.BuscarProductosCategoria(Producto.categoria.MODAYACCESORIOS);
         UtilProductos.BuscarProductosTitulo("camiseta");
