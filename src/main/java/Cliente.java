@@ -100,6 +100,12 @@ public class Cliente extends Usuario{
             }
         }
     }
+    public void confirmarCompra(Producto producto){
+        producto.setMarcadoParaCompra(true);
+    }
+    public void confirmarVenta (Producto producto){
+        producto.setMarcadoParaVenta(true);
+    }
     
     public void ProductosComprados (Producto productoComprado) {
         if (this.ProductosComprados == null){

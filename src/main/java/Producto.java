@@ -30,6 +30,7 @@ public class Producto implements Comparable<Producto> {
     private boolean urgente;
     private Cliente clienteAsociado; //Sustituir por cliente
     private boolean marcadoParaVenta;
+    private boolean marcadoParaCompra;
 
     public Producto(String titulo,categoria categoria, String ubicacion, boolean urgente, Cliente clienteAsociado) {
         this.titulo = titulo;
@@ -140,6 +141,14 @@ public class Producto implements Comparable<Producto> {
 
     public void setMarcadoParaVenta(boolean marcadoParaVenta) {
         this.marcadoParaVenta = marcadoParaVenta;
+    }
+
+    public boolean isMarcadoParaCompra() {
+        return marcadoParaCompra;
+    }
+
+    public void setMarcadoParaCompra(boolean marcadoParaCompra) {
+        this.marcadoParaCompra = marcadoParaCompra;
     }
 
     public String calcularProximidad(Cliente cliente){ // Calcula la proximidad entre el cliente y el producto especificado

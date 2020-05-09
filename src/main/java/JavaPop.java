@@ -12,7 +12,7 @@ public class JavaPop {
         if (producto.isMarcadoParaVenta()){
             // Aquí va lo de generar el fichero //
             try {
-                String ruta = "/ruta/factura.txt";
+                String ruta = "C:/Users/Carlos/Desktop/factura.txt";
                 String contenido = "FACTURA DE COMPRA\n" + 
                                    "Datos del producto: " + producto.toString() + "\n" +
                                    "Fecha de venta: " + LocalDateTime.now() + "\n" +
@@ -36,6 +36,9 @@ public class JavaPop {
                 e.printStackTrace();
             }
             Venta venta = new Venta(LocalDateTime.now(),producto,vendedor.getNombre(),comprador.getNombre());
+            if (this.ventas == null){
+                this.ventas = new ArrayList<>();
+            }
             ventas.add(venta); // registramos la venta
             productos.remove(producto);
             comprador.quitarProducto(producto);

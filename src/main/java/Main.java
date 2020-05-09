@@ -46,6 +46,17 @@ public class Main {
         UtilProductos.BuscarProductosTitulo("camiseta");
         UtilProductos.OrdenarPorProximidad(cliente2);
         UtilProductos.imprimirResultados(cliente2);
+        //Decide comprar la camiseta blanca
+        cliente2.confirmarCompra(producto1);
+        //El otro cliente confirma la venta
+        cliente1.confirmarVenta(producto1);
+        javaPop.comprarProducto(cliente2,cliente1,producto1);
+        productos = javaPop.getProductos();
+        System.out.println("Comprobacion para ver que se han eliminado el producto vendido");
+        for (int i=0;i<productos.size();i++){
+            System.out.println(productos.get(i).toString());
+        }
+
 
 
 
