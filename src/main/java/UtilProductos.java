@@ -5,7 +5,6 @@ import java.util.Comparator;
 
 public class UtilProductos {
     private static ArrayList<Producto> productos = new ArrayList<>();
-    private static Producto productoejemplo;
 
     public static ArrayList<Producto> getProductos() { return productos; }
 
@@ -13,10 +12,15 @@ public class UtilProductos {
         productos = p;
     }
 
-    public static void BuscarProductosTitulo(String titulo) { //Devuelve un arraylist con productos cuyo titulo contenga las palabras clave especificadas en el string
+
+    /**
+     * Busca y establece los productos de utilProductos con productos cuyo titulo contenga una de las palabras clave del string
+     * @param palabras Las palabras que se desean buscar separadas por espacios
+     */
+    public static void BuscarProductosTitulo(String palabras) { //Devuelve un arraylist
         //Establecemos el comparador
         ArrayList<Producto> productosCoinciden = new ArrayList<>();
-        String[] palabrasClave = titulo.split(" "); //Sacamos las palabras clave del titulo
+        String[] palabrasClave = palabras.split(" "); //Sacamos las palabras clave del titulo
 
         for (int i = 0; i < productos.size(); i++) { //por cada producto en productos
             for (int j = 0; j < palabrasClave.length; j++) { // por cada palabra clave en el titulo
@@ -32,7 +36,11 @@ public class UtilProductos {
         productos = productosCoinciden;
     }
 
-    public static void BuscarProductosCategoria(Producto.categoria categoria) { //Busca productos por categoria
+    /**
+     * Busca y establece los productos de utilProductos con productos cuya categoría sea la especificada
+     * @param categoria La categoria de los productos que queremos buscar
+     */
+    public static void BuscarProductosCategoria(Producto.categoria categoria) {
         ArrayList<Producto> productosCoinciden = new ArrayList<>();
         for (int i = 0; i < productos.size(); i++) {
             if (productos.get(i).getCategoria().equals(categoria)) {
@@ -41,10 +49,19 @@ public class UtilProductos {
         }
         productos = productosCoinciden;
     }
+
+    /**
+     * Busca y establece los productos de utilProductos con productos que haya publicado un cierto cliente
+     * @param cliente el cliente cuyos productos deseamos obtener
+     */
     public static void BuscarProductosUsuario(Cliente cliente) { //Busca los productos de un cliente
         productos = cliente.getProductos();
     }
 
+    /**
+     * Ordena los productos del arraylist de utilproductos por la proximidad al cliente especificado
+     * @param cliente el cliente por el que deseamos ordenar los productos
+     */
     public static void OrdenarPorProximidad (Cliente cliente){ //Ordena los productos que hay en el utilproductos por la proximidad a un cliente
         Comparator CompProximidad = new Comparator() {
             @Override
@@ -72,23 +89,11 @@ public class UtilProductos {
         Collections.sort(productos, CompProximidad);
     }
 
-    public static String anadirProducto(Producto producto) {
-        if (!productos.contains(producto)) {
-            productos.add(producto);
-            return "Producto añadido correctamente";
-        } else {
-            return "ERROR:El producto especificado ya existe";
-        }
-    }
 
-    public static String eliminarProducto(Producto producto) {
-        if (productos.contains(producto)) {
-            productos.remove(producto);
-            return "Producto eliminado correctamente";
-        } else {
-            return "ERROR:El producto especificado no está en la base de datos";
-        }
-    }
+    /**
+     * Imprime los productos del arraylist buscados seguidos de la proximidad al cliente especificado
+     * @param cliente el cliente que realiza la busqueda
+     */
     public static void imprimirResultados(Cliente cliente){
         System.out.println("Resultados de la búsqueda");
         for (int i=0;i<productos.size();i++){

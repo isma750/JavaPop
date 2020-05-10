@@ -155,7 +155,12 @@ public class Producto implements Comparable<Producto> {
         this.marcadoParaCompra = marcadoParaCompra;
     }
 
-    public String calcularProximidad(Cliente cliente){ // Calcula la proximidad entre el cliente y el producto especificado
+    /**
+     * Calcula la proximidad de un producto al cliente parametro, basandose en el codigo postal de la ubicacion
+     * @param cliente El cliente al que queremos calcular su proximidad al producto
+     * @return La distancia al cliente (Muy proximo,proximo o remoto)
+     */
+    public String calcularProximidad(Cliente cliente){
         if (this.ubicacion.substring(0, 2).equals(cliente.getUbicacion().substring(0, 2))){
             if (this.ubicacion.charAt(2)==cliente.getUbicacion().charAt(2)){
                 return "Muy próximo";
