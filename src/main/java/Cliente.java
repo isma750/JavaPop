@@ -72,14 +72,6 @@ public class Cliente extends Usuario{
             return "\n\tCliente{" + "nombre=" + nombre + ", dni=" + dni + ", ubicación=" + ubicacion + ", tarjeta=" + tarjeta + "}";
     }
     
-    public void RegistrarUsuario (String correoPedido, String clavePedida, Usuario usuario){
-       if (correoPedido == usuario.getCorreo()){
-           System.out.println("Usuario correcto");
-       } else {
-           System.out.println("Usuario incorrecto");
-       }
-         
-    } 
     
     public void añadirProducto (Producto producto) {
         if (this.Productos == null) {
