@@ -11,11 +11,11 @@ public class Main {
         ArrayList<Producto> productoscliente1 = new ArrayList<>();
         ArrayList<Producto> productoscliente2 = new ArrayList<>();
         ArrayList<Producto> productoscliente3 = new ArrayList<>();
-        Cliente cliente1 = new Cliente("Antonio","91799023C","antonio01@yahoo.com","contraseñasegura1234","19004,Guadalajara",53671973);
+        Cliente cliente1 = new Cliente("Antonio","91799023C","antonio01@yahoo.com","contraseñasegura1234","19004,Guadalajara","5486533259584474");
         javaPop.anadirUsuario(cliente1);
-        Cliente cliente2 = new Cliente("Fernando","24020971R","fernando20@yahoo.com","fernandoguay888","19003,Guadalajara",394030493);
+        Cliente cliente2 = new Cliente("Fernando","24020971R","fernando20@yahoo.com","fernandoguay888","19003,Guadalajara","5181430738982130");
         javaPop.anadirUsuario(cliente2);
-        ClienteProfesional cliente3 = new ClienteProfesional ("Andrea","75612062Z","andrea_21@hotmail.com","225547","19200,Azuqueca de Henares",83425014,"Venta de moviles","9:00-20:00","626789432","movilesAzuqeca.com");
+        ClienteProfesional cliente3 = new ClienteProfesional ("Andrea","75612062Z","andrea_21@hotmail.com","225547","19200,Azuqueca de Henares","4626392065351394","Venta de moviles","9:00-20:00","626789432","movilesAzuqeca.com");
         javaPop.anadirUsuario(cliente3);
         Administrador admin = new Administrador("admin@javapop.com", "admin");
         javaPop.anadirUsuario(admin);
