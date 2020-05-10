@@ -1,12 +1,21 @@
+/**
+ * 
+ * Clase general con las propiedades de los usuarios que se pueden registrar en Javapop
+ */
 public class Usuario{
     public String correo;
     public String clave;
-
+    
+    /**
+     * Constructor
+     * @param correo del usuario para registrarse
+     * @param clave del usuario para registrarse
+     */
     public Usuario(String correo, String clave) {
         this.correo = correo;
         this.clave = clave;
     }
-
+    // Realizamos los getter y setter
     public String getCorreo() {
         return correo;
     }
@@ -29,7 +38,7 @@ public class Usuario{
     }
     
     
-    
+    // Tipos de usuarios que se pueden registrar en la aplicacion
     public enum TipoUsuario {
     Administrador,
     Cliente,
