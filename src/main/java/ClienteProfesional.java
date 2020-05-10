@@ -6,7 +6,7 @@ public class ClienteProfesional extends Cliente {
    private String telefono;
    private String web;
 
-    public ClienteProfesional(String nombre, String dni, String correo, String clave, String ubicacion, int tarjeta, String descripcion, String horario, String telefono, String web) {
+    public ClienteProfesional(String nombre, String dni, String correo, String clave, String ubicacion, String tarjeta, String descripcion, String horario, String telefono, String web) {
         super (nombre, dni, correo, clave, ubicacion, tarjeta);
         this.descripcion = descripcion;
         this.horario = horario;
