@@ -8,11 +8,18 @@ public class JavaPop {
     private ArrayList<Venta> ventas;
     private ArrayList<Producto> productos;
 
+
+    /**
+     * Operacion de compra de un producto, crea un fichero txt con la factura en la ruta especificada y lo elimina de los productos.
+     * @param comprador Cliente comprador del producto
+     * @param vendedor Cliente vendedor del producto
+     * @param producto Producto que se va a comprar
+     */
     public void comprarProducto(Cliente comprador,Cliente vendedor,Producto producto){
         if (producto.isMarcadoParaVenta()){
-            // Aquí va lo de generar el fichero //
+
             try {
-                String ruta = "C:\\Users\\ismae\\OneDrive\\Escritorio\\texto\\factura.txt";
+                String ruta = "C:\\Users\\ismae\\OneDrive\\Escritorio\\texto\\factura.txt"; // Sustituir por ruta en la que queremos que se genere el fichero
                 String contenido = "FACTURA DE COMPRA\n" +
                                    "\n" +
                                    "Datos del producto: " + "\n" +
@@ -65,8 +72,9 @@ public class JavaPop {
         return productos;
     }
 
-
-    /* BUSCA LOS PRODUCTOS DE TODOS LOS CLIENTES Y ESTABLECE LOS PRODUCTOS DE LA APLICACION*/
+    /**
+     * Establece los productos de la aplicacion con todos los productos de todos los clientes
+     */
     public void setProductos() {
         this.productos = new ArrayList<>();
         for (int i = 0; i < usuarios.size(); i++) {
@@ -90,7 +98,11 @@ public class JavaPop {
         this.ventas = ventas;
     }
 
-
+    /**
+     *
+     * @param usuario
+     * @throws UsuarioExiste
+     */
     public void anadirUsuario(Usuario usuario)throws UsuarioExiste{
         if (this.usuarios == null){
             this.usuarios = new ArrayList<Usuario>();
@@ -103,6 +115,12 @@ public class JavaPop {
         }
 
     }
+
+    /**
+     *
+     * @param usuario
+     * @throws UsuarioNoExiste
+     */
     public void eliminarUsuario(Usuario usuario) throws UsuarioNoExiste {
         if (usuarios.contains(usuario)){
             usuarios.remove(usuario);
@@ -112,6 +130,12 @@ public class JavaPop {
         }
 
     }
+
+    /**
+     *
+     * @param producto
+     * @throws ProductoExiste
+     */
     public void anadirProducto(Producto producto) throws ProductoExiste {
         if (productos.contains(producto)){
             throw new ProductoExiste();
@@ -121,6 +145,11 @@ public class JavaPop {
         }
     }
 
+    /**
+     *
+     * @param producto
+     * @throws ProductoNoExiste
+     */
     public void eliminarProducto(Producto producto) throws ProductoNoExiste {
         if (productos.contains(producto)){
             productos.remove(producto);
@@ -130,21 +159,36 @@ public class JavaPop {
         }
     }
 
+    /**
+     *
+     */
     class UsuarioExiste extends Exception{
         public UsuarioExiste(){
             super ("ERROR:El usuario ya existe.");
         }
     }
+
+    /**
+     *
+     */
     class UsuarioNoExiste extends Exception{
         public UsuarioNoExiste(){
             super ("ERROR:El usuario especificado no existe.");
         }
     }
+
+    /**
+     *
+     */
     class ProductoExiste extends Exception{
         public ProductoExiste(){
             super ("ERROR:El producto ya existe.");
         }
     }
+
+    /**
+     *
+     */
     class ProductoNoExiste extends Exception{
         public ProductoNoExiste(){
             super ("ERROR:El producto especificado no existe.");
