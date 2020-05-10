@@ -38,9 +38,9 @@ public class Main {
         System.out.println("Mostramos todos los productos: ");
         System.out.println("************************");
         ArrayList<Producto> productos = javaPop.getProductos();
-        for (int i=0;i<productos.size();i++){
-            System.out.println(productos.get(i).toString());
-        }
+        UtilProductos.setProductos(productos);
+        UtilProductos.OrdenarPorProximidad(cliente2);
+        UtilProductos.imprimirResultados(cliente2);
 
         //Ejemplo: el cliente2 quiere comprar una "camiseta".
         
