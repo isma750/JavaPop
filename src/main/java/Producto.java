@@ -28,7 +28,7 @@ public class Producto implements Comparable<Producto> {
     private BufferedImage fotografia;
     private String ubicacion;
     private boolean urgente;
-    private Cliente clienteAsociado; //Sustituir por cliente
+    private Cliente clienteAsociado; 
     private boolean marcadoParaVenta;
     private boolean marcadoParaCompra;
 
