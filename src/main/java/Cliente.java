@@ -1,6 +1,5 @@
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * 
@@ -12,7 +11,7 @@ public class Cliente extends Usuario{
     private String nombre;
     private String dni;
     private String ubicacion;
-    private int tarjeta;
+    private String tarjeta;
     private ArrayList<Producto> Productos;
     private ArrayList<Producto> ProductosComprados;
     private ArrayList<Producto> ProductosVendidos;
@@ -26,7 +25,7 @@ public class Cliente extends Usuario{
      * @param ubicacion del cliente
      * @param tarjeta de credito del cliente vinculada en Javapop
      */
-    public Cliente(String nombre, String dni, String correo, String clave, String ubicacion, int tarjeta) {
+    public Cliente(String nombre, String dni, String correo, String clave, String ubicacion, String tarjeta) {
                 super(correo,clave);
                 
 		this.nombre = nombre;
@@ -61,11 +60,11 @@ public class Cliente extends Usuario{
         this.ubicacion = ubicacion;
     }
 
-    public int getTarjeta() {
+    public String getTarjeta() {
         return tarjeta;
     }
 
-    public void setTarjeta(int tarjeta) {
+    public void setTarjeta(String tarjeta) {
         this.tarjeta = tarjeta;
     }
 
