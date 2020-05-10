@@ -1,18 +1,32 @@
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
-
+/**
+ * 
+ * Clase general de las propiedades de los clientes de Javapop
+ * Hereda de Usuario
+ */
 public class Cliente extends Usuario{
 
     private String nombre;
     private String dni;
     private String ubicacion;
-    private String tarjeta;
+    private int tarjeta;
     private ArrayList<Producto> Productos;
     private ArrayList<Producto> ProductosComprados;
     private ArrayList<Producto> ProductosVendidos;
     
-    public Cliente(String nombre, String dni, String correo, String clave, String ubicacion, String tarjeta) {
+    /**
+     * Constructor
+     * @param nombre del cliente
+     * @param dni del cliente
+     * @param correo para registrarse el cliente
+     * @param clave para registrarse el cliente
+     * @param ubicacion del cliente
+     * @param tarjeta de credito del cliente vinculada en Javapop
+     */
+    public Cliente(String nombre, String dni, String correo, String clave, String ubicacion, int tarjeta) {
                 super(correo,clave);
                 
 		this.nombre = nombre;
@@ -21,7 +35,7 @@ public class Cliente extends Usuario{
                 this.tarjeta = tarjeta;
                
 	}
-    
+    // Realizamos los getter y setter
     
     public String getNombre() {
         return nombre;
@@ -47,11 +61,11 @@ public class Cliente extends Usuario{
         this.ubicacion = ubicacion;
     }
 
-    public String getTarjeta() {
+    public int getTarjeta() {
         return tarjeta;
     }
 
-    public void setTarjeta(String tarjeta) {
+    public void setTarjeta(int tarjeta) {
         this.tarjeta = tarjeta;
     }
 
@@ -71,7 +85,7 @@ public class Cliente extends Usuario{
             return "\n\tCliente{" + "nombre=" + nombre + ", dni=" + dni + ", ubicación=" + ubicacion + ", tarjeta=" + tarjeta + "}";
     }
     
-    
+    // Añade un producto a los productos de Javapop
     public void añadirProducto (Producto producto) {
         if (this.Productos == null) {
             this.Productos = new ArrayList<Producto>();
@@ -83,6 +97,7 @@ public class Cliente extends Usuario{
         } 
     }
     
+    // Quita un producto entre los productos de Javapop
     public void quitarProducto (Producto producto) {
         if (this.Productos != null){
             if (this.Productos.contains(producto)) {
@@ -98,6 +113,7 @@ public class Cliente extends Usuario{
         producto.setMarcadoParaVenta(true);
     }
     
+    // Historial de los productos comprados por el cliente
     public void ProductosComprados (Producto productoComprado) {
         if (this.ProductosComprados == null){
             this.ProductosComprados = new ArrayList<Producto>();
@@ -108,6 +124,7 @@ public class Cliente extends Usuario{
         }
     }
     
+    // Historial de los productos vendidos por el cliente
     public void ProductosVendidos (Producto productosVendidos) {
         if (this.ProductosVendidos == null){
             this.ProductosVendidos = new ArrayList<Producto>();
