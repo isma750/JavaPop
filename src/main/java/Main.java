@@ -5,8 +5,9 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws JavaPop.UsuarioExiste {
-        //Declaramos productos
+        //Creamos nuestra aplicacion
         JavaPop javaPop = new JavaPop();
+        //Creamos unos usuarios con unos productos
         ArrayList<Producto> productoscliente1 = new ArrayList<>();
         ArrayList<Producto> productoscliente2 = new ArrayList<>();
         ArrayList<Producto> productoscliente3 = new ArrayList<>();
@@ -30,11 +31,14 @@ public class Main {
         productoscliente2.add(producto4);
         productoscliente2.add(producto5);
         productoscliente3.add(producto6);
+        // Establecemos los productos de la aplicacion y los clientes
         cliente1.setProductos(productoscliente1);
         cliente2.setProductos(productoscliente2);
         cliente3.setProductos(productoscliente3);
         javaPop.setProductos();
-        
+
+        //Mostramos todos los productos que hay ordenados por proximidad al cliente2
+
         System.out.println("Mostramos todos los productos: ");
         System.out.println("************************");
         ArrayList<Producto> productos = javaPop.getProductos();
@@ -45,19 +49,28 @@ public class Main {
         //Ejemplo: el cliente2 quiere comprar una "camiseta".
         
         UtilProductos.setProductos(productos);
-        UtilProductos.BuscarProductosCategoria(Producto.categoria.MODAYACCESORIOS);
-        UtilProductos.BuscarProductosTitulo("camiseta");
-        UtilProductos.OrdenarPorProximidad(cliente2);
+        UtilProductos.BuscarProductosCategoria(Producto.categoria.MODAYACCESORIOS); // Selecciona la categoria moda y accesorios
+        UtilProductos.BuscarProductosTitulo("camiseta"); // Busca por camiseta
+        UtilProductos.OrdenarPorProximidad(cliente2); // ordenamos los productos resultado por proximidad
         
         System.out.println("\n");
         System.out.println("Mostramos el resultado de la búsqueda");
         System.out.println("****************************");
         UtilProductos.imprimirResultados(cliente2);
+
         //Decide comprar la camiseta blanca
+
         cliente2.confirmarCompra(producto1);
+
         //El otro cliente confirma la venta
+
         cliente1.confirmarVenta(producto1);
+
+        //Se realiza la compra
+
         javaPop.comprarProducto(cliente2,cliente1,producto1);
+
+        //Comprobamos que se ha eliminado el producto
         productos = javaPop.getProductos();
         System.out.println("\n");
         System.out.println(" Realizamos la compra y comprobamos que se ha eliminado el producto vendido");
