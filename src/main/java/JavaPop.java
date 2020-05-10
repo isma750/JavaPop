@@ -99,13 +99,13 @@ public class JavaPop {
     }
 
     /**
-     *
-     * @param usuario
-     * @throws UsuarioExiste
+     * Añade un usuario a la aplicacion
+     * @param usuario El usuario que deseamos añadir
+     * @throws UsuarioExiste El usuario que intentamos añadir ya existe
      */
     public void anadirUsuario(Usuario usuario)throws UsuarioExiste{
         if (this.usuarios == null){
-            this.usuarios = new ArrayList<Usuario>();
+            this.usuarios = new ArrayList<>();
         }
         if (usuarios.contains(usuario)){
             throw new UsuarioExiste();
@@ -117,9 +117,9 @@ public class JavaPop {
     }
 
     /**
-     *
-     * @param usuario
-     * @throws UsuarioNoExiste
+     * Elimina un usuario de la aplicacion
+     * @param usuario El usuario que queremos eliminar
+     * @throws UsuarioNoExiste El usuario que intentamos eliminar no existe
      */
     public void eliminarUsuario(Usuario usuario) throws UsuarioNoExiste {
         if (usuarios.contains(usuario)){
@@ -132,11 +132,14 @@ public class JavaPop {
     }
 
     /**
-     *
-     * @param producto
-     * @throws ProductoExiste
+     * Añade un producto a la aplicacion
+     * @param producto El producto que deseamos añadir
+     * @throws ProductoExiste El producto que intentamos añadir ya existe
      */
     public void anadirProducto(Producto producto) throws ProductoExiste {
+        if (this.productos == null){
+            this.productos = new ArrayList<>();
+        }
         if (productos.contains(producto)){
             throw new ProductoExiste();
         }
@@ -146,9 +149,9 @@ public class JavaPop {
     }
 
     /**
-     *
-     * @param producto
-     * @throws ProductoNoExiste
+     * Elimina un producto de la apliacion
+     * @param producto El producto que deseamos eliminar
+     * @throws ProductoNoExiste El producto que queremos eliminar no existe
      */
     public void eliminarProducto(Producto producto) throws ProductoNoExiste {
         if (productos.contains(producto)){
@@ -160,7 +163,7 @@ public class JavaPop {
     }
 
     /**
-     *
+     * El usuario ya existe
      */
     class UsuarioExiste extends Exception{
         public UsuarioExiste(){
@@ -169,7 +172,7 @@ public class JavaPop {
     }
 
     /**
-     *
+     * El usuario no existe
      */
     class UsuarioNoExiste extends Exception{
         public UsuarioNoExiste(){
@@ -178,7 +181,7 @@ public class JavaPop {
     }
 
     /**
-     *
+     * El producto ya existe
      */
     class ProductoExiste extends Exception{
         public ProductoExiste(){
@@ -187,7 +190,7 @@ public class JavaPop {
     }
 
     /**
-     *
+     * El producto no existe
      */
     class ProductoNoExiste extends Exception{
         public ProductoNoExiste(){

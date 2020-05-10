@@ -3,6 +3,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+/**
+ * Clase utilizada para realizar búsquedas y otras operaciones con los productos de la aplicacion
+ */
 public class UtilProductos {
     private static ArrayList<Producto> productos = new ArrayList<>();
 
