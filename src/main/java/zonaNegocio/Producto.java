@@ -1,3 +1,6 @@
+package zonaNegocio;
+
+import zonaNegocio.Cliente;
 import java.awt.image.BufferedImage;
 import java.time.LocalDateTime;
 

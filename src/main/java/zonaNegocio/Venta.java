@@ -1,3 +1,6 @@
+package zonaNegocio;
+
+import zonaNegocio.Producto;
 import java.time.LocalDateTime;
 
 public class Venta {

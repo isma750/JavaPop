@@ -1,3 +1,6 @@
+package zonaNegocio;
+
+import zonaNegocio.Cliente;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.io.*;

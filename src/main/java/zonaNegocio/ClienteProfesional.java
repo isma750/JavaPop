@@ -1,3 +1,8 @@
+package zonaNegocio;
+
+
+import zonaNegocio.Cliente;
+
 /**
  * 
  * Clase con las propiedades de los clientes profesionales

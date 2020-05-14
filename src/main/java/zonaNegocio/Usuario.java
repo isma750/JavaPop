@@ -1,3 +1,5 @@
+package zonaNegocio;
+
 /**
  * 
  * Clase general con las propiedades de los usuarios que se pueden registrar en Javapop
