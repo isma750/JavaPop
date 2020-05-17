@@ -298,17 +298,28 @@ public class registro extends javax.swing.JFrame {
     }//GEN-LAST:event_campoTelefonoActionPerformed
 
     private void botonRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroActionPerformed
-        if (checkTienda.isSelected()){
+
             try{
+                camposRellenados();
                 verificarTarjeta(campoTarjeta.getText());
+                verificarUbicacion(campoUbicacion.getText());
+                if (checkTienda.isSelected()){
+                //invocar al constructor de cliente profesional cada parametro con el campo.getText correspondiente de momento pongo el campo error a "MUY BIEN, TE HAS REGISTRADO COMO CLIENTE PROF."
+                campoError.setText("MUY BIEN, TE HAS REGISTRADO COMO CLIENTE PROFESIONAL");
+                } else {
+                //invocar al constructor de cliente cada parametro con su campo.getText correspondiente, de momento pongo el campo error a "ENHORABUENA,TE HAS REGISTRADO COMO CLIENTE."
+                campoError.setText("ENHORABUENA,TE HAS REGISTRADO COMO CLIENTE");
+                }
             }
-            catch(TarjetaIncorrecta e){
+            catch(camposNoRellenados | TarjetaIncorrecta | ubicacionIncorrecta e){
                 campoError.setText(e.toString());
             }
-            //invocar al constructor de cliente profesional cada parametro con el campo correspondiente
-        } else {
-            //invocar al constructor de cliente cada parametro con su campo correspondiente
-        }
+            
+
+            
+        
+            
+       
     }//GEN-LAST:event_botonRegistroActionPerformed
 
     private void campoErrorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoErrorActionPerformed
@@ -380,6 +391,34 @@ public class registro extends javax.swing.JFrame {
         if (tarjeta.length()!=16){
             throw new TarjetaIncorrecta();
         }
+    }
+     public void verificarUbicacion(String ubicacion)throws ubicacionIncorrecta{ 
+        // POR DESGRACIA ESTO NO ES LO SUFICIENTEMENTE ESTRICTO Y ADMITE COMO CORRECTO SI PONES LA COMA EN CUALQUIER SITIO, INCLUSO AL PRINCIPIO, LO CAMBIARE CUANDO TENGA MAS TIEMPO LA SEMANA QUE VIENE    
+        if (ubicacion.split(",").length != 2){
+            throw new ubicacionIncorrecta();
+        }
+    }
+    public void camposRellenados() throws camposNoRellenados{ // ESTO TIENE QUE HABER ALGUNA FORMA DE EVITAR TODOS ESTOS IF 
+        if (checkTienda.isSelected()){ 
+            if (campoClave.getPassword().length==0){throw new camposNoRellenados();}
+            if (campoDNI.getText().length()==0){throw new camposNoRellenados();}
+            if (campoDescripcion.getText().length()==0){throw new camposNoRellenados();}
+            if (campoError.getText().length()==0){throw new camposNoRellenados();}
+            if (campoHorario.getText().length()==0){throw new camposNoRellenados();}
+            if (campoNombre.getText().length()==0){throw new camposNoRellenados();}
+            if (campoTarjeta.getText().length()==0){throw new camposNoRellenados();}
+            if (campoTelefono.getText().length()==0){throw new camposNoRellenados();}
+            if (campoUbicacion.getText().length()==0){throw new camposNoRellenados();}    
+            if (campoWeb.getText().length()==0){throw new camposNoRellenados();}   
+        } else {
+            if (campoClave.getPassword().length==0){throw new camposNoRellenados();}
+            if (campoDNI.getText().length()==0){throw new camposNoRellenados();}
+            if (campoError.getText().length()==0){throw new camposNoRellenados();}
+            if (campoNombre.getText().length()==0){throw new camposNoRellenados();}
+            if (campoTarjeta.getText().length()==0){throw new camposNoRellenados();}
+            if (campoUbicacion.getText().length()==0){throw new camposNoRellenados();}               
+        }
+    
     }
 }
 class TarjetaIncorrecta extends Exception{
