@@ -19,10 +19,9 @@ public class Administrador extends Usuario {
      * @param correo  para registrarse el administrador
      * @param clave para registrarse el administrador
      */
-    public Administrador (String correo, String clave){
-       super(correo,clave);
-       this.correo = "admin@javapop.com";
-       this.clave = "admin";
+    public Administrador (){
+       super("admin@javapop.com","admin");
+       
            
     }
     

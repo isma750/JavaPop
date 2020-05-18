@@ -1,6 +1,6 @@
 package zonaNegocio;
 
-
+ 
 import zonaNegocio.JavaPop;
 import zonaNegocio.ClienteProfesional;
 import zonaNegocio.Cliente;
@@ -24,7 +24,7 @@ public class Main {
         javaPop.anadirUsuario(cliente2);
         ClienteProfesional cliente3 = new ClienteProfesional ("Andrea","75612062Z","andrea_21@hotmail.com","225547","19200,Azuqueca de Henares","4626392065351394","Venta de moviles","9:00-20:00","626789432","movilesAzuqeca.com");
         javaPop.anadirUsuario(cliente3);
-        Administrador admin = new Administrador("admin@javapop.com", "admin");
+        Administrador admin = new Administrador();
         javaPop.anadirUsuario(admin);
         Producto producto1 = new Producto("Camiseta blanca","Buen estado", Producto.categoria.MODAYACCESORIOS,"19003,Guadalajara",true,cliente1,Producto.estado.BUENO, 15.00,LocalDateTime.now());
         Producto producto2 = new Producto("Camiseta negra","Muy nueva", Producto.categoria.MODAYACCESORIOS,"19203,Guadalajara",false,cliente1,Producto.estado.ACEPTABLE, 20.00,LocalDateTime.now());
