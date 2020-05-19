@@ -11,9 +11,8 @@ import zonaNegocio.*;
  */
 public class registro extends javax.swing.JFrame {
 
-    /**
-     * Creates new form registro
-     */
+    
+    
     public registro() {
         initComponents();
     }

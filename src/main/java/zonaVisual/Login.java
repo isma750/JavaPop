@@ -12,6 +12,15 @@ import zonaNegocio.Usuario;
 
 public class Login extends javax.swing.JFrame {
     private JFrame ventanaprincipal;
+    private JFrame registro;
+
+    public JFrame getRegistro() {
+        return registro;
+    }
+
+    public void setRegistro(JFrame registro) {
+        this.registro = registro;
+    }
 
     
     public  JFrame getVentanaprincipal() {
@@ -19,9 +28,7 @@ public class Login extends javax.swing.JFrame {
         return ventanaprincipal;
     }
 
-    /**
-     * Creates new form NewJFrame
-     */
+    
     public void setVentanaprincipal(JFrame ventanaprincipal) {
         this.ventanaprincipal = ventanaprincipal;
     }
@@ -36,21 +43,8 @@ public class Login extends javax.swing.JFrame {
         this.ventanaprincipal.setVisible(false);
         this.setVisible(true);
     }
-    public Login (Usuario usuario) throws CorreoIncorrecto {
-        
-        
-        if (usuario.getClave()== Clave.getText() && usuario.getCorreo()== Correo.getText()){
-            //VentanaPrincipal.setVisible(true);
-        } else {
-            if (usuario.getCorreo()!= Correo.getText()){
-                throw new CorreoIncorrecto();
-            }
-            if (usuario.getCorreo()== Correo.getText() && usuario.getClave() == Clave.getText()){
-                //throw new ClaveIncorrecta();
-            }
-            
-        }
-    }
+    
+    
 
     
 
@@ -97,6 +91,11 @@ public class Login extends javax.swing.JFrame {
 
         crearUsuario.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         crearUsuario.setText("Crear Usuario");
+        crearUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearUsuarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -177,6 +176,11 @@ public class Login extends javax.swing.JFrame {
         
     }//GEN-LAST:event_LoginActionPerformed
 
+    private void crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioActionPerformed
+        getRegistro().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_crearUsuarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -193,13 +197,4 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }
-class CorreoIncorrecto extends Exception{
-    public CorreoIncorrecto(){
-        super("ERROR: Correo introducido incorrecto, vuelva a introducirlo");
-    }
-}
-class ClaveIncorrecta extends Exception{
-    public ClaveIncorrecta(){
-        super("ERROR: Clave introducida incorrecta, vuelva a introducirla");
-    }
-}
+
