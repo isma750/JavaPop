@@ -171,6 +171,7 @@ public class Login extends javax.swing.JFrame {
         rgf.setVentanaprincipal(ventanaprincipal);
         rgf.setVisible(true);
         rgf.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_crearUsuarioActionPerformed
 
     /**
