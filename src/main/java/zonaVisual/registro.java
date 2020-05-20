@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package zonaVisual;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import zonaNegocio.*;
 /**
  *
@@ -11,7 +13,19 @@ import zonaNegocio.*;
  */
 public class registro extends javax.swing.JFrame {
 
+     private JFrame ventanaprincipal;
+
     
+
+    public  JFrame getVentanaprincipal() {
+        
+        return ventanaprincipal;
+    }
+
+    
+    public void setVentanaprincipal(JFrame ventanaprincipal) {
+        this.ventanaprincipal = ventanaprincipal;
+    }
     
     public registro() {
         initComponents();
@@ -50,6 +64,8 @@ public class registro extends javax.swing.JFrame {
         campoWeb = new javax.swing.JTextField();
         botonRegistro = new javax.swing.JButton();
         campoError = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        campoCorreo = new javax.swing.JTextField();
 
         jTextField5.setText("jTextField5");
 
@@ -137,6 +153,8 @@ public class registro extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setText("Correo:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,35 +163,37 @@ public class registro extends javax.swing.JFrame {
                 .addGap(325, 325, 325)
                 .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(campoDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(campoClave)
-                                    .addGap(25, 25, 25))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(campoTarjeta)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
+                                .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(campoUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(campoDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(campoTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(18, 18, 18)
+                                .addComponent(campoClave, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(campoUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(checkTienda)
                             .addGroup(layout.createSequentialGroup()
@@ -195,7 +215,7 @@ public class registro extends javax.swing.JFrame {
                                     .addComponent(campoHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(campoError, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                         .addComponent(botonRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)))
                 .addGap(45, 45, 45))
@@ -231,15 +251,18 @@ public class registro extends javax.swing.JFrame {
                     .addComponent(campoUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(campoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(campoClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(campoTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(campoTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -306,12 +329,18 @@ public class registro extends javax.swing.JFrame {
                 //invocar al constructor de cliente profesional cada parametro con el campo.getText correspondiente de momento pongo el campo error a "MUY BIEN, TE HAS REGISTRADO COMO CLIENTE PROF."
                 campoError.setText("MUY BIEN, TE HAS REGISTRADO COMO CLIENTE PROFESIONAL");
                 } else {
-                //invocar al constructor de cliente cada parametro con su campo.getText correspondiente, de momento pongo el campo error a "ENHORABUENA,TE HAS REGISTRADO COMO CLIENTE."
-                campoError.setText("ENHORABUENA,TE HAS REGISTRADO COMO CLIENTE");
+                Cliente cliente = new Cliente(campoNombre.getText(),campoDNI.getText(),campoCorreo.getText(),String.copyValueOf(campoClave.getPassword()),campoUbicacion.getText(),campoTarjeta.getText());   
+                ((VentanaPrincipal) getVentanaprincipal()).añadirUsuario(cliente);
+              
                 }
+                Login lgf = new Login();
+                lgf.setVentanaprincipal(ventanaprincipal);
+                lgf.setVisible(true);
+                lgf.setLocationRelativeTo(null);
+                this.dispose();
             }
             catch(camposNoRellenados | TarjetaIncorrecta | ubicacionIncorrecta e){
-                campoError.setText(e.toString());
+                JOptionPane.showMessageDialog(this, "Error: " + e.toString(), "Mensaje", JOptionPane.ERROR_MESSAGE);
             }
             
 
@@ -333,6 +362,7 @@ public class registro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonRegistro;
     private javax.swing.JPasswordField campoClave;
+    private javax.swing.JTextField campoCorreo;
     private javax.swing.JTextField campoDNI;
     private javax.swing.JTextField campoDescripcion;
     private javax.swing.JTextField campoError;
@@ -353,6 +383,7 @@ public class registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
@@ -372,7 +403,7 @@ public class registro extends javax.swing.JFrame {
             if (campoClave.getPassword().length==0){throw new camposNoRellenados();}
             if (campoDNI.getText().length()==0){throw new camposNoRellenados();}
             if (campoDescripcion.getText().length()==0){throw new camposNoRellenados();}
-            if (campoError.getText().length()==0){throw new camposNoRellenados();}
+            if (campoCorreo.getText().length()==0){throw new camposNoRellenados();}
             if (campoHorario.getText().length()==0){throw new camposNoRellenados();}
             if (campoNombre.getText().length()==0){throw new camposNoRellenados();}
             if (campoTarjeta.getText().length()==0){throw new camposNoRellenados();}
@@ -382,7 +413,7 @@ public class registro extends javax.swing.JFrame {
         } else {
             if (campoClave.getPassword().length==0){throw new camposNoRellenados();}
             if (campoDNI.getText().length()==0){throw new camposNoRellenados();}
-            if (campoError.getText().length()==0){throw new camposNoRellenados();}
+            if (campoCorreo.getText().length()==0){throw new camposNoRellenados();}
             if (campoNombre.getText().length()==0){throw new camposNoRellenados();}
             if (campoTarjeta.getText().length()==0){throw new camposNoRellenados();}
             if (campoUbicacion.getText().length()==0){throw new camposNoRellenados();}               

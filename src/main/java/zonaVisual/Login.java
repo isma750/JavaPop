@@ -12,17 +12,7 @@ import zonaNegocio.Usuario;
 
 public class Login extends javax.swing.JFrame {
     private JFrame ventanaprincipal;
-    private JFrame registro;
 
-    public JFrame getRegistro() {
-        return registro;
-    }
-
-    public void setRegistro(JFrame registro) {
-        this.registro = registro;
-    }
-
-    
     public  JFrame getVentanaprincipal() {
         
         return ventanaprincipal;
@@ -177,8 +167,10 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_LoginActionPerformed
 
     private void crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioActionPerformed
-        getRegistro().setVisible(true);
-        this.dispose();
+        registro rgf = new registro();
+        rgf.setVentanaprincipal(ventanaprincipal);
+        rgf.setVisible(true);
+        rgf.setLocationRelativeTo(null);
     }//GEN-LAST:event_crearUsuarioActionPerformed
 
     /**

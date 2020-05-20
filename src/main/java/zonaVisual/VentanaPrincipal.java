@@ -56,6 +56,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public ArrayList<Usuario> getUsuarios() {
         return usuarios;
     }
+    public void añadirUsuario(Usuario usuario){
+        usuarios.add(usuario);
+    }
 
     public void setUsuarios(ArrayList<Usuario> usuarios) {
         this.usuarios = usuarios;
