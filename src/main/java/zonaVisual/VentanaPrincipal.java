@@ -5,6 +5,8 @@
  */
 package zonaVisual;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -71,6 +73,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public void setAdmin(Administrador admin) {
         this.admin = admin;
     }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -93,6 +96,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
 
         usuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         usuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -155,7 +159,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(783, 506));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+     
+    @Override
+    public Image getIconImage() {
+        try{
+            Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("/zonaVisual/java.jpg"));
+            return retValue;
+        }
+        catch (Exception e){
+           return (null); 
+        }
+    }
+    
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed

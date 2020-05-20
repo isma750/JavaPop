@@ -168,9 +168,9 @@ public class Login extends javax.swing.JFrame {
 
     private void crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioActionPerformed
         registro rgf = new registro();
-        rgf.setVentanaprincipal(ventanaprincipal);
+        rgf.setVentanaprincipal(getVentanaprincipal());
         rgf.setVisible(true);
-        rgf.setLocationRelativeTo(null);
+        //rgf.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_crearUsuarioActionPerformed
 

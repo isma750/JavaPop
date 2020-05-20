@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package zonaVisual;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import zonaNegocio.*;
@@ -65,10 +63,9 @@ public class registro extends javax.swing.JFrame {
         campoTelefono = new javax.swing.JTextField();
         campoWeb = new javax.swing.JTextField();
         botonRegistro = new javax.swing.JButton();
+        campoError = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         campoCorreo = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        campoRepiteContraseña = new javax.swing.JPasswordField();
 
         jTextField5.setText("jTextField5");
 
@@ -147,14 +144,25 @@ public class registro extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("Correo:");
+        campoError.setEditable(false);
+        campoError.setForeground(new java.awt.Color(255, 0, 51));
+        campoError.setBorder(null);
+        campoError.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoErrorActionPerformed(evt);
+            }
+        });
 
-        jLabel13.setText("Repite la contraseña");
+        jLabel8.setText("Correo:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(325, 325, 325)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -168,23 +176,24 @@ public class registro extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(campoUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
                                 .addComponent(campoTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(18, 18, 18)
+                                .addComponent(campoClave, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(campoUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(campoClave, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 302, Short.MAX_VALUE)
+                                .addComponent(campoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(checkTienda)
                             .addGroup(layout.createSequentialGroup()
@@ -205,49 +214,35 @@ public class registro extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(campoHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(botonRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(campoRepiteContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(campoError, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addComponent(botonRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)))
                 .addGap(45, 45, 45))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(31, 31, 31)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(campoDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(checkTienda)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel9)
-                                    .addComponent(campoDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(31, 31, 31)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(campoDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(checkTienda)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(campoDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -256,25 +251,24 @@ public class registro extends javax.swing.JFrame {
                     .addComponent(campoUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(campoTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(campoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(campoClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(campoTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
                             .addComponent(campoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
                             .addComponent(campoWeb, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -282,9 +276,9 @@ public class registro extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(botonRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(campoRepiteContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(campoError, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(22, 22, 22))
         );
 
@@ -299,9 +293,13 @@ public class registro extends javax.swing.JFrame {
             campoWeb.setEnabled(true);
         } else {
             campoDescripcion.setEnabled(false);
+            campoDescripcion.setText("");
             campoHorario.setEnabled(false);
+            campoHorario.setText("");
             campoTelefono.setEnabled(false);
+            campoTelefono.setText("");
             campoWeb.setEnabled(false);
+            campoWeb.setText("");
         }
     }//GEN-LAST:event_checkTiendaActionPerformed
 
@@ -327,29 +325,31 @@ public class registro extends javax.swing.JFrame {
 
     private void botonRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroActionPerformed
 
-            try{
+            try{ 
+                Cliente cliente = null;
                 camposRellenados();
-                verificarContraseñas();
                 verificarTarjeta(campoTarjeta.getText());
                 verificarUbicacion(campoUbicacion.getText());
-                if (checkTienda.isSelected()){
-                //invocar al constructor de cliente profesional cada parametro con el campo.getText correspondiente
-                
-                } else {
-                Cliente cliente = new Cliente(campoNombre.getText(),campoDNI.getText(),campoCorreo.getText(),String.copyValueOf(campoClave.getPassword()),campoUbicacion.getText(),campoTarjeta.getText());   
+                //Validar que el usuario no exista
+                cliente = new Cliente(campoNombre.getText(),campoDNI.getText(),campoCorreo.getText(),String.copyValueOf(campoClave.getPassword()),campoUbicacion.getText(),campoTarjeta.getText());   
                 ((VentanaPrincipal) getVentanaprincipal()).añadirUsuario(cliente);
-              
-                }
-                Login lgf = new Login();
+                
+               /* Login lgf = new Login();
                 lgf.setVentanaprincipal(ventanaprincipal);
                 lgf.setVisible(true);
                 lgf.setLocationRelativeTo(null);
-                this.dispose();
-            }
-            catch(camposNoRellenados | TarjetaIncorrecta | ubicacionIncorrecta | contraseñasNoCoinciden e){
-                JOptionPane.showMessageDialog(this, "Error: " + e.toString(), "Mensaje", JOptionPane.ERROR_MESSAGE);
+                this.dispose();*/
+               ((VentanaPrincipal) getVentanaprincipal()).setUsuarioConectado(cliente);
+               ((VentanaPrincipal) getVentanaprincipal()).getUsuario().setText(campoCorreo.getText());
+               ((VentanaPrincipal) getVentanaprincipal()).getUsuario().updateUI();
+
             
-         }
+               getVentanaprincipal().setVisible(true);
+               this.dispose();
+            }
+            catch(camposNoRellenados | TarjetaIncorrecta | ubicacionIncorrecta e){
+                JOptionPane.showMessageDialog(this, "Error: " + e.toString(), "Mensaje", JOptionPane.ERROR_MESSAGE);
+            }
             
 
             
@@ -357,6 +357,10 @@ public class registro extends javax.swing.JFrame {
             
        
     }//GEN-LAST:event_botonRegistroActionPerformed
+
+    private void campoErrorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoErrorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoErrorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -369,9 +373,9 @@ public class registro extends javax.swing.JFrame {
     private javax.swing.JTextField campoCorreo;
     private javax.swing.JTextField campoDNI;
     private javax.swing.JTextField campoDescripcion;
+    private javax.swing.JTextField campoError;
     private javax.swing.JTextField campoHorario;
     private javax.swing.JTextField campoNombre;
-    private javax.swing.JPasswordField campoRepiteContraseña;
     private javax.swing.JTextField campoTarjeta;
     private javax.swing.JTextField campoTelefono;
     private javax.swing.JTextField campoUbicacion;
@@ -381,7 +385,6 @@ public class registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -393,7 +396,7 @@ public class registro extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
     public void verificarTarjeta(String tarjeta)throws TarjetaIncorrecta{
-        if (tarjeta.length()!=16){
+        if (tarjeta.trim().length()!=16){
             throw new TarjetaIncorrecta();
         }
     }
@@ -403,31 +406,19 @@ public class registro extends javax.swing.JFrame {
             throw new ubicacionIncorrecta();
         }
     }
-      public void verificarContraseñas()throws contraseñasNoCoinciden{ 
-        if (!String.copyValueOf(campoClave.getPassword()).equals(String.copyValueOf(campoRepiteContraseña.getPassword()))){
-            throw new contraseñasNoCoinciden();
-      }
-    }
     public void camposRellenados() throws camposNoRellenados{ // ESTO TIENE QUE HABER ALGUNA FORMA DE EVITAR TODOS ESTOS IF 
+        if (campoClave.getPassword().length==0){throw new camposNoRellenados();}
+        if (campoDNI.getText().length()==0){throw new camposNoRellenados();}
+        if (campoCorreo.getText().length()==0){throw new camposNoRellenados();}
+        if (campoNombre.getText().length()==0){throw new camposNoRellenados();}
+        if (campoTarjeta.getText().length()==0){throw new camposNoRellenados();}
+        if (campoUbicacion.getText().length()==0){throw new camposNoRellenados();}     
         if (checkTienda.isSelected()){ 
-            if (campoClave.getPassword().length==0){throw new camposNoRellenados();}
-            if (campoDNI.getText().length()==0){throw new camposNoRellenados();}
             if (campoDescripcion.getText().length()==0){throw new camposNoRellenados();}
-            if (campoCorreo.getText().length()==0){throw new camposNoRellenados();}
             if (campoHorario.getText().length()==0){throw new camposNoRellenados();}
-            if (campoNombre.getText().length()==0){throw new camposNoRellenados();}
-            if (campoTarjeta.getText().length()==0){throw new camposNoRellenados();}
-            if (campoTelefono.getText().length()==0){throw new camposNoRellenados();}
-            if (campoUbicacion.getText().length()==0){throw new camposNoRellenados();}    
+            if (campoTelefono.getText().length()==0){throw new camposNoRellenados();} 
             if (campoWeb.getText().length()==0){throw new camposNoRellenados();}   
-        } else {
-            if (campoClave.getPassword().length==0){throw new camposNoRellenados();}
-            if (campoDNI.getText().length()==0){throw new camposNoRellenados();}
-            if (campoCorreo.getText().length()==0){throw new camposNoRellenados();}
-            if (campoNombre.getText().length()==0){throw new camposNoRellenados();}
-            if (campoTarjeta.getText().length()==0){throw new camposNoRellenados();}
-            if (campoUbicacion.getText().length()==0){throw new camposNoRellenados();}               
-        }
+        } 
     
     }
 }
@@ -446,11 +437,7 @@ class dniIncorrecto extends Exception{
         super("ERROR: El DNI no es válido");
     }
 }
-class contraseñasNoCoinciden extends Exception {
-    public contraseñasNoCoinciden(){
-        super("ERROR: Las contraseñas no coinciden");
-    }
-}
+
 class camposNoRellenados extends Exception{
     public camposNoRellenados(){
         super("ERROR: Se deben de rellenar todos los campos");
