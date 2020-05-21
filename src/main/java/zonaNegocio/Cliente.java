@@ -12,7 +12,8 @@ public class Cliente extends Usuario{
 
     private String nombre;
     private String dni;
-    private String ubicacion;
+    private int codigoPostal;
+    private String ciudad;
     private String tarjeta;
     private ArrayList<Producto> Productos;
     private ArrayList<Producto> ProductosComprados;
@@ -27,12 +28,13 @@ public class Cliente extends Usuario{
      * @param ubicacion del cliente
      * @param tarjeta de credito del cliente vinculada en Javapop
      */
-    public Cliente(String nombre, String dni, String correo, String clave, String ubicacion, String tarjeta) {
+    public Cliente(String nombre, String dni,int codigoPostal, String ciudad, String correo, String clave, String tarjeta) {
                 super(correo,clave);
                 
 		this.nombre = nombre;
 		this.dni = dni;
-                this.ubicacion = ubicacion;
+                this.codigoPostal = codigoPostal;
+                this.ciudad = ciudad;
                 this.tarjeta = tarjeta;
                
 	}
@@ -54,14 +56,22 @@ public class Cliente extends Usuario{
         this.dni = dni;
     }
 
-    public String getUbicacion() {
-        return ubicacion;
+    public int getCodigoPostal() {
+        return codigoPostal;
     }
 
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
+    public void setCodigoPostal(int codigoPostal) {
+        this.codigoPostal = codigoPostal;
     }
 
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+    
     public String getTarjeta() {
         return tarjeta;
     }
@@ -83,7 +93,7 @@ public class Cliente extends Usuario{
 
     @Override
     public String toString() {
-            return "\n\tCliente{" + "nombre=" + nombre + ", dni=" + dni + ", ubicación=" + ubicacion + ", tarjeta=" + tarjeta + "}";
+            return "\n\tCliente{" + "nombre=" + nombre + ", dni=" + dni + ", codigo postal=" + codigoPostal +", ciudad= "+ ciudad +", tarjeta=" + tarjeta + "}";
     }
     
     // Añade un producto a los productos de Javapop

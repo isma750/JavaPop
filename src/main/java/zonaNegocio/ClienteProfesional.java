@@ -28,8 +28,8 @@ public class ClienteProfesional extends Cliente {
      * @param telefono de la tienda
      * @param web de la tienda
      */
-    public ClienteProfesional(String nombre, String dni, String correo, String clave, String ubicacion, String tarjeta, String descripcion, String horario, String telefono, String web) {
-        super (nombre, dni, correo, clave, ubicacion, tarjeta);
+    public ClienteProfesional(String nombre, String dni, String correo, String clave,int codigoPostal, String ciudad, String tarjeta, String descripcion, String horario, String telefono, String web) {
+        super (nombre, dni, codigoPostal, ciudad, correo, clave, tarjeta);
         this.descripcion = descripcion;
         this.horario = horario;
         this.telefono = telefono;
