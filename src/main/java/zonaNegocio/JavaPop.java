@@ -1,6 +1,5 @@
 package zonaNegocio;
 
-import zonaNegocio.Cliente;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.io.*;
@@ -30,7 +29,7 @@ public class JavaPop {
                                    "Descripcion: " + producto.getDescripcion() + "\n" +
                                    "Categoria: " + producto.getCategoria() + "\n" +
                                    "Precio: " + producto.getPrecio() + "\n " + 
-                                   "Ubicacion: " + producto.getUbicacion() + "\n" + 
+                                   "Ubicacion: " + producto.getCodigoPostal() + "," + producto.getCiudad() + "\n" +
                                    
                                    "Fecha de venta: " + LocalDateTime.now() + "\n" +
                                    "\n" +

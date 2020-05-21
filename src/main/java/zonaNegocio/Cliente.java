@@ -25,7 +25,8 @@ public class Cliente extends Usuario{
      * @param dni del cliente
      * @param correo para registrarse el cliente
      * @param clave para registrarse el cliente
-     * @param ubicacion del cliente
+     * @param codigoPostal del cliente
+     * @param ciudad del cliente
      * @param tarjeta de credito del cliente vinculada en Javapop
      */
     public Cliente(String nombre, String dni,int codigoPostal, String ciudad, String correo, String clave, String tarjeta) {

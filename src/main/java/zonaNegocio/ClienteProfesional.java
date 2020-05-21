@@ -21,7 +21,8 @@ public class ClienteProfesional extends Cliente {
      * @param dni del cliente profesional
      * @param correo para registrarse el cliente profesional
      * @param clave  para registrarse el cliente profesional
-     * @param ubicacion del cliente profesional
+     * @param codigoPostal del cliente profesional
+     * @param ciudad del cliente
      * @param tarjeta de credito del cliente profesional vinculada a Javapop
      * @param descripcion de la tienda
      * @param horario de la tienda

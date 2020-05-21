@@ -1,6 +1,5 @@
 package zonaNegocio;
 
-import zonaNegocio.Cliente;
 import java.awt.image.BufferedImage;
 import java.time.LocalDateTime;
 
@@ -29,17 +28,19 @@ public class Producto implements Comparable<Producto> {
     private double precio;
     private LocalDateTime fecha;
     private BufferedImage fotografia;
-    private String ubicacion;
+    private int codigoPostal;
+    private String ciudad;
     private boolean urgente;
     private Cliente clienteAsociado; 
     private boolean marcadoParaVenta;
     private boolean marcadoParaCompra;
 
-    public Producto(String titulo,String descripcion,categoria categoria, String ubicacion, boolean urgente, Cliente clienteAsociado, estado estado, double precio, LocalDateTime fecha) {
+    public Producto(String titulo, String descripcion, categoria categoria, int codigoPostal, String ciudad, boolean urgente, Cliente clienteAsociado, estado estado, double precio, LocalDateTime fecha) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.categoria = categoria;
-        this.ubicacion = ubicacion;
+        this.codigoPostal = codigoPostal;
+        this.ciudad = ciudad;
         this.urgente = urgente;
         this.clienteAsociado = clienteAsociado;
         this.estado = estado;
@@ -47,14 +48,15 @@ public class Producto implements Comparable<Producto> {
         this.fecha = fecha;
     }
 
-    public Producto(String titulo, String descripcion, Producto.categoria categoria, Producto.estado estado, double precio, LocalDateTime fecha, String ubicacion, boolean urgente, Cliente clienteAsociado) {
+    public Producto(String titulo, String descripcion, Producto.categoria categoria, Producto.estado estado, double precio, LocalDateTime fecha, int codigoPostal, String ciudad, boolean urgente, Cliente clienteAsociado) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.categoria = categoria;
         this.estado = estado;
         this.precio = precio;
         this.fecha = fecha;
-        this.ubicacion = ubicacion;
+        this.codigoPostal = codigoPostal;
+        this.ciudad = ciudad;
         this.urgente = urgente;
         this.clienteAsociado = clienteAsociado;
     }
@@ -118,12 +120,20 @@ public class Producto implements Comparable<Producto> {
         this.fotografia = fotografia;
     }
 
-    public String getUbicacion() {
-        return ubicacion;
+    public String getCiudad() {
+        return ciudad;
     }
 
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public int getCodigoPostal() {
+        return codigoPostal;
+    }
+
+    public void setCodigoPostal(int codigoPostal) {
+        this.codigoPostal = codigoPostal;
     }
 
     public boolean isUrgente() {
@@ -159,13 +169,13 @@ public class Producto implements Comparable<Producto> {
     }
 
     /**
-     * Calcula la proximidad de un producto al cliente parametro, basandose en el codigo postal de la ubicacion
+     * Calcula la proximidad de un producto al cliente parametro, basandose en el codigo postal de la ciudad
      * @param cliente El cliente al que queremos calcular su proximidad al producto
      * @return La distancia al cliente (Muy proximo,proximo o remoto)
      */
     public String calcularProximidad(Cliente cliente){
-        if (this.ubicacion.substring(0, 2).equals(cliente.getUbicacion().substring(0, 2))){
-            if (this.ubicacion.charAt(2)==cliente.getUbicacion().charAt(2)){
+        if ((Integer.toString(this.codigoPostal)).substring(0,2).equals(Integer.toString(cliente.getCodigoPostal()).substring(0,2))){
+            if ((Integer.toString(this.codigoPostal).charAt(2))==(Integer.toString(cliente.getCodigoPostal()).charAt(2))){
                 return "Muy próximo";
             }
             return "Próximo";
@@ -187,7 +197,7 @@ public class Producto implements Comparable<Producto> {
                 ", precio=" + precio +
                 ", fecha=" + fecha +
                 ", fotografia=" + fotografia +
-                ", ubicacion='" + ubicacion + '\'' +
+                ", ciudad='" + ciudad + '\'' +
                 ", urgente=" + urgente +
                 '}';
     }
