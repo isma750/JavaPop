@@ -419,9 +419,10 @@ public class registro extends javax.swing.JFrame {
             throw new TarjetaIncorrecta();
         }
     }
-     public void verificarUbicacion(String ubicacion)throws ubicacionIncorrecta{ 
-        // POR DESGRACIA ESTO NO ES LO SUFICIENTEMENTE ESTRICTO Y ADMITE COMO CORRECTO SI PONES LA COMA EN CUALQUIER SITIO, INCLUSO AL PRINCIPIO, LO CAMBIARE CUANDO TENGA MAS TIEMPO LA SEMANA QUE VIENE    
-        if (ubicacion.split(",").length != 2){
+     public void verificarUbicacion(String postal)throws ubicacionIncorrecta{ 
+        try{
+            Integer.parseInt(postal);
+        } catch (NumberFormatException e){
             throw new ubicacionIncorrecta();
         }
     }
