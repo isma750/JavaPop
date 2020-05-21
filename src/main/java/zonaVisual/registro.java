@@ -50,7 +50,7 @@ public class registro extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         campoNombre = new javax.swing.JTextField();
         campoDNI = new javax.swing.JTextField();
-        campoUbicacion = new javax.swing.JTextField();
+        campoPostal = new javax.swing.JTextField();
         campoTarjeta = new javax.swing.JTextField();
         checkTienda = new javax.swing.JCheckBox();
         campoClave = new javax.swing.JPasswordField();
@@ -67,6 +67,7 @@ public class registro extends javax.swing.JFrame {
         campoCorreo = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         campoRepiteContraseña = new javax.swing.JPasswordField();
+        campoCiudad = new javax.swing.JTextField();
 
         jTextField5.setText("jTextField5");
 
@@ -150,6 +151,12 @@ public class registro extends javax.swing.JFrame {
 
         jLabel13.setText("Repite la contraseña");
 
+        campoCiudad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoCiudadActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -172,9 +179,13 @@ public class registro extends javax.swing.JFrame {
                             .addComponent(campoClave, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campoTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campoDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(campoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(campoCiudad))
+                                .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(checkTienda)
@@ -242,7 +253,8 @@ public class registro extends javax.swing.JFrame {
                         .addGap(2, 2, 2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(campoUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(campoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(13, 13, 13)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
@@ -330,9 +342,9 @@ public class registro extends javax.swing.JFrame {
                 Cliente cliente = null;
                 camposRellenados();
                 verificarTarjeta(campoTarjeta.getText());
-                verificarUbicacion(campoUbicacion.getText());
+                verificarUbicacion(campoPostal.getText());
                 //Validar que el usuario no exista
-                cliente = new Cliente(campoNombre.getText(),campoDNI.getText(),campoCorreo.getText(),String.copyValueOf(campoClave.getPassword()),campoUbicacion.getText(),campoTarjeta.getText());   
+                cliente = new Cliente(campoNombre.getText(),campoDNI.getText(),Integer.parseInt(campoPostal.getText()),campoCiudad.getText(),campoCorreo.getText(),String.copyValueOf(campoClave.getPassword()),campoTarjeta.getText());   
                 ((VentanaPrincipal) getVentanaprincipal()).añadirUsuario(cliente);
                 
                /* Login lgf = new Login();
@@ -363,6 +375,10 @@ public class registro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_campoErrorActionPerformed
 
+    private void campoCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCiudadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoCiudadActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -370,16 +386,17 @@ public class registro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonRegistro;
+    private javax.swing.JTextField campoCiudad;
     private javax.swing.JPasswordField campoClave;
     private javax.swing.JTextField campoCorreo;
     private javax.swing.JTextField campoDNI;
     private javax.swing.JTextField campoDescripcion;
     private javax.swing.JTextField campoHorario;
     private javax.swing.JTextField campoNombre;
+    private javax.swing.JTextField campoPostal;
     private javax.swing.JPasswordField campoRepiteContraseña;
     private javax.swing.JTextField campoTarjeta;
     private javax.swing.JTextField campoTelefono;
-    private javax.swing.JTextField campoUbicacion;
     private javax.swing.JTextField campoWeb;
     private javax.swing.JCheckBox checkTienda;
     private javax.swing.JLabel jLabel1;
@@ -414,7 +431,7 @@ public class registro extends javax.swing.JFrame {
         if (campoCorreo.getText().length()==0){throw new camposNoRellenados();}
         if (campoNombre.getText().length()==0){throw new camposNoRellenados();}
         if (campoTarjeta.getText().length()==0){throw new camposNoRellenados();}
-        if (campoUbicacion.getText().length()==0){throw new camposNoRellenados();}     
+        if (campoPostal.getText().length()==0){throw new camposNoRellenados();}     
         if (checkTienda.isSelected()){ 
             if (campoDescripcion.getText().length()==0){throw new camposNoRellenados();}
             if (campoHorario.getText().length()==0){throw new camposNoRellenados();}

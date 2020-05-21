@@ -50,9 +50,15 @@
                           <Component id="campoClave" min="-2" pref="202" max="-2" attributes="0"/>
                           <Component id="campoCorreo" min="-2" pref="190" max="-2" attributes="0"/>
                           <Component id="campoTarjeta" min="-2" pref="144" max="-2" attributes="0"/>
-                          <Component id="campoUbicacion" min="-2" pref="128" max="-2" attributes="0"/>
                           <Component id="campoDNI" min="-2" pref="149" max="-2" attributes="0"/>
-                          <Component id="campoNombre" min="-2" pref="175" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="campoPostal" min="-2" pref="77" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="campoCiudad" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="campoNombre" min="-2" pref="175" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace pref="201" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -144,7 +150,8 @@
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="campoUbicacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campoPostal" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campoCiudad" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -248,7 +255,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="campoDNI">
     </Component>
-    <Component class="javax.swing.JTextField" name="campoUbicacion">
+    <Component class="javax.swing.JTextField" name="campoPostal">
     </Component>
     <Component class="javax.swing.JTextField" name="campoTarjeta">
       <Events>
@@ -335,6 +342,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="campoRepiteContrase&#xf1;a">
+    </Component>
+    <Component class="javax.swing.JTextField" name="campoCiudad">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoCiudadActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
