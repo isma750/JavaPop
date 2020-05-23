@@ -10,8 +10,7 @@ import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import zonaNegocio.Administrador;
-import zonaNegocio.Usuario;
+import zonaNegocio.*;
 
 /**
  *

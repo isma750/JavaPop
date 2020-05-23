@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package zonaVisual;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import zonaNegocio.*;
@@ -343,7 +344,7 @@ public class registro extends javax.swing.JFrame {
                 camposRellenados();
                 verificarTarjeta(campoTarjeta.getText());
                 verificarUbicacion(campoPostal.getText());
-                //Validar que el usuario no exista
+                verificarUsuario(campoCorreo.getText());
                 cliente = new Cliente(campoNombre.getText(),campoDNI.getText(),Integer.parseInt(campoPostal.getText()),campoCiudad.getText(),campoCorreo.getText(),String.copyValueOf(campoClave.getPassword()),campoTarjeta.getText());   
                 ((VentanaPrincipal) getVentanaprincipal()).añadirUsuario(cliente);
                 
@@ -360,7 +361,7 @@ public class registro extends javax.swing.JFrame {
                getVentanaprincipal().setVisible(true);
                this.dispose();
             }
-            catch(camposNoRellenados | TarjetaIncorrecta | ubicacionIncorrecta e){
+            catch(camposNoRellenados | TarjetaIncorrecta | ubicacionIncorrecta | usuarioExiste e){
                 JOptionPane.showMessageDialog(this, "Error: " + e.toString(), "Mensaje", JOptionPane.ERROR_MESSAGE);
             }
             
@@ -426,13 +427,24 @@ public class registro extends javax.swing.JFrame {
             throw new ubicacionIncorrecta();
         }
     }
+     public void verificarUsuario(String correo) throws usuarioExiste{ //Hay que optimizarlo usando un algoritmo de búsqueda,esto es tremendamente ineficiente para muchos usuarios :)
+        ArrayList<Usuario> usuarios = ((VentanaPrincipal) getVentanaprincipal()).getUsuarios();
+        //ordenar usuarios por la razon del algoritmo
+        for (int i=0; i<usuarios.size();i++){ //Sustituir por codigo del algoritmo
+            String correoUsuario = usuarios.get(i).getCorreo();
+            if (correo.equals(correoUsuario)){
+                throw new usuarioExiste();
+            }  
+        }
+     }
     public void camposRellenados() throws camposNoRellenados{ // ESTO TIENE QUE HABER ALGUNA FORMA DE EVITAR TODOS ESTOS IF 
         if (campoClave.getPassword().length==0){throw new camposNoRellenados();}
         if (campoDNI.getText().length()==0){throw new camposNoRellenados();}
         if (campoCorreo.getText().length()==0){throw new camposNoRellenados();}
         if (campoNombre.getText().length()==0){throw new camposNoRellenados();}
         if (campoTarjeta.getText().length()==0){throw new camposNoRellenados();}
-        if (campoPostal.getText().length()==0){throw new camposNoRellenados();}     
+        if (campoPostal.getText().length()==0){throw new camposNoRellenados();}
+        if (campoCiudad.getText().length()==0){throw new camposNoRellenados();}    
         if (checkTienda.isSelected()){ 
             if (campoDescripcion.getText().length()==0){throw new camposNoRellenados();}
             if (campoHorario.getText().length()==0){throw new camposNoRellenados();}
@@ -461,5 +473,10 @@ class dniIncorrecto extends Exception{
 class camposNoRellenados extends Exception{
     public camposNoRellenados(){
         super("ERROR: Se deben de rellenar todos los campos");
+    }
+}
+class usuarioExiste extends Exception{
+    public usuarioExiste(){
+        super("ERROR: Ya existe un usuario con el correo especificado ");
     }
 }
