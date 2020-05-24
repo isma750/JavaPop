@@ -23,11 +23,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     private Administrador admin = null;
     private ArrayList<Usuario> usuarios;
+    private ArrayList<Producto> productos;
     private Usuario usuarioConectado;
     
     public VentanaPrincipal() {
         initComponents();
         this.usuarios = new ArrayList<Usuario>();
+        this.productos = new ArrayList<Producto>();
         // Traer informacion disco duro (Serializacion)
         if (usuarios.size() == 0){
            this.admin = new Administrador();
@@ -72,6 +74,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public void setAdmin(Administrador admin) {
         this.admin = admin;
     }
+
+    public ArrayList<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(ArrayList<Producto> productos) {
+        this.productos = productos;
+    }
+    
    
 
     /**
@@ -84,15 +95,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         usuario = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        Administrador = new javax.swing.JMenu();
+        MostrarProductos = new javax.swing.JMenuItem();
+        MostrarUsuarios = new javax.swing.JMenuItem();
+        MostrarVentas = new javax.swing.JMenuItem();
+        Cliente = new javax.swing.JMenu();
+        MiPerfil = new javax.swing.JMenuItem();
+        MisProductos = new javax.swing.JMenuItem();
+        MiTienda = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -100,41 +114,46 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         usuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         usuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jMenu1.setText("Administrador");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setText("Buscar:");
 
-        jMenuItem1.setText("Mostrar productos");
-        jMenu1.add(jMenuItem1);
+        jButton1.setText("jButton1");
 
-        jMenuItem2.setText("Mostrar usuarios");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        Administrador.setText("Administrador");
+
+        MostrarProductos.setText("Mostrar productos");
+        Administrador.add(MostrarProductos);
+
+        MostrarUsuarios.setText("Mostrar usuarios");
+        MostrarUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                MostrarUsuariosActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        Administrador.add(MostrarUsuarios);
 
-        jMenuItem3.setText("Mostrar ventas ");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        MostrarVentas.setText("Mostrar ventas ");
+        MostrarVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                MostrarVentasActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        Administrador.add(MostrarVentas);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(Administrador);
 
-        jMenu2.setText("Cliente");
+        Cliente.setText("Cliente");
 
-        jMenuItem4.setText("Mi perfil");
-        jMenu2.add(jMenuItem4);
+        MiPerfil.setText("Mi perfil");
+        Cliente.add(MiPerfil);
 
-        jMenuItem5.setText("Mis productos");
-        jMenu2.add(jMenuItem5);
+        MisProductos.setText("Mis productos");
+        Cliente.add(MisProductos);
 
-        jMenuItem6.setText("Mi tienda");
-        jMenu2.add(jMenuItem6);
+        MiTienda.setText("Mi tienda");
+        Cliente.add(MiTienda);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(Cliente);
 
         setJMenuBar(jMenuBar1);
 
@@ -146,13 +165,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(613, Short.MAX_VALUE)
                 .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(417, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(376, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(783, 506));
@@ -170,13 +203,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }
     
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void MostrarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarUsuariosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_MostrarUsuariosActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void MostrarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarVentasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_MostrarVentasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,15 +247,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu Administrador;
+    private javax.swing.JMenu Cliente;
+    private javax.swing.JMenuItem MiPerfil;
+    private javax.swing.JMenuItem MiTienda;
+    private javax.swing.JMenuItem MisProductos;
+    private javax.swing.JMenuItem MostrarProductos;
+    private javax.swing.JMenuItem MostrarUsuarios;
+    private javax.swing.JMenuItem MostrarVentas;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 }
