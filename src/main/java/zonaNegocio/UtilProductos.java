@@ -39,7 +39,7 @@ public class UtilProductos {
 
             }
         }
-
+        
         productos = productosCoinciden;
     }
 

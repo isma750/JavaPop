@@ -8,7 +8,7 @@ public class JavaPop {
 
     private ArrayList<Usuario> usuarios;
     private ArrayList<Venta> ventas;
-    private ArrayList<Producto> productos;
+    private ArrayList<Producto> productos; //este array sobra segun el nuevo modelo, de momento no lo quito, quiero consultarte antes
 
 
     /**
@@ -18,7 +18,8 @@ public class JavaPop {
      * @param producto Producto que se va a comprar
      */
     public void comprarProducto(Cliente comprador,Cliente vendedor,Producto producto){
-        if (producto.isMarcadoParaVenta()){
+        // He pensado este metodo, no ponerlo en ninguna clase, si no en la interfaz de usuario, al darle al boton de comprar q haga lo q hace aqui, habría que copiarlo y pegarlo donde este el boton de comprar
+        if (producto.getSituacion().equals(Producto.situacion.ACEPTADOVENTA)){
 
             try {
                 String ruta = "C:\\Users\\ismae\\OneDrive\\Escritorio\\texto\\factura.txt"; // Sustituir por ruta en la que queremos que se genere el fichero
@@ -56,8 +57,7 @@ public class JavaPop {
                 this.ventas = new ArrayList<>();
             }
             ventas.add(venta); // registramos la venta
-            productos.remove(producto);
-            comprador.quitarProducto(producto);
+            producto.setSituacion(Producto.situacion.VENDIDO);
 
         }
 

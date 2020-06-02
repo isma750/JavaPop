@@ -15,10 +15,14 @@ public class Cliente extends Usuario{
     private int codigoPostal;
     private String ciudad;
     private String tarjeta;
+    private double saldoTarjeta;
     private ArrayList<Producto> Productos;
+    private ArrayList<Producto> ProductosVendidos; //Esto igual habria q quitarlo, lo veo redundante ya q los productos vendidos se quedan en el array de productos con el estado vendido
     private ArrayList<Producto> ProductosComprados;
-    private ArrayList<Producto> ProductosVendidos;
-    
+    private ArrayList<Compra> Compras;
+    private ArrayList<Venta> Ventas;
+
+
     /**
      * Constructor
      * @param nombre del cliente
@@ -92,6 +96,30 @@ public class Cliente extends Usuario{
         Productos = productos;
     }
 
+    public double getSaldoTarjeta() {
+        return saldoTarjeta;
+    }
+
+    public void setSaldoTarjeta(int saldoTarjeta) {
+        this.saldoTarjeta = saldoTarjeta;
+    }
+
+    public ArrayList<Compra> getCompras() {
+        return Compras;
+    }
+
+    public void setCompras(ArrayList<Compra> compras) {
+        Compras = compras;
+    }
+
+    public ArrayList<Venta> getVentas() {
+        return Ventas;
+    }
+
+    public void setVentas(ArrayList<Venta> ventas) {
+        Ventas = ventas;
+    }
+
     @Override
     public String toString() {
             return "\n\tCliente{" + "nombre=" + nombre + ", dni=" + dni + ", codigo postal=" + codigoPostal +", ciudad= "+ ciudad +", tarjeta=" + tarjeta + "}";
@@ -118,11 +146,11 @@ public class Cliente extends Usuario{
             }
         }
     }
-    public void confirmarCompra(Producto producto){
-        producto.setMarcadoParaCompra(true);
+    public void solicitarCompra(Producto producto){
+        producto.setSituacion(Producto.situacion.SOLICITADO);
     }
     public void confirmarVenta (Producto producto){
-        producto.setMarcadoParaVenta(true);
+        producto.setSituacion(Producto.situacion.ACEPTADOVENTA);
     }
     
     // Historial de los productos comprados por el cliente

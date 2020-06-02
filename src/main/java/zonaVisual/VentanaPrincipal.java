@@ -21,6 +21,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
+    
+    
     private Administrador admin = null;
     private ArrayList<Usuario> usuarios;
     private ArrayList<Producto> productos;

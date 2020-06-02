@@ -28,6 +28,7 @@ public class Producto implements Comparable<Producto> {
     public enum situacion {
         PUBLICADO,
         SOLICITADO,
+        ACEPTADOVENTA,
         VENDIDO,
         RETIRADOVENTA,
         RETIRADOADMINISTRADOR
@@ -41,8 +42,7 @@ public class Producto implements Comparable<Producto> {
     private String ciudad;
     private boolean urgente;
     private Cliente clienteAsociado; 
-    private boolean marcadoParaVenta;
-    private boolean marcadoParaCompra;
+
 
     public Producto(String titulo, String descripcion, categoria categoria, int codigoPostal, String ciudad, boolean urgente, Cliente clienteAsociado, estado estado, double precio, LocalDateTime fecha, situacion situacion) {
         this.titulo = titulo;
@@ -164,20 +164,20 @@ public class Producto implements Comparable<Producto> {
         this.clienteAsociado = clienteAsociado;
     }
 
-    public boolean isMarcadoParaVenta() {
-        return marcadoParaVenta;
+    public Producto.situacion getSituacion() {
+        return situacion;
     }
 
-    public void setMarcadoParaVenta(boolean marcadoParaVenta) {
-        this.marcadoParaVenta = marcadoParaVenta;
+    public void setSituacion(Producto.situacion situacion) {
+        this.situacion = situacion;
     }
 
-    public boolean isMarcadoParaCompra() {
-        return marcadoParaCompra;
+    public LocalDateTime getFechaDestacado() {
+        return fechaDestacado;
     }
 
-    public void setMarcadoParaCompra(boolean marcadoParaCompra) {
-        this.marcadoParaCompra = marcadoParaCompra;
+    public void setFechaDestacado(LocalDateTime fechaDestacado) {
+        this.fechaDestacado = fechaDestacado;
     }
 
     /**
