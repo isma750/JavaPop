@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 public class Producto implements Comparable<Producto> {
     private String titulo;
     private String descripcion;
+    private situacion situacion;
     public enum categoria{
         MODAYACCESORIOS,
         TVAUDIOYFOTO,
@@ -24,9 +25,17 @@ public class Producto implements Comparable<Producto> {
         ACEPTABLE,
         REGULAR
     }
+    public enum situacion {
+        PUBLICADO,
+        SOLICITADO,
+        VENDIDO,
+        RETIRADOVENTA,
+        RETIRADOADMINISTRADOR
+    }
     private estado estado;
     private double precio;
-    private LocalDateTime fecha;
+    private LocalDateTime fechaPublicacion;
+    private LocalDateTime fechaDestacado;
     private BufferedImage fotografia;
     private int codigoPostal;
     private String ciudad;
@@ -35,7 +44,7 @@ public class Producto implements Comparable<Producto> {
     private boolean marcadoParaVenta;
     private boolean marcadoParaCompra;
 
-    public Producto(String titulo, String descripcion, categoria categoria, int codigoPostal, String ciudad, boolean urgente, Cliente clienteAsociado, estado estado, double precio, LocalDateTime fecha) {
+    public Producto(String titulo, String descripcion, categoria categoria, int codigoPostal, String ciudad, boolean urgente, Cliente clienteAsociado, estado estado, double precio, LocalDateTime fecha, situacion situacion) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.categoria = categoria;
@@ -45,7 +54,10 @@ public class Producto implements Comparable<Producto> {
         this.clienteAsociado = clienteAsociado;
         this.estado = estado;
         this.precio = precio;
-        this.fecha = fecha;
+        this.fechaPublicacion = fechaPublicacion;
+        this.fechaDestacado = fechaDestacado;
+        this.situacion = situacion;
+        
     }
 
     public Producto(String titulo, String descripcion, Producto.categoria categoria, Producto.estado estado, double precio, LocalDateTime fecha, int codigoPostal, String ciudad, boolean urgente, Cliente clienteAsociado) {
@@ -54,7 +66,7 @@ public class Producto implements Comparable<Producto> {
         this.categoria = categoria;
         this.estado = estado;
         this.precio = precio;
-        this.fecha = fecha;
+        this.fechaPublicacion = fechaPublicacion;
         this.codigoPostal = codigoPostal;
         this.ciudad = ciudad;
         this.urgente = urgente;
@@ -104,12 +116,12 @@ public class Producto implements Comparable<Producto> {
         this.precio = precio;
     }
 
-    public LocalDateTime getFecha() {
-        return fecha;
+    public LocalDateTime getFechaPublicacion() {
+        return fechaPublicacion;
     }
 
-    public void setFecha(LocalDateTime fecha) {
-        this.fecha = fecha;
+    public void setFechaPublicacion(LocalDateTime fecha) {
+        this.fechaPublicacion = fechaPublicacion;
     }
 
     public BufferedImage getFotografia() {
@@ -195,7 +207,7 @@ public class Producto implements Comparable<Producto> {
                 ", categoria='" + categoria + '\'' +
                 ", estado='" + estado + '\'' +
                 ", precio=" + precio +
-                ", fecha=" + fecha +
+                ", fecha=" + fechaPublicacion +
                 ", fotografia=" + fotografia +
                 ", ciudad='" + ciudad + '\'' +
                 ", urgente=" + urgente +
