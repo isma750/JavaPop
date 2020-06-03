@@ -343,9 +343,12 @@ public class registro extends javax.swing.JFrame {
                 Cliente cliente = null;
                 camposRellenados();
                 verificarTarjeta(campoTarjeta.getText());
-                verificarUbicacion(campoPostal.getText());
-                verificarUsuario(campoCorreo.getText());
-                
+                verificarPostal(campoPostal.getText());
+                verificarContraseñas();
+                verificarCorreo();
+                if (this.checkTienda.isSelected()){
+                    verificarTelefono();
+                }
                /* Login lgf = new Login();
                 lgf.setVentanaprincipal(ventanaprincipal);
                 lgf.setVisible(true);
@@ -359,7 +362,7 @@ public class registro extends javax.swing.JFrame {
                getVentanaprincipal().setVisible(true);
                this.dispose();
             }
-            catch(camposNoRellenados | TarjetaIncorrecta | ubicacionIncorrecta | usuarioExiste e){
+            catch(camposNoRellenados | TarjetaIncorrecta | ubicacionIncorrecta | contraseñasNoCoinciden | correoIncorrecto | telefonoIncorrecto e){
                 JOptionPane.showMessageDialog(this, "Error: " + e.toString(), "Mensaje", JOptionPane.ERROR_MESSAGE);
             }
             if (this.checkTienda.isSelected()){
@@ -389,11 +392,11 @@ public class registro extends javax.swing.JFrame {
             }
             
             
-            if (!(String.valueOf(this.campoClave.getPassword()).equals(String.valueOf(this.campoRepiteContraseña.getPassword())))){
+            /*if (!(String.valueOf(this.campoClave.getPassword()).equals(String.valueOf(this.campoRepiteContraseña.getPassword())))){
              JOptionPane.showMessageDialog(this,"La contraseña y la repeticion de la contraseña deben coincidir","Error de validacion", JOptionPane.ERROR_MESSAGE);
              this.campoClave.requestFocus();
              return;
-            }
+            }*/
             
     
             
@@ -447,15 +450,45 @@ public class registro extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     public void verificarTarjeta(String tarjeta)throws TarjetaIncorrecta{
         if (tarjeta.trim().length()!=16){
+            this.campoTarjeta.requestFocus();
             throw new TarjetaIncorrecta();
         }
     }
-     public void verificarUbicacion(String postal)throws ubicacionIncorrecta{ 
+     public void verificarPostal(String postal)throws ubicacionIncorrecta{ 
         try{
             Integer.parseInt(postal);
+            if (postal.length()!=5){
+                throw new ubicacionIncorrecta();
+            }
         } catch (NumberFormatException e){
+            this.campoPostal.requestFocus();
             throw new ubicacionIncorrecta();
         }
+    }
+    public void verificarTelefono() throws telefonoIncorrecto{
+        try{
+            Long.parseLong(campoTelefono.getText());
+            if (campoTelefono.getText().length()!=9){
+                throw new telefonoIncorrecto();
+            }
+        } catch (NumberFormatException e){
+            this.campoTelefono.requestFocus();
+            throw new telefonoIncorrecto();
+        }
+    }
+    public void verificarCorreo() throws correoIncorrecto{
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        if (!campoCorreo.getText().matches(regex)){
+            this.campoCorreo.requestFocus();
+            throw new correoIncorrecto();
+        }
+    
+    }
+    public void verificarContraseñas() throws contraseñasNoCoinciden{
+        if (!(String.valueOf(this.campoClave.getPassword()).equals(String.valueOf(this.campoRepiteContraseña.getPassword())))){
+             this.campoClave.requestFocus();
+             throw new contraseñasNoCoinciden();       
+            }
     }
      public void verificarUsuario(String correo) throws usuarioExiste{ //Hay que optimizarlo usando un algoritmo de búsqueda,esto es tremendamente ineficiente para muchos usuarios :)
         ArrayList<Usuario> usuarios = ((VentanaPrincipal) getVentanaprincipal()).getUsuarios();
@@ -499,7 +532,16 @@ class dniIncorrecto extends Exception{
         super("ERROR: El DNI no es válido");
     }
 }
-
+class correoIncorrecto extends Exception {
+    public correoIncorrecto(){
+        super("ERROR: El correo no es valido");
+    }
+}
+class contraseñasNoCoinciden extends Exception{
+    public contraseñasNoCoinciden(){
+        super("ERROR: Las contraseñas deben de coincidir");
+    }
+}
 class camposNoRellenados extends Exception{
     public camposNoRellenados(){
         super("ERROR: Se deben de rellenar todos los campos");
@@ -508,5 +550,10 @@ class camposNoRellenados extends Exception{
 class usuarioExiste extends Exception{
     public usuarioExiste(){
         super("ERROR: Ya existe un usuario con el correo especificado ");
+    }
+}
+class telefonoIncorrecto extends Exception{
+    public telefonoIncorrecto(){
+        super("ERROR: El telefono debe de componerse de nueve digitos");
     }
 }
