@@ -106,9 +106,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         MostrarUsuarios = new javax.swing.JMenuItem();
         MostrarVentas = new javax.swing.JMenuItem();
         Cliente = new javax.swing.JMenu();
-        MiPerfil = new javax.swing.JMenuItem();
-        MisProductos = new javax.swing.JMenuItem();
-        MiTienda = new javax.swing.JMenuItem();
+        Vender = new javax.swing.JMenuItem();
+        Comprar = new javax.swing.JMenuItem();
+        CuentaProfesional = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -146,14 +146,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         Cliente.setText("Cliente");
 
-        MiPerfil.setText("Mi perfil");
-        Cliente.add(MiPerfil);
+        Vender.setText("Vender");
+        Vender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VenderActionPerformed(evt);
+            }
+        });
+        Cliente.add(Vender);
 
-        MisProductos.setText("Mis productos");
-        Cliente.add(MisProductos);
+        Comprar.setText("Comprar");
+        Comprar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComprarActionPerformed(evt);
+            }
+        });
+        Cliente.add(Comprar);
 
-        MiTienda.setText("Mi tienda");
-        Cliente.add(MiTienda);
+        CuentaProfesional.setText("Cuenta Profesional");
+        Cliente.add(CuentaProfesional);
 
         jMenuBar1.add(Cliente);
 
@@ -212,6 +222,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_MostrarVentasActionPerformed
 
+    private void VenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VenderActionPerformed
+
+    private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComprarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -250,12 +268,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Administrador;
     private javax.swing.JMenu Cliente;
-    private javax.swing.JMenuItem MiPerfil;
-    private javax.swing.JMenuItem MiTienda;
-    private javax.swing.JMenuItem MisProductos;
+    private javax.swing.JMenuItem Comprar;
+    private javax.swing.JMenuItem CuentaProfesional;
     private javax.swing.JMenuItem MostrarProductos;
     private javax.swing.JMenuItem MostrarUsuarios;
     private javax.swing.JMenuItem MostrarVentas;
+    private javax.swing.JMenuItem Vender;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;

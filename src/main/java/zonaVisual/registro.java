@@ -187,7 +187,7 @@ public class registro extends javax.swing.JFrame {
                                     .addGap(18, 18, 18)
                                     .addComponent(campoCiudad))
                                 .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(checkTienda)
                             .addGroup(layout.createSequentialGroup()
@@ -208,8 +208,8 @@ public class registro extends javax.swing.JFrame {
                                     .addComponent(campoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -242,7 +242,7 @@ public class registro extends javax.swing.JFrame {
                                     .addComponent(jLabel9)
                                     .addComponent(campoDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
+                        .addGap(23, 23, 23)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -345,8 +345,6 @@ public class registro extends javax.swing.JFrame {
                 verificarTarjeta(campoTarjeta.getText());
                 verificarUbicacion(campoPostal.getText());
                 verificarUsuario(campoCorreo.getText());
-                cliente = new Cliente(campoNombre.getText(),campoDNI.getText(),Integer.parseInt(campoPostal.getText()),campoCiudad.getText(),campoCorreo.getText(),String.copyValueOf(campoClave.getPassword()),campoTarjeta.getText());   
-                ((VentanaPrincipal) getVentanaprincipal()).añadirUsuario(cliente);
                 
                /* Login lgf = new Login();
                 lgf.setVentanaprincipal(ventanaprincipal);
@@ -364,8 +362,40 @@ public class registro extends javax.swing.JFrame {
             catch(camposNoRellenados | TarjetaIncorrecta | ubicacionIncorrecta | usuarioExiste e){
                 JOptionPane.showMessageDialog(this, "Error: " + e.toString(), "Mensaje", JOptionPane.ERROR_MESSAGE);
             }
+            if (this.checkTienda.isSelected()){
+                  ClienteProfesional clienteProfesional = new ClienteProfesional(campoNombre.getText(),
+                                                                                 campoDNI.getText(),
+                                                                                 campoCorreo.getText(),
+                                                                                 String.copyValueOf(campoClave.getPassword()),
+                                                                                 Integer.parseInt(campoPostal.getText()),
+                                                                                 campoCiudad.getText(),
+                                                                                 campoTarjeta.getText(),
+                                                                                 campoDescripcion.getText(),
+                                                                                 campoHorario.getText(),
+                                                                                 campoTelefono.getText(),
+                                                                                 campoWeb.getText());
+                 ((VentanaPrincipal) getVentanaprincipal()).añadirUsuario(clienteProfesional); 
+            }
+            else{
+                   Cliente cliente = new Cliente(campoNombre.getText(),
+                                          campoDNI.getText(),
+                                          Integer.parseInt(campoPostal.getText()),
+                                          campoCiudad.getText(),
+                                          campoCorreo.getText(),
+                                          String.copyValueOf(campoClave.getPassword()),
+                                          campoTarjeta.getText());
+                    
+                ((VentanaPrincipal) getVentanaprincipal()).añadirUsuario(cliente);
+            }
             
-
+            
+            if (!(String.valueOf(this.campoClave.getPassword()).equals(String.valueOf(this.campoRepiteContraseña.getPassword())))){
+             JOptionPane.showMessageDialog(this,"La contraseña y la repeticion de la contraseña deben coincidir","Error de validacion", JOptionPane.ERROR_MESSAGE);
+             this.campoClave.requestFocus();
+             return;
+            }
+            
+    
             
         
             
