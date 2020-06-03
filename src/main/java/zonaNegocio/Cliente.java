@@ -21,6 +21,11 @@ public class Cliente extends Usuario{
     private ArrayList<Producto> ProductosComprados;
     private ArrayList<Compra> Compras;
     private ArrayList<Venta> Ventas;
+    public enum estado {
+        ACTIVO,
+        BAJA
+        
+    }
 
 
     /**
