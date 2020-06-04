@@ -23,6 +23,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     
     
+    
+    
     private Administrador admin = null;
     private ArrayList<Usuario> usuarios;
     private ArrayList<Producto> productos;
@@ -30,6 +32,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     public VentanaPrincipal() {
         initComponents();
+        this.setTitle("JAVAPOP");
         this.usuarios = new ArrayList<Usuario>();
         this.productos = new ArrayList<Producto>();
         // Traer informacion disco duro (Serializacion)

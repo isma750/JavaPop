@@ -21,7 +21,11 @@ public class Cliente extends Usuario{
     private ArrayList<Producto> ProductosComprados;
     private ArrayList<Compra> Compras;
     private ArrayList<Venta> Ventas;
-    public enum estado {
+    private ArrayList<PagoClienteProfesional> pagosMensuales;
+    private Estado estado;
+
+   
+    public enum Estado {
         ACTIVO,
         BAJA
         
@@ -46,6 +50,7 @@ public class Cliente extends Usuario{
                 this.codigoPostal = codigoPostal;
                 this.ciudad = ciudad;
                 this.tarjeta = tarjeta;
+                this.estado = Estado.ACTIVO;
                
 	}
     // Realizamos los getter y setter

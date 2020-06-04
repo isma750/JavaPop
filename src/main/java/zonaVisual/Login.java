@@ -25,6 +25,7 @@ public class Login extends javax.swing.JFrame {
           
     public Login() {
         initComponents();
+        this.setTitle("JAVAPOP");
     }
      public  Login(JFrame ventanaprincipal) {
         
@@ -149,13 +150,15 @@ public class Login extends javax.swing.JFrame {
                 usuarioconectado = cadausuario;
                 break;
             }
+            else {
+                JOptionPane.showMessageDialog(this,"Correo o contraseña incorrectas","ERROR",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
         }
         if (valido){
             ((VentanaPrincipal) getVentanaprincipal()).setUsuarioConectado(usuarioconectado);
             ((VentanaPrincipal) getVentanaprincipal()).getUsuario().setText(Correo.getText());
             ((VentanaPrincipal) getVentanaprincipal()).getUsuario().updateUI();
-
-            
             getVentanaprincipal().setVisible(true);
             this.dispose();
         }
@@ -170,7 +173,6 @@ public class Login extends javax.swing.JFrame {
         registro rgf = new registro();
         rgf.setVentanaprincipal(getVentanaprincipal());
         rgf.setVisible(true);
-        //rgf.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_crearUsuarioActionPerformed
 

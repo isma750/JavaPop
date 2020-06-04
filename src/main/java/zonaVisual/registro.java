@@ -30,6 +30,7 @@ public class registro extends javax.swing.JFrame {
     
     public registro() {
         initComponents();
+        this.setTitle("JAVAPOP");
     }
 
     /**
@@ -500,7 +501,7 @@ public class registro extends javax.swing.JFrame {
             }  
         }
      }
-    public void camposRellenados() throws camposNoRellenados{ // ESTO TIENE QUE HABER ALGUNA FORMA DE EVITAR TODOS ESTOS IF 
+    public void camposRellenados() throws camposNoRellenados{ 
         if (campoClave.getPassword().length==0){throw new camposNoRellenados();}
         if (campoDNI.getText().length()==0){throw new camposNoRellenados();}
         if (campoCorreo.getText().length()==0){throw new camposNoRellenados();}

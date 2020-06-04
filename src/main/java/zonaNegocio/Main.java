@@ -28,12 +28,12 @@ public class Main {
         javaPop.anadirUsuario(cliente3);
         Administrador admin = new Administrador();
         javaPop.anadirUsuario(admin);
-        Producto producto1 = new Producto("Camiseta blanca","Buen estado", Producto.categoria.MODAYACCESORIOS,19003,"Guadalajara",true,cliente1,Producto.estado.BUENO, 15.00,LocalDateTime.now());
-        Producto producto2 = new Producto("Camiseta negra","Muy nueva", Producto.categoria.MODAYACCESORIOS,19203,"Guadalajara",false,cliente1,Producto.estado.ACEPTABLE, 20.00,LocalDateTime.now());
-        Producto producto3 = new Producto("Raqueta de tenis","Muy poco uso", Producto.categoria.DEPORTEYOCIO,19004,"Guadalajara",true,cliente2, Producto.estado.COMONUEVO, 10.00, LocalDateTime.now());
-        Producto producto4 = new Producto("Playstation 5","Poco uso", Producto.categoria.CONSOLASYVIDEOJUEGOS,19004,"Guadalajara",true,cliente2, Producto.estado.BUENO, 150.00, LocalDateTime.now());
-        Producto producto5 = new Producto("Television 49 pulgadas Sony","Tiene un pequeño arañazo", Producto.categoria.TVAUDIOYFOTO,19004, "Guadalajara",false,cliente2, Producto.estado.ACEPTABLE, 250.00, LocalDateTime.now());
-        Producto producto6 = new Producto("Iphone X 64 gb","Tiene la pantalla rota", Producto.categoria.MOVILESYTELFONIA,19200,"Azuqueca de Henares",true,cliente3, Producto.estado.REGULAR, 400.00,LocalDateTime.now());
+        Producto producto1 = new Producto("Camiseta blanca","Buen estado", Producto.categoria.MODAYACCESORIOS,19003,"Guadalajara",true,cliente1,Producto.estado.BUENO, 15.00,LocalDateTime.now(),Producto.situacion.PUBLICADO);
+        Producto producto2 = new Producto("Camiseta negra","Muy nueva", Producto.categoria.MODAYACCESORIOS,19203,"Guadalajara",false,cliente1,Producto.estado.ACEPTABLE, 20.00,LocalDateTime.now(),Producto.situacion.PUBLICADO);
+        Producto producto3 = new Producto("Raqueta de tenis","Muy poco uso", Producto.categoria.DEPORTEYOCIO,19004,"Guadalajara",true,cliente2, Producto.estado.COMONUEVO, 10.00, LocalDateTime.now(),Producto.situacion.PUBLICADO);
+        Producto producto4 = new Producto("Playstation 5","Poco uso", Producto.categoria.CONSOLASYVIDEOJUEGOS,19004,"Guadalajara",true,cliente2, Producto.estado.BUENO, 150.00, LocalDateTime.now(),Producto.situacion.PUBLICADO);
+        Producto producto5 = new Producto("Television 49 pulgadas Sony","Tiene un pequeño arañazo", Producto.categoria.TVAUDIOYFOTO,19004, "Guadalajara",false,cliente2, Producto.estado.ACEPTABLE, 250.00, LocalDateTime.now(),Producto.situacion.PUBLICADO);
+        Producto producto6 = new Producto("Iphone X 64 gb","Tiene la pantalla rota", Producto.categoria.MOVILESYTELFONIA,19200,"Azuqueca de Henares",true,cliente3, Producto.estado.REGULAR, 400.00,LocalDateTime.now(),Producto.situacion.PUBLICADO);
         productoscliente1.add(producto1);
         productoscliente1.add(producto2);
         productoscliente2.add(producto3);
@@ -69,7 +69,7 @@ public class Main {
 
         //Decide comprar la camiseta blanca
 
-        cliente2.confirmarCompra(producto1);
+        cliente2.solicitarCompra(producto1);
 
         //El otro cliente confirma la venta
 

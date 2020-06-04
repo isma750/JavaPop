@@ -5,43 +5,61 @@ import java.time.LocalDateTime;
 
 
 public class PagoClienteProfesional {
-    private ClienteProfesional clienteP;
-    private LocalDateTime fecha;
-    private double importe;
-
-    public PagoClienteProfesional(ClienteProfesional clienteP, LocalDateTime fecha, double importe) {
-        this.clienteP = clienteP;
-        this.fecha = fecha;
-        this.importe = importe;
+    private Usuario usuario;
+    private LocalDateTime fechaPago;
+    private double importePago;
+    private ConceptoPago conceptoPago;
+    
+    public enum ConceptoPago {
+       Cuota_Mensual ,
+       Producto_Destacado
     }
 
-    public ClienteProfesional getClienteP() {
-        return clienteP;
+    public PagoClienteProfesional(ClienteProfesional clienteP, LocalDateTime fecha, double importe, ConceptoPago conceptoPago) {
+        this.usuario = usuario;
+        this.fechaPago = fechaPago;
+        this.importePago = importePago;
+        this.conceptoPago = conceptoPago;
     }
 
-    public void setClienteP(ClienteProfesional clienteP) {
-        this.clienteP = clienteP;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public LocalDateTime getFecha() {
-        return fecha;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
-    public void setFecha(LocalDateTime fecha) {
-        this.fecha = fecha;
+    public LocalDateTime getFechaPago() {
+        return fechaPago;
     }
 
-    public double getImporte() {
-        return importe;
+    public void setFechaPago(LocalDateTime fechaPago) {
+        this.fechaPago = fechaPago;
     }
 
-    public void setImporte(double importe) {
-        this.importe = importe;
+    public double getImportePago() {
+        return importePago;
     }
+
+    public void setImportePago(double importePago) {
+        this.importePago = importePago;
+    }
+
+    public ConceptoPago getConceptoPago() {
+        return conceptoPago;
+    }
+
+    public void setConceptoPago(ConceptoPago conceptoPago) {
+        this.conceptoPago = conceptoPago;
+    }
+    
+    
+   
     
     @Override
     public String toString(){
-        return "\n\tPago Cliente Profesional{" + "Cliente Profesional=" + clienteP + ", fecha pago=" + fecha + ",importe =" + importe + "}";
+        return "\n\tPago Cliente Profesional{" + "Cliente Profesional=" + usuario + ", fecha pago=" + fechaPago + ",importe =" + importePago +", concepto= " + conceptoPago + "}";
         
     }
 
