@@ -370,8 +370,8 @@ public class registro extends javax.swing.JFrame {
             }
             catch(camposNoRellenados | TarjetaIncorrecta | ubicacionIncorrecta | contraseñasNoCoinciden | correoIncorrecto | telefonoIncorrecto | usuarioExiste | URLIncorrecta e){
                 JOptionPane.showMessageDialog(this, "Error: " + e.toString(), "Mensaje", JOptionPane.ERROR_MESSAGE);
-            }
-            if (this.checkTienda.isSelected()){
+                
+                if (this.checkTienda.isSelected()){
                   ClienteProfesional clienteProfesional = new ClienteProfesional(campoNombre.getText(),
                                                                                  campoDNI.getText(),
                                                                                  campoCorreo.getText(),
@@ -384,8 +384,8 @@ public class registro extends javax.swing.JFrame {
                                                                                  campoTelefono.getText(),
                                                                                  campoWeb.getText());
                  ((VentanaPrincipal) getVentanaprincipal()).añadirUsuario(clienteProfesional); 
-            }
-            else{
+                }
+                else{
                    Cliente cliente = new Cliente(campoNombre.getText(),
                                           campoDNI.getText(),
                                           Integer.parseInt(campoPostal.getText()),
@@ -394,8 +394,10 @@ public class registro extends javax.swing.JFrame {
                                           String.copyValueOf(campoClave.getPassword()),
                                           campoTarjeta.getText());
                     
-                ((VentanaPrincipal) getVentanaprincipal()).añadirUsuario(cliente);
+                 ((VentanaPrincipal) getVentanaprincipal()).añadirUsuario(cliente);
+                }
             }
+            
             
             
             /*if (!(String.valueOf(this.campoClave.getPassword()).equals(String.valueOf(this.campoRepiteContraseña.getPassword())))){
