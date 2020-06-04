@@ -353,25 +353,14 @@ public class registro extends javax.swing.JFrame {
                
                 if (this.checkTienda.isSelected()){
                     verificarTelefono();
-                    verificarURL(); //NO FUNCIONA
+                    
                 }
                /* Login lgf = new Login();
                 lgf.setVentanaprincipal(ventanaprincipal);
                 lgf.setVisible(true);
                 lgf.setLocationRelativeTo(null);
                 this.dispose();*/
-               ((VentanaPrincipal) getVentanaprincipal()).setUsuarioConectado(cliente);
-               ((VentanaPrincipal) getVentanaprincipal()).getUsuario().setText(campoCorreo.getText());
-               ((VentanaPrincipal) getVentanaprincipal()).getUsuario().updateUI();
-
-            
-               getVentanaprincipal().setVisible(true);
-               this.dispose();
-            }
-            catch(camposNoRellenados | TarjetaIncorrecta | ubicacionIncorrecta | contraseñasNoCoinciden | correoIncorrecto | telefonoIncorrecto | usuarioExiste | URLIncorrecta e){
-                JOptionPane.showMessageDialog(this, "Error: " + e.toString(), "Mensaje", JOptionPane.ERROR_MESSAGE);
-                
-                if (this.checkTienda.isSelected()){
+               if (this.checkTienda.isSelected()){
                   ClienteProfesional clienteProfesional = new ClienteProfesional(campoNombre.getText(),
                                                                                  campoDNI.getText(),
                                                                                  campoCorreo.getText(),
@@ -386,7 +375,7 @@ public class registro extends javax.swing.JFrame {
                  ((VentanaPrincipal) getVentanaprincipal()).añadirUsuario(clienteProfesional); 
                 }
                 else{
-                   Cliente cliente = new Cliente(campoNombre.getText(),
+                   cliente = new Cliente(campoNombre.getText(),
                                           campoDNI.getText(),
                                           Integer.parseInt(campoPostal.getText()),
                                           campoCiudad.getText(),
@@ -396,6 +385,18 @@ public class registro extends javax.swing.JFrame {
                     
                  ((VentanaPrincipal) getVentanaprincipal()).añadirUsuario(cliente);
                 }
+               ((VentanaPrincipal) getVentanaprincipal()).setUsuarioConectado(cliente);
+               ((VentanaPrincipal) getVentanaprincipal()).getUsuario().setText(campoCorreo.getText());
+               ((VentanaPrincipal) getVentanaprincipal()).getUsuario().updateUI();
+
+            
+               getVentanaprincipal().setVisible(true);
+               this.dispose();
+            }
+            catch(camposNoRellenados | TarjetaIncorrecta | ubicacionIncorrecta | contraseñasNoCoinciden | correoIncorrecto | telefonoIncorrecto | usuarioExiste e){
+                JOptionPane.showMessageDialog(this, "Error: " + e.toString(), "Mensaje", JOptionPane.ERROR_MESSAGE);
+                
+                
             }
             
             
