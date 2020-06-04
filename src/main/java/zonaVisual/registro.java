@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package zonaVisual;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -343,12 +345,15 @@ public class registro extends javax.swing.JFrame {
             try{ 
                 Cliente cliente = null;
                 camposRellenados();
-                verificarTarjeta(campoTarjeta.getText());
                 verificarPostal(campoPostal.getText());
-                verificarContraseñas();
+                verificarTarjeta(campoTarjeta.getText());
                 verificarCorreo();
+                verificarContraseñas();
+                verificarUsuario(campoCorreo.getText());
+               
                 if (this.checkTienda.isSelected()){
                     verificarTelefono();
+                    verificarURL();
                 }
                /* Login lgf = new Login();
                 lgf.setVentanaprincipal(ventanaprincipal);
@@ -363,7 +368,7 @@ public class registro extends javax.swing.JFrame {
                getVentanaprincipal().setVisible(true);
                this.dispose();
             }
-            catch(camposNoRellenados | TarjetaIncorrecta | ubicacionIncorrecta | contraseñasNoCoinciden | correoIncorrecto | telefonoIncorrecto e){
+            catch(camposNoRellenados | TarjetaIncorrecta | ubicacionIncorrecta | contraseñasNoCoinciden | correoIncorrecto | telefonoIncorrecto | usuarioExiste | URLIncorrecta e){
                 JOptionPane.showMessageDialog(this, "Error: " + e.toString(), "Mensaje", JOptionPane.ERROR_MESSAGE);
             }
             if (this.checkTienda.isSelected()){
@@ -485,13 +490,21 @@ public class registro extends javax.swing.JFrame {
         }
     
     }
+     public void verificarURL() throws URLIncorrecta{
+        try{
+            URL url = new URL(campoWeb.getText());
+        } catch (MalformedURLException e) {
+             throw new URLIncorrecta();
+         }
+     }
+          
     public void verificarContraseñas() throws contraseñasNoCoinciden{
         if (!(String.valueOf(this.campoClave.getPassword()).equals(String.valueOf(this.campoRepiteContraseña.getPassword())))){
              this.campoClave.requestFocus();
              throw new contraseñasNoCoinciden();       
             }
     }
-     public void verificarUsuario(String correo) throws usuarioExiste{ //Hay que optimizarlo usando un algoritmo de búsqueda,esto es tremendamente ineficiente para muchos usuarios :)
+     public void verificarUsuario(String correo) throws usuarioExiste{ 
         ArrayList<Usuario> usuarios = ((VentanaPrincipal) getVentanaprincipal()).getUsuarios();
         //ordenar usuarios por la razon del algoritmo
         for (int i=0; i<usuarios.size();i++){ //Sustituir por codigo del algoritmo
@@ -556,5 +569,10 @@ class usuarioExiste extends Exception{
 class telefonoIncorrecto extends Exception{
     public telefonoIncorrecto(){
         super("ERROR: El telefono debe de componerse de nueve digitos");
+    }
+}
+class URLIncorrecta extends Exception{
+    public URLIncorrecta(){
+        super("ERROR: La URL de la web de la tienda no es válida");
     }
 }
