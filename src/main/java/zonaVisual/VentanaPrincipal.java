@@ -209,7 +209,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     @Override
     public Image getIconImage() {
         try{
-            Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("/zonaVisual/java.jpg"));
+            Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/java.jpg"));
             return retValue;
         }
         catch (Exception e){

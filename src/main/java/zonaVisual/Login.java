@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package zonaVisual;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -58,6 +60,7 @@ public class Login extends javax.swing.JFrame {
         crearUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Verdana Pro Cond Black", 2, 18)); // NOI18N
@@ -140,7 +143,18 @@ public class Login extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    @Override
+    public Image getIconImage() {
+        try{
+            Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/java.jpg"));
+            return retValue;
+        }
+        catch (Exception e){
+           return (null); 
+        }
+    }
+    
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
         Usuario usuarioconectado = null;
         boolean valido = false;

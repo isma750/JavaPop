@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package zonaVisual;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -76,6 +78,7 @@ public class registro extends javax.swing.JFrame {
         jTextField5.setText("jTextField5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(getIconImage());
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Verdana Pro Cond Black", 0, 14)); // NOI18N
@@ -301,7 +304,18 @@ public class registro extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    @Override
+    public Image getIconImage() {
+        try{
+            Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/java.jpg"));
+            return retValue;
+        }
+        catch (Exception e){
+           return (null); 
+        }
+    }
+    
     private void checkTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTiendaActionPerformed
         if (checkTienda.isSelected()){
             campoDescripcion.setEnabled(true);
