@@ -353,7 +353,7 @@ public class registro extends javax.swing.JFrame {
                
                 if (this.checkTienda.isSelected()){
                     verificarTelefono();
-                    verificarURL();
+                    verificarURL(); //NO FUNCIONA
                 }
                /* Login lgf = new Login();
                 lgf.setVentanaprincipal(ventanaprincipal);
