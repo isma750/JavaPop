@@ -21,7 +21,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
+    private JFrame añadirproducto;
     
+    public JFrame getAñadirproducto(){
+        return añadirproducto;
+    }
+    
+    public void setAñadirproducto(JFrame añadirproducto){
+        this.añadirproducto = añadirproducto;
+        
+    }
     
     
     
@@ -100,9 +109,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         usuario = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         Administrador = new javax.swing.JMenu();
         MostrarProductos = new javax.swing.JMenuItem();
@@ -118,11 +124,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         usuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         usuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setText("Buscar:");
-
-        jButton1.setText("jButton1");
 
         Administrador.setText("Administrador");
 
@@ -180,26 +181,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(613, Short.MAX_VALUE)
                 .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(388, Short.MAX_VALUE))
+                .addContainerGap(417, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(783, 506));
@@ -226,7 +214,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MostrarVentasActionPerformed
 
     private void VenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VenderActionPerformed
-        // TODO add your handling code here:
+        getAñadirproducto().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_VenderActionPerformed
 
     private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarActionPerformed
@@ -277,10 +266,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem MostrarUsuarios;
     private javax.swing.JMenuItem MostrarVentas;
     private javax.swing.JMenuItem Vender;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 }
