@@ -63,7 +63,10 @@ public class JavaPop {
 
     }
 
-    public ArrayList<Usuario> getUsuarios() {
+    public ArrayList<Usuario> getUsuarios() {      
+         if (this.usuarios == null){
+            this.usuarios = new ArrayList<>();
+        }
         return usuarios;
     }
 
@@ -167,7 +170,7 @@ public class JavaPop {
     /**
      * El usuario ya existe
      */
-    class UsuarioExiste extends Exception{
+    public class UsuarioExiste extends Exception{
         public UsuarioExiste(){
             super ("ERROR:El usuario ya existe.");
         }

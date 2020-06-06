@@ -8,6 +8,8 @@ package zonaVisual;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import zonaNegocio.*;
@@ -35,25 +37,34 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     
     private Administrador admin = null;
-    private ArrayList<Usuario> usuarios;
-    private ArrayList<Producto> productos;
     private Usuario usuarioConectado;
+    private JavaPop javapop;
     
     public VentanaPrincipal() {
         initComponents();
         this.setTitle("JAVAPOP");
-        this.usuarios = new ArrayList<Usuario>();
-        this.productos = new ArrayList<Producto>();
+        this.javapop = new JavaPop();
         // Traer informacion disco duro (Serializacion)
-        if (usuarios.size() == 0){
+        if (javapop.getUsuarios().isEmpty()){
            this.admin = new Administrador();
-           this.usuarios.add(admin); 
+           this.javapop.getUsuarios().add(admin); 
         }
+       
         
         JFrame login = new Login(this);
         
+        
     }
 
+    public JavaPop getJavapop() {
+        return javapop;
+    }
+
+    public void setJavapop(JavaPop javapop) {
+        this.javapop = javapop;
+    }
+    
+    
     public Usuario getUsuarioConectado() {
         return usuarioConectado;
     }
@@ -70,16 +81,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.usuario = usuario;
     }
     
-    public ArrayList<Usuario> getUsuarios() {
-        return usuarios;
-    }
+   
     public void añadirUsuario(Usuario usuario){
-        usuarios.add(usuario);
+        javapop.getUsuarios().add(usuario);
     }
 
-    public void setUsuarios(ArrayList<Usuario> usuarios) {
-        this.usuarios = usuarios;
-    }
+    
     
     public Administrador getAdmin() {
         return admin;
@@ -89,13 +96,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.admin = admin;
     }
 
-    public ArrayList<Producto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(ArrayList<Producto> productos) {
-        this.productos = productos;
-    }
+   
     
    
 
@@ -167,6 +168,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Cliente.add(Comprar);
 
         CuentaProfesional.setText("Cuenta Profesional");
+        CuentaProfesional.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CuentaProfesionalActionPerformed(evt);
+            }
+        });
         Cliente.add(CuentaProfesional);
 
         jMenuBar1.add(Cliente);
@@ -214,13 +220,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MostrarVentasActionPerformed
 
     private void VenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VenderActionPerformed
-        getAñadirproducto().setVisible(true);
-        this.dispose();
+         AñadirProducto vender = new AñadirProducto();
+         vender.setVentanaprincipal(this);
+         vender.setVisible(true);
+        
     }//GEN-LAST:event_VenderActionPerformed
 
     private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ComprarActionPerformed
+
+    private void CuentaProfesionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CuentaProfesionalActionPerformed
+        // TODO add your handling code here
+    }//GEN-LAST:event_CuentaProfesionalActionPerformed
 
     /**
      * @param args the command line arguments

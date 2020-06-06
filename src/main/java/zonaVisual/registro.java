@@ -522,7 +522,7 @@ public class registro extends javax.swing.JFrame {
             }
     }
      public void verificarUsuario(String correo) throws usuarioExiste{ 
-        ArrayList<Usuario> usuarios = ((VentanaPrincipal) getVentanaprincipal()).getUsuarios();
+        ArrayList<Usuario> usuarios = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getUsuarios();
         //ordenar usuarios por la razon del algoritmo
         for (int i=0; i<usuarios.size();i++){ //Sustituir por codigo del algoritmo
             String correoUsuario = usuarios.get(i).getCorreo();

@@ -5,6 +5,8 @@
  */
 package zonaVisual;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author ismae
@@ -14,6 +16,18 @@ public class AñadirProducto extends javax.swing.JFrame {
     /**
      * Creates new form AñadirProducto
      */
+     private JFrame ventanaprincipal;
+
+    public  JFrame getVentanaprincipal() {
+        
+        return ventanaprincipal;
+    }
+
+    
+    public void setVentanaprincipal(JFrame ventanaprincipal) {
+        this.ventanaprincipal = ventanaprincipal;
+    }
+    
     public AñadirProducto() {
         initComponents();
     }

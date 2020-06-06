@@ -158,7 +158,7 @@ public class Login extends javax.swing.JFrame {
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
         Usuario usuarioconectado = null;
         boolean valido = false;
-        for(Usuario cadausuario : ((VentanaPrincipal) getVentanaprincipal()).getUsuarios()){
+        for(Usuario cadausuario : ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getUsuarios()){
             if((cadausuario.getCorreo().equals(Correo.getText())) && (cadausuario.getClave().equals(String.valueOf(Clave.getPassword())))){
                 valido = true;
                 usuarioconectado = cadausuario;
