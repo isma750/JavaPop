@@ -5,7 +5,11 @@
  */
 package zonaVisual;
 
+
+import java.time.LocalDateTime;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import zonaNegocio.*;
 
 /**
  *
@@ -49,14 +53,14 @@ public class AñadirProducto extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jTextField5 = new javax.swing.JTextField();
+        campoTitulo = new javax.swing.JTextField();
+        campoDescripcion = new javax.swing.JTextField();
+        comboCategoria = new javax.swing.JComboBox<>();
+        campoPostal = new javax.swing.JTextField();
+        campoCiudad = new javax.swing.JTextField();
+        checkUrgente = new javax.swing.JCheckBox();
+        comboEstado = new javax.swing.JComboBox<>();
+        campoPrecio = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
 
@@ -78,13 +82,40 @@ public class AñadirProducto extends javax.swing.JFrame {
 
         jLabel8.setText("Precio");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Moda y Accesorios", "TV, audio y foto", "Móviles y telefonía", "Informática y electrónica", "Consolas y videojuegos", "Deporte y ocio", " " }));
+        campoTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoTituloActionPerformed(evt);
+            }
+        });
 
-        jCheckBox1.setText("Urgente");
+        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Moda y Accesorios", "TV, audio y foto", "Móviles y telefonía", "Informática y electrónica", "Consolas y videojuegos", "Deporte y ocio" }));
+        comboCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboCategoriaActionPerformed(evt);
+            }
+        });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo", "Como nuevo", "Bueno", "Aceptable", "Regular" }));
+        campoPostal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoPostalActionPerformed(evt);
+            }
+        });
+
+        checkUrgente.setText("Urgente");
+        checkUrgente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkUrgenteActionPerformed(evt);
+            }
+        });
+
+        comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo", "Como nuevo", "Bueno", "Aceptable", "Regular" }));
 
         jButton1.setText("Añadir Producto");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("Rellene con la informacion del producto");
@@ -101,7 +132,7 @@ public class AñadirProducto extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -115,20 +146,19 @@ public class AñadirProducto extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGap(52, 52, 52)
-                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(campoCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                                        .addComponent(campoDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(campoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(checkUrgente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(campoPrecio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(comboEstado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(comboCategoria, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(124, 124, 124)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -145,35 +175,35 @@ public class AñadirProducto extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1))
+                    .addComponent(checkUrgente))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
@@ -181,6 +211,46 @@ public class AñadirProducto extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void campoTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTituloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoTituloActionPerformed
+
+    private void comboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboCategoriaActionPerformed
+
+    private void campoPostalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPostalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoPostalActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         try {
+             verificarCampos();
+             verificarPostal();
+             verificarPrecio();
+             Cliente cliente = (Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado();
+             if (checkUrgente.isSelected()){                
+                 Producto producto = new Producto(campoTitulo.getText(),campoDescripcion.getText(),convertirCategoria(comboCategoria.getSelectedItem().toString()),Integer.parseInt(campoPostal.getText()),campoCiudad.getText(),true,cliente,convertirEstado(comboEstado.getSelectedItem().toString()),Double.parseDouble(campoPrecio.getText()),LocalDateTime.now(),LocalDateTime.now(),Producto.situacion.PUBLICADO);
+                 ((VentanaPrincipal) getVentanaprincipal()).getJavapop().anadirProducto(producto);
+             }else{
+                 Producto producto = new Producto(campoTitulo.getText(),campoDescripcion.getText(),convertirCategoria(comboCategoria.getSelectedItem().toString()),Integer.parseInt(campoPostal.getText()),campoCiudad.getText(),false,cliente,convertirEstado(comboEstado.getSelectedItem().toString()),Double.parseDouble(campoPrecio.getText()),LocalDateTime.now(),Producto.situacion.PUBLICADO);
+
+                 ((VentanaPrincipal) getVentanaprincipal()).getJavapop().anadirProducto(producto);
+             }
+             JOptionPane.showMessageDialog(this,"Se ha publicado el producto correctamente", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
+             this.dispose();
+             
+         } catch (camposNoRellenados | ubicacionIncorrecta | precioIncorrecto | JavaPop.ProductoExiste e) {
+             JOptionPane.showMessageDialog(this, "Error: " + e.toString(), "Mensaje", JOptionPane.ERROR_MESSAGE);
+         }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void checkUrgenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkUrgenteActionPerformed
+        if (checkUrgente.isSelected()){
+            JOptionPane.showMessageDialog(this,"Ha marcado el producto como urgente, se le cobrará 5€ al publicar el producto y destacará sobre el resto durante 7 días.", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_checkUrgenteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,10 +289,15 @@ public class AñadirProducto extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField campoCiudad;
+    private javax.swing.JTextField campoDescripcion;
+    private javax.swing.JTextField campoPostal;
+    private javax.swing.JTextField campoPrecio;
+    private javax.swing.JTextField campoTitulo;
+    private javax.swing.JCheckBox checkUrgente;
+    private javax.swing.JComboBox<String> comboCategoria;
+    private javax.swing.JComboBox<String> comboEstado;
     private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -232,10 +307,73 @@ public class AñadirProducto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
+    public void verificarCampos() throws camposNoRellenados{
+        if (campoCiudad.getText().length()==0){throw new camposNoRellenados();}
+        if (campoDescripcion.getText().length()==0){throw new camposNoRellenados();}
+        if (campoPostal.getText().length()==0){throw new camposNoRellenados();}
+        if (campoPrecio.getText().length()==0){throw new camposNoRellenados();} 
+        if (campoTitulo.getText().length()==0){throw new camposNoRellenados();} 
+    }
+    public void verificarPostal()throws ubicacionIncorrecta{ 
+        try{
+            Integer.parseInt(campoPostal.getText());
+            if (campoPostal.getText().length()!=5){
+                throw new ubicacionIncorrecta();
+            }
+        } catch (NumberFormatException e){
+            this.campoPostal.requestFocus();
+            throw new ubicacionIncorrecta();
+        }
+    }
+     public void verificarPrecio()throws precioIncorrecto{ 
+        try{
+            Double.parseDouble(campoPrecio.getText());
+        } catch (NumberFormatException e){
+            this.campoPostal.requestFocus();
+            throw new precioIncorrecto();
+        }
+    }
+     public Producto.categoria convertirCategoria(String categoriaString){ 
+         switch (categoriaString){
+             case "Moda y Accesorios":
+                 return Producto.categoria.MODAYACCESORIOS;   
+             case "TV, audio y foto":
+                 return Producto.categoria.TVAUDIOYFOTO;
+             case "Móviles y telefonía":
+                 return Producto.categoria.MOVILESYTELFONIA;
+             case "Informática y electrónica":
+                 return Producto.categoria.INFORMATICAYELECTRONICA;
+             case "Consolas y videojuegos":
+                 return Producto.categoria.CONSOLASYVIDEOJUEGOS;
+             case "Deporte y ocio":    
+                 return Producto.categoria.DEPORTEYOCIO;
+         }
+         return Producto.categoria.DEPORTEYOCIO; //...
+      }
+     public Producto.estado convertirEstado(String categoriaEstado){ 
+         switch (categoriaEstado){
+             case "Nuevo":
+                 return Producto.estado.NUEVO;   
+             case "Como nuevo":
+                 return Producto.estado.COMONUEVO;
+             case "Bueno":
+                 return Producto.estado.BUENO;
+             case "Aceptable":
+                 return Producto.estado.ACEPTABLE;
+             case "Regular":
+                 return Producto.estado.REGULAR;
+         }
+         return Producto.estado.REGULAR; //...
+      }
+     
+
+
+
+
+}
+class precioIncorrecto extends Exception{
+    public precioIncorrecto(){
+        super("ERROR: El precio del producto no es válido");
+    }
 }
