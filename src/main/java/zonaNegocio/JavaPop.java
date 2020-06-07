@@ -179,7 +179,7 @@ public class JavaPop {
     /**
      * El usuario no existe
      */
-    class UsuarioNoExiste extends Exception{
+    public class UsuarioNoExiste extends Exception{
         public UsuarioNoExiste(){
             super ("ERROR:El usuario especificado no existe.");
         }
@@ -188,7 +188,7 @@ public class JavaPop {
     /**
      * El producto ya existe
      */
-    class ProductoExiste extends Exception{
+    public class ProductoExiste extends Exception{
         public ProductoExiste(){
             super ("ERROR:El producto ya existe.");
         }
@@ -197,7 +197,7 @@ public class JavaPop {
     /**
      * El producto no existe
      */
-    class ProductoNoExiste extends Exception{
+    public class ProductoNoExiste extends Exception{
         public ProductoNoExiste(){
             super ("ERROR:El producto especificado no existe.");
         }

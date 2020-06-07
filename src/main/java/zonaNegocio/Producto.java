@@ -44,7 +44,7 @@ public class Producto implements Comparable<Producto> {
     private Cliente clienteAsociado; 
 
 
-    public Producto(String titulo, String descripcion, categoria categoria, int codigoPostal, String ciudad, boolean urgente, Cliente clienteAsociado, estado estado, double precio, LocalDateTime fecha, situacion situacion) {
+    public Producto(String titulo, String descripcion, categoria categoria, int codigoPostal, String ciudad, boolean urgente, Cliente clienteAsociado, estado estado, double precio, LocalDateTime fechaPublicacion,LocalDateTime fechaDestacado, situacion situacion) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.categoria = categoria;
@@ -60,7 +60,7 @@ public class Producto implements Comparable<Producto> {
         
     }
 
-    public Producto(String titulo, String descripcion, Producto.categoria categoria, Producto.estado estado, double precio, LocalDateTime fecha, int codigoPostal, String ciudad, boolean urgente, Cliente clienteAsociado) {
+    public Producto(String titulo, String descripcion, Producto.categoria categoria, int codigoPostal,String ciudad, boolean urgente,Cliente clienteAsociado, Producto.estado estado, double precio, LocalDateTime fechaPublicacion,situacion situacion) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.categoria = categoria;
@@ -71,6 +71,7 @@ public class Producto implements Comparable<Producto> {
         this.ciudad = ciudad;
         this.urgente = urgente;
         this.clienteAsociado = clienteAsociado;
+        this.situacion = situacion;
     }
 
 
