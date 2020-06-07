@@ -96,7 +96,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public void setAdmin(Administrador admin) {
         this.admin = admin;
     }
-
+    
    
     
    
