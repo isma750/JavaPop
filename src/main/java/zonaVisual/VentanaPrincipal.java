@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import zonaNegocio.*;
 
 /**
@@ -110,6 +111,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         usuario = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Administrador = new javax.swing.JMenu();
         MostrarProductos = new javax.swing.JMenuItem();
@@ -125,6 +127,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         usuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         usuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 421, Short.MAX_VALUE)
+        );
 
         Administrador.setText("Administrador");
 
@@ -187,13 +200,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(613, Short.MAX_VALUE)
                 .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(417, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(783, 506));
@@ -227,7 +241,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_VenderActionPerformed
 
     private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarActionPerformed
-        // TODO add your handling code here:
+        jPanel1.removeAll();
+        jPanel1.add(new BusquedaProducto());
+        jPanel1.updateUI();
+        
     }//GEN-LAST:event_ComprarActionPerformed
 
     private void CuentaProfesionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CuentaProfesionalActionPerformed
@@ -279,6 +296,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem MostrarVentas;
     private javax.swing.JMenuItem Vender;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 }
