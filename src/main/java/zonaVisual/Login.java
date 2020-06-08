@@ -173,7 +173,9 @@ public class Login extends javax.swing.JFrame {
             ((VentanaPrincipal) getVentanaprincipal()).setUsuarioConectado(usuarioconectado);
             ((VentanaPrincipal) getVentanaprincipal()).getUsuario().setText(Correo.getText());
             ((VentanaPrincipal) getVentanaprincipal()).getUsuario().updateUI();
+            ((VentanaPrincipal) getVentanaprincipal()).actualizarMenus();
             getVentanaprincipal().setVisible(true);
+            
             this.dispose();
         }
         else {

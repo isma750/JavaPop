@@ -402,7 +402,7 @@ public class registro extends javax.swing.JFrame {
                ((VentanaPrincipal) getVentanaprincipal()).setUsuarioConectado(cliente);
                ((VentanaPrincipal) getVentanaprincipal()).getUsuario().setText(campoCorreo.getText());
                ((VentanaPrincipal) getVentanaprincipal()).getUsuario().updateUI();
-
+               ((VentanaPrincipal) getVentanaprincipal()).actualizarMenus();
             
                getVentanaprincipal().setVisible(true);
                this.dispose();

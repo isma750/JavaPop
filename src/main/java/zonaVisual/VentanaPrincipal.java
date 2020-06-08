@@ -50,8 +50,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
            this.admin = new Administrador();
            this.javapop.getUsuarios().add(admin); 
         }
-       
-        
         JFrame login = new Login(this);
         
         
@@ -96,7 +94,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public void setAdmin(Administrador admin) {
         this.admin = admin;
     }
-    
+    public void actualizarMenus(){
+    if (!getUsuarioConectado().equals(admin)){
+            MenuAdministrador.setVisible(false);
+            MenuCliente.setVisible(true);
+        } else {
+            MenuCliente.setVisible(false);
+            MenuAdministrador.setVisible(true);
+        }
+        if (!getUsuarioConectado().getClass().getSimpleName().equals("ClienteProfesional")){
+            CuentaProfesional.setVisible(false);
+        } else {
+            CuentaProfesional.setVisible(true);
+        }
+    }
    
     
    
@@ -113,11 +124,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         usuario = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        Administrador = new javax.swing.JMenu();
+        MenuAdministrador = new javax.swing.JMenu();
         MostrarProductos = new javax.swing.JMenuItem();
         MostrarUsuarios = new javax.swing.JMenuItem();
         MostrarVentas = new javax.swing.JMenuItem();
-        Cliente = new javax.swing.JMenu();
+        MenuCliente = new javax.swing.JMenu();
         Vender = new javax.swing.JMenuItem();
         Comprar = new javax.swing.JMenuItem();
         CuentaProfesional = new javax.swing.JMenuItem();
@@ -139,10 +150,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGap(0, 421, Short.MAX_VALUE)
         );
 
-        Administrador.setText("Administrador");
+        MenuAdministrador.setText("Administrador");
 
         MostrarProductos.setText("Mostrar productos");
-        Administrador.add(MostrarProductos);
+        MenuAdministrador.add(MostrarProductos);
 
         MostrarUsuarios.setText("Mostrar usuarios");
         MostrarUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -150,7 +161,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 MostrarUsuariosActionPerformed(evt);
             }
         });
-        Administrador.add(MostrarUsuarios);
+        MenuAdministrador.add(MostrarUsuarios);
 
         MostrarVentas.setText("Mostrar ventas ");
         MostrarVentas.addActionListener(new java.awt.event.ActionListener() {
@@ -158,11 +169,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 MostrarVentasActionPerformed(evt);
             }
         });
-        Administrador.add(MostrarVentas);
+        MenuAdministrador.add(MostrarVentas);
 
-        jMenuBar1.add(Administrador);
+        jMenuBar1.add(MenuAdministrador);
 
-        Cliente.setText("Cliente");
+        MenuCliente.setText("Cliente");
 
         Vender.setText("Vender");
         Vender.addActionListener(new java.awt.event.ActionListener() {
@@ -170,7 +181,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 VenderActionPerformed(evt);
             }
         });
-        Cliente.add(Vender);
+        MenuCliente.add(Vender);
 
         Comprar.setText("Comprar");
         Comprar.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +189,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 ComprarActionPerformed(evt);
             }
         });
-        Cliente.add(Comprar);
+        MenuCliente.add(Comprar);
 
         CuentaProfesional.setText("Cuenta Profesional");
         CuentaProfesional.addActionListener(new java.awt.event.ActionListener() {
@@ -186,9 +197,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 CuentaProfesionalActionPerformed(evt);
             }
         });
-        Cliente.add(CuentaProfesional);
+        MenuCliente.add(CuentaProfesional);
 
-        jMenuBar1.add(Cliente);
+        jMenuBar1.add(MenuCliente);
 
         setJMenuBar(jMenuBar1);
 
@@ -284,13 +295,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 new VentanaPrincipal();
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu Administrador;
-    private javax.swing.JMenu Cliente;
     private javax.swing.JMenuItem Comprar;
     private javax.swing.JMenuItem CuentaProfesional;
+    private javax.swing.JMenu MenuAdministrador;
+    private javax.swing.JMenu MenuCliente;
     private javax.swing.JMenuItem MostrarProductos;
     private javax.swing.JMenuItem MostrarUsuarios;
     private javax.swing.JMenuItem MostrarVentas;

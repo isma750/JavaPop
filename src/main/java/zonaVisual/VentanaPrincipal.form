@@ -4,7 +4,7 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="Administrador">
+        <Menu class="javax.swing.JMenu" name="MenuAdministrador">
           <Properties>
             <Property name="text" type="java.lang.String" value="Administrador"/>
           </Properties>
@@ -32,7 +32,7 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="Cliente">
+        <Menu class="javax.swing.JMenu" name="MenuCliente">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cliente"/>
           </Properties>
