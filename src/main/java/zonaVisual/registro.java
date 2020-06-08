@@ -387,6 +387,7 @@ public class registro extends javax.swing.JFrame {
                                                                                  campoTelefono.getText(),
                                                                                  campoWeb.getText());
                  ((VentanaPrincipal) getVentanaprincipal()).añadirUsuario(clienteProfesional); 
+                 ((VentanaPrincipal) getVentanaprincipal()).setUsuarioConectado(clienteProfesional);
                 }
                 else{
                    cliente = new Cliente(campoNombre.getText(),
@@ -398,8 +399,9 @@ public class registro extends javax.swing.JFrame {
                                           campoTarjeta.getText());
                     
                  ((VentanaPrincipal) getVentanaprincipal()).añadirUsuario(cliente);
+                 ((VentanaPrincipal) getVentanaprincipal()).setUsuarioConectado(cliente);
                 }
-               ((VentanaPrincipal) getVentanaprincipal()).setUsuarioConectado(cliente);
+               
                ((VentanaPrincipal) getVentanaprincipal()).getUsuario().setText(campoCorreo.getText());
                ((VentanaPrincipal) getVentanaprincipal()).getUsuario().updateUI();
                ((VentanaPrincipal) getVentanaprincipal()).actualizarMenus();
