@@ -18,6 +18,7 @@ public class UtilProductos {
     public static void setProductos(ArrayList<Producto> p) {
         productos = p;
     }
+    
 
 
     /**
