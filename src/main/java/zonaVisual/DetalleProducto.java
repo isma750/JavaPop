@@ -329,6 +329,8 @@ public class DetalleProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_checkUrgenteActionPerformed
 
     private void buscarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarImagenActionPerformed
+        //INCOMPLETO
+        
         JFileChooser fc = new JFileChooser();
         
         FileNameExtensionFilter filtro = new FileNameExtensionFilter(
@@ -351,7 +353,7 @@ public class DetalleProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarImagenActionPerformed
 
     private void botonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguienteActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_botonSiguienteActionPerformed
 
     /**
@@ -449,8 +451,7 @@ public class DetalleProducto extends javax.swing.JFrame {
         this.remove(botonAnterior);
         this.remove(botonSiguiente);
         this.remove(botonModificar);
-        this.remove(botonEliminar);
-        
+        this.remove(botonEliminar);        
     }
      public void setModoComprador(){ 
         this.remove(botonModificar);
@@ -460,6 +461,16 @@ public class DetalleProducto extends javax.swing.JFrame {
      public void setModoVendedor(){ 
         this.remove(botonAñadir);
     }
+     public void MostrarProducto(Producto producto){
+         campoTitulo.setText(producto.getTitulo());
+         campoCiudad.setText(producto.getCiudad());
+         campoDescripcion.setText(producto.getDescripcion());
+         campoPostal.setText(Integer.toString(producto.getCodigoPostal()));
+         campoPrecio.setText(Double.toString(producto.getPrecio()));
+         comboCategoria.setSelectedItem(indiceCategoria(producto.getCategoria()));
+         comboEstado.setSelectedIndex(indiceEstado(producto.getEstado()));
+     
+     }
      public Producto.categoria convertirCategoria(String categoriaString){ 
          switch (categoriaString){
              case "Moda y Accesorios":
@@ -492,7 +503,38 @@ public class DetalleProducto extends javax.swing.JFrame {
          }
          return Producto.estado.REGULAR; //...
       }
-     
+    public int indiceCategoria(Producto.categoria Categoria){ 
+         switch (Categoria){
+             case MODAYACCESORIOS:
+                 return 0;   
+             case TVAUDIOYFOTO:
+                 return 1;
+             case MOVILESYTELFONIA:
+                 return 2;
+             case INFORMATICAYELECTRONICA:
+                 return 3;
+             case CONSOLASYVIDEOJUEGOS:
+                 return 4;
+             case DEPORTEYOCIO:    
+                 return 5;
+         }
+         return 5; //...
+      }
+     public int indiceEstado(Producto.estado Estado){ 
+         switch (Estado){
+             case NUEVO:
+                 return 0;   
+             case COMONUEVO:
+                 return 1;
+             case BUENO:
+                 return 2;
+             case ACEPTABLE:
+                 return 3;
+             case REGULAR:
+                 return 4;
+         }
+         return 4; //...
+      } 
 
 
 
