@@ -13,11 +13,21 @@ import zonaNegocio.*;
  * @author ismae
  */
 public class BusquedaProducto extends javax.swing.JPanel {
-    private UtilProductos productos;
+    private Producto productos;
+
+    
+    
+    public Producto getProductos() {
+        return productos;
+    }
+
     /**
      * Creates new form BusquedaProducto
      */
-    
+    public void setProductos(Producto productos) {
+        this.productos = productos;
+    }
+
     public BusquedaProducto() {
         initComponents();
     }
