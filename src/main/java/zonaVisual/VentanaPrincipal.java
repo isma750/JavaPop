@@ -236,10 +236,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MostrarVentasActionPerformed
 
     private void VenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VenderActionPerformed
-         AñadirProducto vender = new AñadirProducto();
+         DetalleProducto vender = new DetalleProducto();
          vender.setVentanaprincipal(this);
          vender.setVisible(true);
-        
+         vender.setModoNuevoProducto();
     }//GEN-LAST:event_VenderActionPerformed
 
     private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarActionPerformed
