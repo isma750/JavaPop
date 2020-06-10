@@ -269,6 +269,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         rgf.setVisible(true);
         rgf.mostrarDatosCliente((Cliente)(this.getUsuarioConectado()));
         this.dispose();  
+        
+        
     }//GEN-LAST:event_MiCuentaActionPerformed
 
     /**
