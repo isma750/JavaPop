@@ -267,12 +267,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         registro rgf = new registro();
         rgf.setVentanaprincipal(this);
         rgf.setVisible(true);
-        this.dispose();
-        
-        if (!getUsuarioConectado().getClass().getSimpleName().equals("ClienteProfesional")){
-         
-            
-        }
+        rgf.mostrarDatosCliente((Cliente)(this.getUsuarioConectado()));
+        this.dispose();  
     }//GEN-LAST:event_MiCuentaActionPerformed
 
     /**
