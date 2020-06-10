@@ -24,16 +24,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
-    private JFrame añadirproducto;
     
-    public JFrame getAñadirproducto(){
-        return añadirproducto;
+    private JFrame registro;
+
+    public JFrame getRegistro() {
+        return registro;
+    }
+
+    public void setRegistro(JFrame registro) {
+        this.registro = registro;
     }
     
-    public void setAñadirproducto(JFrame añadirproducto){
-        this.añadirproducto = añadirproducto;
-        
-    }
+    
     
     
     
@@ -45,10 +47,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setTitle("JAVAPOP");
         this.javapop = new JavaPop();
+        Cliente cliente1 = new Cliente("Juan","03228447B",12345,"Guadlajara","juan@hotmail.com","juan","1234567899876541");
+        this.javapop.getUsuarios().add(cliente1);
         // Traer informacion disco duro (Serializacion)
         if (javapop.getUsuarios().isEmpty()){
            this.admin = new Administrador();
-           this.javapop.getUsuarios().add(admin); 
+           this.javapop.getUsuarios().add(admin);
+           
         }
         JFrame login = new Login(this);
         
@@ -102,11 +107,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             MenuCliente.setVisible(false);
             MenuAdministrador.setVisible(true);
         }
-        if (!getUsuarioConectado().getClass().getSimpleName().equals("ClienteProfesional")){
-            CuentaProfesional.setVisible(false);
+        /*if (!getUsuarioConectado().getClass().getSimpleName().equals("ClienteProfesional")){
+            MiCuenta.setVisible(false);
         } else {
-            CuentaProfesional.setVisible(true);
-        }
+            MiCuenta.setVisible(true);
+        }*/
     }
    
     
@@ -129,9 +134,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         MostrarUsuarios = new javax.swing.JMenuItem();
         MostrarVentas = new javax.swing.JMenuItem();
         MenuCliente = new javax.swing.JMenu();
+        MisProductos = new javax.swing.JMenu();
         Vender = new javax.swing.JMenuItem();
+        ConsultarProductos = new javax.swing.JMenuItem();
         Comprar = new javax.swing.JMenuItem();
-        CuentaProfesional = new javax.swing.JMenuItem();
+        MiCuenta = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -166,15 +173,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         MenuCliente.setText("Cliente");
 
-        Vender.setText("Vender");
+        MisProductos.setText("Mis Productos");
+
+        Vender.setText("Vender Producto");
         Vender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VenderActionPerformed(evt);
             }
         });
-        MenuCliente.add(Vender);
+        MisProductos.add(Vender);
 
-        Comprar.setText("Comprar");
+        ConsultarProductos.setText("Consultar Productos");
+        MisProductos.add(ConsultarProductos);
+
+        MenuCliente.add(MisProductos);
+
+        Comprar.setText("Buscar Productos");
         Comprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComprarActionPerformed(evt);
@@ -182,13 +196,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         MenuCliente.add(Comprar);
 
-        CuentaProfesional.setText("Cuenta Profesional");
-        CuentaProfesional.addActionListener(new java.awt.event.ActionListener() {
+        MiCuenta.setText("Mi cuenta");
+        MiCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CuentaProfesionalActionPerformed(evt);
+                MiCuentaActionPerformed(evt);
             }
         });
-        MenuCliente.add(CuentaProfesional);
+        MenuCliente.add(MiCuenta);
 
         jMenuBar1.add(MenuCliente);
 
@@ -249,9 +263,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_ComprarActionPerformed
 
-    private void CuentaProfesionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CuentaProfesionalActionPerformed
-        // TODO add your handling code here
-    }//GEN-LAST:event_CuentaProfesionalActionPerformed
+    private void MiCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiCuentaActionPerformed
+        registro rgf = new registro();
+        rgf.setVentanaprincipal(this);
+        rgf.setVisible(true);
+        this.dispose();
+        
+        if (!getUsuarioConectado().getClass().getSimpleName().equals("ClienteProfesional")){
+         
+            
+        }
+    }//GEN-LAST:event_MiCuentaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,9 +313,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Comprar;
-    private javax.swing.JMenuItem CuentaProfesional;
+    private javax.swing.JMenuItem ConsultarProductos;
     private javax.swing.JMenu MenuAdministrador;
     private javax.swing.JMenu MenuCliente;
+    private javax.swing.JMenuItem MiCuenta;
+    private javax.swing.JMenu MisProductos;
     private javax.swing.JMenuItem MostrarProductos;
     private javax.swing.JMenuItem MostrarUsuarios;
     private javax.swing.JMenuItem MostrarVentas;

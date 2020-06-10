@@ -9,13 +9,13 @@ import java.awt.Toolkit;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import zonaNegocio.*;
-/**
- *
- * @author Carlos
- */
+
 public class registro extends javax.swing.JFrame {
 
      private JFrame ventanaprincipal;
@@ -314,6 +314,110 @@ public class registro extends javax.swing.JFrame {
         catch (Exception e){
            return (null); 
         }
+    }
+
+    public JTextField getCampoCiudad() {
+        return campoCiudad;
+    }
+
+    public void setCampoCiudad(JTextField campoCiudad) {
+        this.campoCiudad = campoCiudad;
+    }
+
+    public JPasswordField getCampoClave() {
+        return campoClave;
+    }
+
+    public void setCampoClave(JPasswordField campoClave) {
+        this.campoClave = campoClave;
+    }
+
+    public JTextField getCampoCorreo() {
+        return campoCorreo;
+    }
+
+    public void setCampoCorreo(JTextField campoCorreo) {
+        this.campoCorreo = campoCorreo;
+    }
+
+    public JTextField getCampoDNI() {
+        return campoDNI;
+    }
+
+    public void setCampoDNI(JTextField campoDNI) {
+        this.campoDNI = campoDNI;
+    }
+
+    public JTextField getCampoDescripcion() {
+        return campoDescripcion;
+    }
+
+    public void setCampoDescripcion(JTextField campoDescripcion) {
+        this.campoDescripcion = campoDescripcion;
+    }
+
+    public JTextField getCampoHorario() {
+        return campoHorario;
+    }
+
+    public void setCampoHorario(JTextField campoHorario) {
+        this.campoHorario = campoHorario;
+    }
+
+    public JTextField getCampoNombre() {
+        return campoNombre;
+    }
+
+    public void setCampoNombre(JTextField campoNombre) {
+        this.campoNombre = campoNombre;
+    }
+
+    public JTextField getCampoPostal() {
+        return campoPostal;
+    }
+
+    public void setCampoPostal(JTextField campoPostal) {
+        this.campoPostal = campoPostal;
+    }
+
+    public JPasswordField getCampoRepiteContraseña() {
+        return campoRepiteContraseña;
+    }
+
+    public void setCampoRepiteContraseña(JPasswordField campoRepiteContraseña) {
+        this.campoRepiteContraseña = campoRepiteContraseña;
+    }
+
+    public JTextField getCampoTarjeta() {
+        return campoTarjeta;
+    }
+
+    public void setCampoTarjeta(JTextField campoTarjeta) {
+        this.campoTarjeta = campoTarjeta;
+    }
+
+    public JTextField getCampoTelefono() {
+        return campoTelefono;
+    }
+
+    public void setCampoTelefono(JTextField campoTelefono) {
+        this.campoTelefono = campoTelefono;
+    }
+
+    public JTextField getCampoWeb() {
+        return campoWeb;
+    }
+
+    public void setCampoWeb(JTextField campoWeb) {
+        this.campoWeb = campoWeb;
+    }
+
+    public JCheckBox getCheckTienda() {
+        return checkTienda;
+    }
+
+    public void setCheckTienda(JCheckBox checkTienda) {
+        this.checkTienda = checkTienda;
     }
     
     private void checkTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTiendaActionPerformed
