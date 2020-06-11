@@ -101,13 +101,14 @@ public class BusquedaProducto extends javax.swing.JPanel {
                                         productoValido = false;
                                     }
                                 }
-                                if(modeloLista.getSize() > 0){
+                                //Mirar (da error)
+                               /* if(modeloLista.getSize() > 0){
                                     for (int i=0 ; i< modeloLista.getSize()); i++){
                                         palabra = modeloLista.getName(i).toString();
                                         if (cadaProducto.getDescripcion().toLowerCase().contains(palabra.toString().toLowerCase())){
                                             productoValido = true;
                                             break;
-                                        }
+                                        }*/
                                     
                                 }
                                 }
@@ -124,6 +125,7 @@ public class BusquedaProducto extends javax.swing.JPanel {
         generarTabla();
         
     }
+        
 
     /**
      * This method is called from within the constructor to initialize the form.
