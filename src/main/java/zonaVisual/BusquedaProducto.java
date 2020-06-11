@@ -102,16 +102,15 @@ public class BusquedaProducto extends javax.swing.JPanel {
                                     }
                                 }
                                 //Mirar (da error)
-                                if(modeloLista.getSize() > 0){
+                                /*if(modeloLista.getSize() > 0){
                                     for (int i=0 ; i< modeloLista.getSize()); i++){
                                         palabra = modeloLista.getName(i).toString();
                                         if (cadaProducto.getDescripcion().toLowerCase().contains(palabra.toString().toLowerCase())){
                                             productoValido = true;
                                             break;
                                         }
-                                    
-                                }
-                                }
+                                    }  
+                                }*/
                             }
                             if (productoValido){
                                 productosEncontrados.add(cadaProducto);
