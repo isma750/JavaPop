@@ -248,7 +248,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MostrarUsuariosActionPerformed
 
     private void MostrarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarVentasActionPerformed
-        // TODO add your handling code here:
+        jPanel1.removeAll();
+        jPanel1.add(new Mostrarventas());
+        jPanel1.updateUI();
     }//GEN-LAST:event_MostrarVentasActionPerformed
 
     private void VenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VenderActionPerformed
