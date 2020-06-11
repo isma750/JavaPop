@@ -102,13 +102,13 @@ public class BusquedaProducto extends javax.swing.JPanel {
                                     }
                                 }
                                 //Mirar (da error)
-                               /* if(modeloLista.getSize() > 0){
+                                if(modeloLista.getSize() > 0){
                                     for (int i=0 ; i< modeloLista.getSize()); i++){
                                         palabra = modeloLista.getName(i).toString();
                                         if (cadaProducto.getDescripcion().toLowerCase().contains(palabra.toString().toLowerCase())){
                                             productoValido = true;
                                             break;
-                                        }*/
+                                        }
                                     
                                 }
                                 }
@@ -125,7 +125,6 @@ public class BusquedaProducto extends javax.swing.JPanel {
         generarTabla();
         
     }
-        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -352,9 +351,8 @@ public class BusquedaProducto extends javax.swing.JPanel {
              case "AceptadoVenta":
                  return Producto.situacion.ACEPTADOVENTA;
          }
-         public static categoria dameCategoriaProducto(int ordinal){
-             
-         }
+        return null;
+         
      } 
 }
 
