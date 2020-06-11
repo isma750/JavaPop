@@ -7,13 +7,19 @@ package zonaVisual;
 
 
 
+import java.awt.Image;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.Icon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
 import zonaNegocio.*;
 
 /**
@@ -27,6 +33,7 @@ public class DetalleProducto extends javax.swing.JFrame {
      */
      private JFrame ventanaprincipal;
      private Producto productoMostrado;
+     private ArrayList<Producto> productosAMostrar;
 
     public  JFrame getVentanaprincipal() {
         
@@ -81,12 +88,12 @@ public class DetalleProducto extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         buscarImagen = new javax.swing.JButton();
-        panelImagen = new javax.swing.JPanel();
         botonModificar = new javax.swing.JButton();
         botonEliminar = new javax.swing.JButton();
         botonAnterior = new javax.swing.JButton();
         botonSiguiente = new javax.swing.JButton();
         botonGuardar = new javax.swing.JButton();
+        Imagen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -145,7 +152,7 @@ public class DetalleProducto extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("Rellene con la informacion del producto");
 
-        jLabel10.setText("Añadir Imagen");
+        jLabel10.setText("Imagen");
 
         buscarImagen.setText("Buscar");
         buscarImagen.addActionListener(new java.awt.event.ActionListener() {
@@ -153,17 +160,6 @@ public class DetalleProducto extends javax.swing.JFrame {
                 buscarImagenActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout panelImagenLayout = new javax.swing.GroupLayout(panelImagen);
-        panelImagen.setLayout(panelImagenLayout);
-        panelImagenLayout.setHorizontalGroup(
-            panelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 239, Short.MAX_VALUE)
-        );
-        panelImagenLayout.setVerticalGroup(
-            panelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 258, Short.MAX_VALUE)
-        );
 
         botonModificar.setText("Modificar Producto");
         botonModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -194,6 +190,10 @@ public class DetalleProducto extends javax.swing.JFrame {
                 botonGuardarActionPerformed(evt);
             }
         });
+
+        Imagen.setToolTipText("");
+        Imagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Imagen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -236,22 +236,22 @@ public class DetalleProducto extends javax.swing.JFrame {
                                 .addGap(26, 26, 26)
                                 .addComponent(checkUrgente, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                        .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botonSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(117, 117, 117)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buscarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(botonSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(55, 55, 55)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buscarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37)))))
                 .addGap(18, 18, 18))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(27, 27, 27)
@@ -300,17 +300,17 @@ public class DetalleProducto extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campoPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 40, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(buscarImagen))
-                        .addGap(18, 18, 18)
-                        .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonGuardar)))
-                .addGap(18, 18, 18)
+                        .addGap(12, 12, 12)
+                        .addComponent(Imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botonGuardar)
+                        .addGap(12, 12, 12)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -344,11 +344,16 @@ public class DetalleProducto extends javax.swing.JFrame {
              Cliente cliente = (Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado();
              if (checkUrgente.isSelected()){                
                  Producto producto = new Producto(campoTitulo.getText(),campoDescripcion.getText(),convertirCategoria(comboCategoria.getSelectedItem().toString()),Integer.parseInt(campoPostal.getText()),campoCiudad.getText(),true,cliente,convertirEstado(comboEstado.getSelectedItem().toString()),Double.parseDouble(campoPrecio.getText()),LocalDateTime.now(),Producto.situacion.PUBLICADO);
+                 Icon imagen = Imagen.getIcon();
+                 producto.setFotografia(imagen);
                  ((VentanaPrincipal) getVentanaprincipal()).getJavapop().anadirProducto(producto);
+                 ((Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()).añadirProducto(producto);
              }else{
                  Producto producto = new Producto(campoTitulo.getText(),campoDescripcion.getText(),convertirCategoria(comboCategoria.getSelectedItem().toString()),Integer.parseInt(campoPostal.getText()),campoCiudad.getText(),false,cliente,convertirEstado(comboEstado.getSelectedItem().toString()),Double.parseDouble(campoPrecio.getText()),LocalDateTime.now(),Producto.situacion.PUBLICADO);
-
+                 Icon imagen = Imagen.getIcon();
+                 producto.setFotografia(imagen);
                  ((VentanaPrincipal) getVentanaprincipal()).getJavapop().anadirProducto(producto);
+                 ((Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()).añadirProducto(producto);
              }
              JOptionPane.showMessageDialog(this,"Se ha publicado el producto correctamente", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
              this.dispose();
@@ -379,13 +384,14 @@ public class DetalleProducto extends javax.swing.JFrame {
         if(pp==JFileChooser.APPROVE_OPTION){
             pp++;
             ImageIcon imagen = new ImageIcon(fc.getSelectedFile().getAbsolutePath());
-            panelImagen.add(new JLabel(imagen));
+            ImageIcon imgRedimensionada = new ImageIcon(imagen.getImage().getScaledInstance(Imagen.getWidth(), Imagen.getHeight(), 1)); 
+            Imagen.setIcon(imgRedimensionada);                  
         }
         else {
         
         }
-        ImageIcon imagen = new ImageIcon(fc.getSelectedFile().getAbsolutePath());
-            panelImagen.add(new JLabel(imagen));
+        
+            
     }//GEN-LAST:event_buscarImagenActionPerformed
 
     private void botonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguienteActionPerformed
@@ -393,17 +399,53 @@ public class DetalleProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_botonSiguienteActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-        //poner todos los campos como editables
-        //hacer visible el boton de guardar
-        //hacer sets a todos los atributos del producto que estamos modificando
+        campoTitulo.setEditable(true);
+        campoCiudad.setEditable(true);
+        campoPostal.setEditable(true);
+        campoPrecio.setEditable(true);
+        campoDescripcion.setEditable(true);
+        comboEstado.setEditable(true);
+        comboCategoria.setEditable(true);
+        checkUrgente.setEnabled(true);    
+        botonGuardar.setVisible(true);
+        
     }//GEN-LAST:event_botonModificarActionPerformed
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-        // TODO add your handling code here:
+        ((Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()).quitarProducto(productoMostrado);
+        try {
+             verificarCampos();
+             verificarPostal();
+             verificarPrecio();
+             Cliente cliente = (Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado();
+             if (checkUrgente.isSelected()){                
+                 Producto producto = new Producto(campoTitulo.getText(),campoDescripcion.getText(),convertirCategoria(comboCategoria.getSelectedItem().toString()),Integer.parseInt(campoPostal.getText()),campoCiudad.getText(),true,cliente,convertirEstado(comboEstado.getSelectedItem().toString()),Double.parseDouble(campoPrecio.getText()),LocalDateTime.now(),Producto.situacion.PUBLICADO);
+                 Icon imagen = Imagen.getIcon();
+                 producto.setFotografia(imagen);
+                 ((VentanaPrincipal) getVentanaprincipal()).getJavapop().anadirProducto(producto);
+                 ((Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()).añadirProducto(producto);
+             }else{
+                 Producto producto = new Producto(campoTitulo.getText(),campoDescripcion.getText(),convertirCategoria(comboCategoria.getSelectedItem().toString()),Integer.parseInt(campoPostal.getText()),campoCiudad.getText(),false,cliente,convertirEstado(comboEstado.getSelectedItem().toString()),Double.parseDouble(campoPrecio.getText()),LocalDateTime.now(),Producto.situacion.PUBLICADO);
+                 Icon imagen = Imagen.getIcon();
+                 producto.setFotografia(imagen);
+                 ((VentanaPrincipal) getVentanaprincipal()).getJavapop().anadirProducto(producto);
+                 ((Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()).añadirProducto(producto);
+             }
+             JOptionPane.showMessageDialog(this,"Se ha modificado el producto correctamente", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
+             this.dispose();
+             
+         } catch (camposNoRellenados | ubicacionIncorrecta | precioIncorrecto | JavaPop.ProductoExiste e) {
+             JOptionPane.showMessageDialog(this, "Error: " + e.toString(), "Mensaje", JOptionPane.ERROR_MESSAGE);
+         }
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
         ((Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()).quitarProducto(productoMostrado);
+         try {
+             ((VentanaPrincipal) getVentanaprincipal()).getJavapop().eliminarProducto(productoMostrado);
+         } catch (JavaPop.ProductoNoExiste ex) {
+             
+         }
     }//GEN-LAST:event_botonEliminarActionPerformed
 
     /**
@@ -443,6 +485,7 @@ public class DetalleProducto extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Imagen;
     private javax.swing.JButton botonAnterior;
     private javax.swing.JButton botonAñadir;
     private javax.swing.JButton botonEliminar;
@@ -470,7 +513,6 @@ public class DetalleProducto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel panelImagen;
     // End of variables declaration//GEN-END:variables
     public void verificarCampos() throws camposNoRellenados{
         if (campoCiudad.getText().length()==0){throw new camposNoRellenados();}
@@ -498,21 +540,49 @@ public class DetalleProducto extends javax.swing.JFrame {
             throw new precioIncorrecto();
         }
     }
-     public void setModoNuevoProducto(){ 
+     public void setModoNuevoProducto(){ //Para crear un nuevo producto
         this.remove(botonAnterior);
         this.remove(botonSiguiente);
         this.remove(botonModificar);
-        this.remove(botonEliminar);        
+        this.remove(botonEliminar);
+        this.remove(botonGuardar);
+        campoTitulo.setEditable(true);
+        campoCiudad.setEditable(true);
+        campoPostal.setEditable(true);
+        campoPrecio.setEditable(true);
+        campoDescripcion.setEditable(true);
+        comboEstado.setEditable(true);
+        comboCategoria.setEditable(true);
+        checkUrgente.setEnabled(true);        
     }
-     public void setModoComprador(){ 
+     public void setModoComprador(){ //Para comprar un producto
         this.remove(botonModificar);
         this.remove(botonEliminar);
         this.remove(botonAñadir);
-        //TODO poner todos los campos como no editables
+        this.remove(botonGuardar);
+        this.remove(buscarImagen);
+        campoTitulo.setEditable(false);
+        campoCiudad.setEditable(false);
+        campoPostal.setEditable(false);
+        campoPrecio.setEditable(false);
+        campoDescripcion.setEditable(false);
+        comboEstado.setEditable(false);
+        comboCategoria.setEditable(false);
+        checkUrgente.setEnabled(false);
+       
     }
-     public void setModoVendedor(){ 
+     public void setModoVendedor(){ //Para modificar un producto
         this.remove(botonAñadir);
-        //TODO poner los campos como no editables
+        botonGuardar.setVisible(false);
+        campoTitulo.setEditable(false);
+        campoCiudad.setEditable(false);
+        campoPostal.setEditable(false);
+        campoPrecio.setEditable(false);
+        campoDescripcion.setEditable(false);
+        comboEstado.setEditable(false);
+        comboCategoria.setEditable(false);
+        checkUrgente.setEnabled(false);
+        buscarImagen.setVisible(false);
     }
      public void MostrarProducto(Producto producto){
          setProductoMostrado(producto);
@@ -524,6 +594,7 @@ public class DetalleProducto extends javax.swing.JFrame {
          comboCategoria.setSelectedItem(indiceCategoria(producto.getCategoria()));
          comboEstado.setSelectedIndex(indiceEstado(producto.getEstado()));
          checkUrgente.setSelected(producto.isUrgente());
+         Imagen.setIcon(producto.getFotografia());
      
      }
      public Producto.categoria convertirCategoria(String categoriaString){ 
