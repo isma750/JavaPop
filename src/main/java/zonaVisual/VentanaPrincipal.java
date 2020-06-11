@@ -47,13 +47,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setTitle("JAVAPOP");
         this.javapop = new JavaPop();
-        Cliente cliente1 = new Cliente("Juan","03228447B",12345,"Guadlajara","juan@hotmail.com","juan","1234567899876541");
-        this.javapop.getUsuarios().add(cliente1);
+        
+        
+        
         // Traer informacion disco duro (Serializacion)
         if (javapop.getUsuarios().isEmpty()){
            this.admin = new Administrador();
            this.javapop.getUsuarios().add(admin);
-           
+           Cliente cliente1 = new Cliente("Juan","03228447B",12345,"Guadlajara","juan@hotmail.com","juan","1234567899876541");
+           this.javapop.getUsuarios().add(cliente1);
         }
         JFrame login = new Login(this);
         
