@@ -5,6 +5,7 @@
  */
 package zonaVisual;
 
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import zonaNegocio.*;
@@ -65,6 +66,62 @@ public class BusquedaProducto extends javax.swing.JPanel {
         this.precioHasta.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
         this.palabraNueva.setText("");
         this.modeloLista.setText("");
+        
+    }
+    public void buscarProductos(){
+        Cliente cliente = null;
+        boolean clienteValido = false;
+        boolean productoValido = false;
+        String palabra = "";
+        ArrayList<Producto> productosEncontrados = new ArrayList<Producto>();
+        ArrayList<Producto> productosOrdenados = new ArrayList<Producto>();
+        
+        for (Usuario cadaUsuario: ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getUsuarios()){
+            if (cadaUsuario instanceof Cliente){
+                cliente = (Cliente) cadaUsuario;
+                clienteValido = true;
+                //Validar que si el tipo de transaccion es una venta y el correo del usuarioConectado es distinto al correo del propiertario el clienteValido = false
+                //Si es una compra y coincide los correo clientevalido = false, porque un cliente no se puede comprar asi mismo
+                if(clienteValido){
+                    if(cliente.getProductos().size()>0){
+                        for (Producto cadaProducto : cliente.getProductos()){
+                            productoValido = true;
+                            //si el tipo de transaccion es una compra
+                            if(!(cadaProducto.getSituacion().equals(Producto.situacion.PUBLICADO))){
+                                productoValido = false;
+                            }
+                            if (productoValido){
+                                if (seleccionCategoria.getSelectedIndex() > 0){
+                                    if (!(cadaProducto.getCategoria().equals(seleccionCategoria.getSelectedIndex()- 1))){
+                                        productoValido = false;
+                                    }  
+                                }
+                                if (seleccionEstado.getSelectedIndex() > 0){
+                                    if (!(cadaProducto.getEstado().equals(seleccionEstado.getSelectedIndex()- 1))){
+                                        productoValido = false;
+                                    }
+                                }
+                                if(modeloLista.getSize() > 0){
+                                    for (int i=0 ; i< modeloLista.getSize()); i++){
+                                        palabra = modeloLista.getName(i).toString();
+                                        if (cadaProducto.getDescripcion().toLowerCase().contains(palabra.toString().toLowerCase())){
+                                            productoValido = true;
+                                            break;
+                                        }
+                                    
+                                }
+                                }
+                            }
+                            if (productoValido){
+                                productosEncontrados.add(cadaProducto);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        //Si la transaccion es una compra hayq ue usar el comparador de productos por Urgencia/distancia
+        generarTabla();
         
     }
 
@@ -219,13 +276,7 @@ public class BusquedaProducto extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try{
-            //ImageIcon imaico = new ImageIcon("contents/java.jpg" + seleccionImagen.getSelectedItem().toString());
-           // ImageIcon imgRedimensionada = new ImageIcon(imaico.getImage().getScaledInstance(WIDTH, HEIGHT, WIDTH))
-        }
-        catch (Exception e){
-            
-        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void modeloListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modeloListaActionPerformed
@@ -284,5 +335,24 @@ public class BusquedaProducto extends javax.swing.JPanel {
          }
          return Producto.estado.REGULAR; //...
       }
+     public Producto.situacion situacion(String situacionProducto){
+         switch (situacionProducto){
+             case "Publicado":
+                 return Producto.situacion.PUBLICADO;
+             case "RetiradoVendedor":
+                 return Producto.situacion.RETIRADOVENTA;
+             case "RetiradoAdministrador":
+                 return Producto.situacion.RETIRADOADMINISTRADOR;
+             case "Vendido":
+                 return Producto.situacion.VENDIDO;
+             case "Solicitado":
+                 return Producto.situacion.SOLICITADO;
+             case "AceptadoVenta":
+                 return Producto.situacion.ACEPTADOVENTA;
+         }
+         public static categoria dameCategoriaProducto(int ordinal){
+             
+         }
+     } 
 }
 
