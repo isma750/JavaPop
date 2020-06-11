@@ -623,6 +623,7 @@ public class registro extends javax.swing.JFrame {
     
     }
     public void mostrarDatosCliente(Cliente cliente){
+        botonRegistro.setVisible(false);
         campoCiudad.setEnabled(false);
         campoClave.setEnabled(false);
         campoRepiteContraseña.setEnabled(false);
