@@ -46,10 +46,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public VentanaPrincipal() {
         initComponents();
         this.setTitle("JAVAPOP");
-        this.javapop = new JavaPop();
-        
-        
-        
+        this.javapop = new JavaPop();              
         // Traer informacion disco duro (Serializacion)
         if (javapop.getUsuarios().isEmpty()){
            this.admin = new Administrador();
