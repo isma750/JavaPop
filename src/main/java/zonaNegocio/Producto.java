@@ -2,6 +2,7 @@ package zonaNegocio;
 
 import java.awt.image.BufferedImage;
 import java.time.LocalDateTime;
+import javax.swing.Icon;
 
 
 public class Producto implements Comparable<Producto> {
@@ -37,7 +38,7 @@ public class Producto implements Comparable<Producto> {
     private double precio;
     private LocalDateTime fechaPublicacion;
     private LocalDateTime fechaDestacado;
-    private BufferedImage fotografia;
+    private Icon fotografia;
     private int codigoPostal;
     private String ciudad;
     private boolean urgente;
@@ -125,11 +126,11 @@ public class Producto implements Comparable<Producto> {
         this.fechaPublicacion = fechaPublicacion;
     }
 
-    public BufferedImage getFotografia() {
+    public Icon getFotografia() {
         return fotografia;
     }
 
-    public void setFotografia(BufferedImage fotografia) {
+    public void setFotografia(Icon fotografia) {
         this.fotografia = fotografia;
     }
 
