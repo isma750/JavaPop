@@ -58,8 +58,8 @@ public class Main {
         //Ejemplo: el cliente2 quiere comprar una "camiseta".
         
         UtilProductos.setProductos(productos);
-        UtilProductos.BuscarProductosCategoria(Producto.categoria.MODAYACCESORIOS); // Selecciona la categoria moda y accesorios
-        UtilProductos.BuscarProductosTitulo("camiseta"); // Busca por camiseta
+        //UtilProductos.BuscarProductosCategoria(Producto.categoria.MODAYACCESORIOS); // Selecciona la categoria moda y accesorios
+        //UtilProductos.BuscarProductosTitulo("camiseta"); // Busca por camiseta
         UtilProductos.OrdenarPorProximidad(cliente2); // ordenamos los productos resultado por proximidad
         
         System.out.println("\n");

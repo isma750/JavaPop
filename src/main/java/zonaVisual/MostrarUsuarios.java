@@ -4,18 +4,30 @@
  * and open the template in the editor.
  */
 package zonaVisual;
+import javax.swing.JFrame;
+import zonaNegocio.*;
 
-/**
- *
- * @author ismae
- */
 public class MostrarUsuarios extends javax.swing.JPanel {
 
-    /**
-     * Creates new form MostrarUsuarios
-     */
+     private JFrame ventanaprincipal;
+
+    public  JFrame getVentanaprincipal() {
+        
+        return ventanaprincipal;
+    }
+
+    
+    public void setVentanaprincipal(JFrame ventanaprincipal) {
+        this.ventanaprincipal = ventanaprincipal;
+    }
+    
     public MostrarUsuarios() {
         initComponents();
+    }
+    
+    public void generarTabla(){
+        int j = 0;
+        //String listaUsuarios[][] = new String[(Javapop.getProductos().size()][this.jTable1.getColumnCount()];
     }
 
     /**
