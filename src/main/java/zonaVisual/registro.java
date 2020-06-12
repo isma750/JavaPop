@@ -37,6 +37,8 @@ public class registro extends javax.swing.JFrame {
     public registro() {
         initComponents();
         this.setTitle("JAVAPOP");
+        botonModificar.setVisible(false);
+        botonGuardar.setVisible(false);
     }
 
     /**
@@ -633,10 +635,13 @@ public class registro extends javax.swing.JFrame {
         } 
     
     }
+    
     public void mostrarDatosCliente(Cliente cliente){
         Titulo.setText("MIS DATOS");
         saludo.setVisible(false);
         botonRegistro.setVisible(false);
+        botonGuardar.setVisible(true);
+        botonModificar.setVisible(true);
         campoCiudad.setEnabled(false);
         campoClave.setEnabled(false);
         campoRepiteContraseña.setEnabled(false);
