@@ -160,7 +160,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         MenuCliente = new javax.swing.JMenu();
         MisProductos = new javax.swing.JMenu();
         Vender = new javax.swing.JMenuItem();
-        ConsultarProductos = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         Comprar = new javax.swing.JMenuItem();
         MiCuenta = new javax.swing.JMenuItem();
 
@@ -175,6 +175,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         MenuAdministrador.setText("Administrador");
 
         MostrarProductos.setText("Mostrar productos");
+        MostrarProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarProductosActionPerformed(evt);
+            }
+        });
         MenuAdministrador.add(MostrarProductos);
 
         MostrarUsuarios.setText("Mostrar usuarios");
@@ -207,8 +212,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         MisProductos.add(Vender);
 
-        ConsultarProductos.setText("Consultar Productos");
-        MisProductos.add(ConsultarProductos);
+        jMenuItem1.setText("Consultar Producto");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        MisProductos.add(jMenuItem1);
 
         MenuCliente.add(MisProductos);
 
@@ -266,7 +276,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
     
     private void MostrarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarUsuariosActionPerformed
-        // TODO add your handling code here:
+        jPanel1.removeAll();
+        jPanel1.add(new MostrarUsuarios());
+        jPanel1.updateUI();
     }//GEN-LAST:event_MostrarUsuariosActionPerformed
 
     private void MostrarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarVentasActionPerformed
@@ -300,6 +312,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_MiCuentaActionPerformed
+
+    private void MostrarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarProductosActionPerformed
+        jPanel1.removeAll();
+        jPanel1.add(new MostrarProductos());
+        jPanel1.updateUI();
+    }//GEN-LAST:event_MostrarProductosActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,7 +361,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Comprar;
-    private javax.swing.JMenuItem ConsultarProductos;
     private javax.swing.JMenu MenuAdministrador;
     private javax.swing.JMenu MenuCliente;
     private javax.swing.JMenuItem MiCuenta;
@@ -349,6 +370,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem MostrarVentas;
     private javax.swing.JMenuItem Vender;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
