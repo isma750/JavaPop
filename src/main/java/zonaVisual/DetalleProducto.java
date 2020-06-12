@@ -197,6 +197,11 @@ public class DetalleProducto extends javax.swing.JFrame {
         Imagen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         botonComprar.setText("Comprar Producto");
+        botonComprar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonComprarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -457,6 +462,14 @@ public class DetalleProducto extends javax.swing.JFrame {
              
          }
     }//GEN-LAST:event_botonEliminarActionPerformed
+
+    private void botonComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComprarActionPerformed
+        int indiceProducto = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().indexOf(productoMostrado);
+        ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(indiceProducto).setSituacion(Producto.situacion.SOLICITADO);    
+        JOptionPane.showMessageDialog(this,"Se ha marcado el producto para compra, una vez el vendedor acepte la venta recibirá su producto.", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
+        this.dispose();
+        
+    }//GEN-LAST:event_botonComprarActionPerformed
 
     /**
      * @param args the command line arguments
