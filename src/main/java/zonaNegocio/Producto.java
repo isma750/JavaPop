@@ -15,7 +15,26 @@ public class Producto implements Comparable<Producto> {
         MOVILESYTELFONIA,
         INFORMATICAYELECTRONICA,
         CONSOLASYVIDEOJUEGOS,
-        DEPORTEYOCIO
+        DEPORTEYOCIO;
+        
+        @Override
+        public String toString() {
+            switch(this){
+                case MODAYACCESORIOS:
+                    return "Moda y Accesorios";
+                case TVAUDIOYFOTO:
+                    return "TV, audio y foto";
+                case MOVILESYTELFONIA:
+                    return "Móviles y telefonía";
+                case INFORMATICAYELECTRONICA:
+                    return "Informática y electrónica";
+                case CONSOLASYVIDEOJUEGOS:
+                    return "Consolas y videojuegos";
+                case DEPORTEYOCIO:
+                    return "Deporte y ocio";
+            }
+            return null;
+        }
     }
     private categoria categoria;
 
@@ -24,7 +43,24 @@ public class Producto implements Comparable<Producto> {
         COMONUEVO,
         BUENO,
         ACEPTABLE,
-        REGULAR
+        REGULAR;
+        @Override
+        public String toString() {
+            switch(this){
+                case NUEVO:
+                    return "Nuevo";
+                case COMONUEVO:
+                    return "Como nuevo";
+                case BUENO:
+                    return "Bueno";
+                case ACEPTABLE:
+                    return "Aceptable";
+                case REGULAR:
+                    return "Regular";
+                
+            }
+            return null;
+        }
     }
     public enum situacion {
         PUBLICADO,

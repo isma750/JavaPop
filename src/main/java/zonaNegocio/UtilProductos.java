@@ -16,7 +16,8 @@ public class UtilProductos {
     public static ArrayList<Producto> getProductos() { return productos; }
 
     public static void setProductos(ArrayList<Producto> p) {
-        productos = p;
+        
+        UtilProductos.productos = p;
     }
     
 
@@ -57,7 +58,32 @@ public class UtilProductos {
         }
         productos = productosCoinciden;
     }
-
+    /**
+     * Busca y establece los productos de utilProductos con productos cuya situacion sea la especificada
+     * @param situacion La situacion de los productos que queremos buscar
+     */
+    public static void BuscarProductosSituacion(Producto.situacion situacion) {
+        ArrayList<Producto> productosCoinciden = new ArrayList<>();
+        for (int i = 0; i < productos.size(); i++) {
+            if (productos.get(i).getSituacion().equals(situacion)) {
+                productosCoinciden.add(productos.get(i));
+            }
+        }
+        productos = productosCoinciden;
+    }
+    /**
+     * Busca y establece los productos de utilProductos con productos cuyo estado sea el especificado
+     * @param estado La situacion de los productos que queremos buscar
+     */
+    public static void BuscarProductosEstado(Producto.estado estado) {
+        ArrayList<Producto> productosCoinciden = new ArrayList<>();
+        for (int i = 0; i < productos.size(); i++) {
+            if (productos.get(i).getEstado().equals(estado)) {
+                productosCoinciden.add(productos.get(i));
+            }
+        }
+        productos = productosCoinciden;
+    }
     /**
      * Busca y establece los productos de utilProductos con productos que haya publicado un cierto cliente
      * @param cliente el cliente cuyos productos deseamos obtener
@@ -78,8 +104,8 @@ public class UtilProductos {
                 Producto p2 = (Producto) o2;
                 // Comparamos la proximidad de los dos productos al cliente
                 int CompararProximidad = p1.calcularProximidad(cliente).compareTo(p2.calcularProximidad(cliente));
-
-                // Si las ubicaciones son iguales vemos cual es urgente
+                
+                // Si las ubicaciones son iguales vemos cual es urgente               
                 if (CompararProximidad == 0) {
                     if (p1.isUrgente() && !p2.isUrgente()) {
                         return -1; // si p1 es urgente y p2 no, p1 debe ir primero por lo que devolvemos -1
@@ -94,6 +120,11 @@ public class UtilProductos {
 
             }
         };
+        for (int i=0; i<productos.size();i++){
+            if (productos.get(i).getClienteAsociado()==cliente){
+                productos.remove(i);
+            }
+        }
         Collections.sort(productos, CompProximidad);
     }
 

@@ -7,7 +7,10 @@ package zonaVisual;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -46,14 +49,36 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public VentanaPrincipal() {
         initComponents();
         this.setTitle("JAVAPOP");
-        this.javapop = new JavaPop();              
+        this.javapop = new JavaPop(); 
+        
         // Traer informacion disco duro (Serializacion)
         if (javapop.getUsuarios().isEmpty()){
            this.admin = new Administrador();
            this.javapop.getUsuarios().add(admin);
-           Cliente cliente1 = new Cliente("Juan","03228447B",12345,"Guadlajara","juan@hotmail.com","juan","1234567899876541");
+           ArrayList<Producto> productoscliente1 = new ArrayList<>();
+           
+            Cliente cliente1 = new Cliente("Juan","03228447B",12345,"Guadlajara","juan@hotmail.com","juan","1234567899876541");
+            Cliente cliente2 = new Cliente("Martin","03234567N",19003,"Guadalajara","martin@hotmail.com","hola","1234123412341234");
+           Producto producto1 = new Producto("Camiseta blanca","Buen estado", Producto.categoria.MODAYACCESORIOS,19003,"Guadalajara",true,cliente1,Producto.estado.BUENO, 15.00,LocalDateTime.now(),Producto.situacion.PUBLICADO);
+            Producto producto2 = new Producto("Camiseta negra","Muy nueva", Producto.categoria.MODAYACCESORIOS,19203,"Guadalajara",false,cliente1,Producto.estado.ACEPTABLE, 20.00,LocalDateTime.now(),Producto.situacion.PUBLICADO);
+            Producto producto3 = new Producto("Raqueta de tenis","Muy poco uso", Producto.categoria.DEPORTEYOCIO,19004,"Guadalajara",true,cliente1, Producto.estado.COMONUEVO, 10.00, LocalDateTime.now(),Producto.situacion.PUBLICADO);
+            Producto producto4 = new Producto("Playstation 5","Poco uso", Producto.categoria.CONSOLASYVIDEOJUEGOS,19004,"Guadalajara",true,cliente1, Producto.estado.BUENO, 150.00, LocalDateTime.now(),Producto.situacion.PUBLICADO);
+            Producto producto5 = new Producto("Television 49 pulgadas Sony","Tiene un pequeño arañazo", Producto.categoria.TVAUDIOYFOTO,19004, "Guadalajara",false,cliente1, Producto.estado.ACEPTABLE, 250.00, LocalDateTime.now(),Producto.situacion.PUBLICADO);
+            Producto producto6 = new Producto("Iphone X 64 gb","Tiene la pantalla rota", Producto.categoria.MOVILESYTELFONIA,19200,"Azuqueca de Henares",true,cliente1, Producto.estado.REGULAR, 400.00,LocalDateTime.now(),Producto.situacion.PUBLICADO);
+            productoscliente1.add(producto1);
+             productoscliente1.add(producto2);
+            productoscliente1.add(producto3);
+            productoscliente1.add(producto4);
+            productoscliente1.add(producto5);
+            productoscliente1.add(producto6);
+            cliente1.setProductos(productoscliente1);
            this.javapop.getUsuarios().add(cliente1);
+           this.javapop.getUsuarios().add(cliente2);
+           this.javapop.setProductos();
+           System.out.println(this.javapop.getProductos());
+            
         }
+        
         JFrame login = new Login(this);
         
         
@@ -258,8 +283,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_VenderActionPerformed
 
     private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarActionPerformed
+        BusquedaProducto busqueda= new BusquedaProducto();
+        busqueda.setVentanaprincipal(this);
         jPanel1.removeAll();
-        jPanel1.add(new BusquedaProducto());
+        jPanel1.add(busqueda);
         jPanel1.updateUI();
         
     }//GEN-LAST:event_ComprarActionPerformed

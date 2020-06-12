@@ -8,6 +8,7 @@ package zonaVisual;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 import zonaNegocio.*;
 
 
@@ -38,18 +39,21 @@ public class BusquedaProducto extends javax.swing.JPanel {
     }
     public void generarTabla() {
         int j = 0;
-        String listaProductos[][] = new String[((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().size()][this.tabla.getColumnCount()];
-        Integer numeroFilas[] = new Integer[((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().size()];
-        
-        for (j = 0; j < ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().size(); j++){
-            listaProductos[j][0] = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(j).getTitulo();
-            listaProductos[j][1] = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(j).getDescripcion();
-            listaProductos[j][2] = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(j).getCategoria().toString();
-            listaProductos[j][3] = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(j).getEstado().toString();
+        String listaProductos[][] = new String[UtilProductos.getProductos().size()][this.tabla.getColumnCount()];
+        Integer numeroFilas[] = new Integer[UtilProductos.getProductos().size()];
+        String nombreColumnas[] = {"Titulo","Descripcion","Categoria","Estado","Precio","Localizacion"};
+        for (j = 0; j < UtilProductos.getProductos().size(); j++){
+            listaProductos[j][0] = UtilProductos.getProductos().get(j).getTitulo();
+            listaProductos[j][1] = UtilProductos.getProductos().get(j).getDescripcion();
+            listaProductos[j][2] = UtilProductos.getProductos().get(j).getCategoria().toString();
+            listaProductos[j][3] = UtilProductos.getProductos().get(j).getEstado().toString();
            // listaProductos[j][4] = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(j).String.valueOf(getPrecio());
-            listaProductos[j][4] = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(j).getCodigoPostal() + " " + ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(j).getCiudad();
+            listaProductos[j][4] = UtilProductos.getProductos().get(j).getCodigoPostal() + " " + ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(j).getCiudad();
             
         }
+        DefaultTableModel model = new DefaultTableModel(listaProductos, nombreColumnas);
+        tabla.setModel(model);
+        
         /*setFilasProducto(numeroFilas);
         this.tabla.setModel(new MiModeloTabla(
         listaProductos ,
@@ -65,10 +69,10 @@ public class BusquedaProducto extends javax.swing.JPanel {
         this.precioDesde.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
         this.precioHasta.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
         this.palabraNueva.setText("");
-        this.modeloLista.setText("");
+        this.palabrasClave.setText("");
         
     }
-    public void buscarProductos(){
+    public void buscarProductos1(){
         Cliente cliente = null;
         boolean clienteValido = false;
         boolean productoValido = false;
@@ -124,7 +128,25 @@ public class BusquedaProducto extends javax.swing.JPanel {
         generarTabla();
         
     }
-
+    public void buscarProductos(){
+    UtilProductos UtilProductos = new UtilProductos();
+    System.out.println((((VentanaPrincipal) getVentanaprincipal()).getJavapop()).getProductos());
+    UtilProductos.setProductos((((VentanaPrincipal) getVentanaprincipal()).getJavapop()).getProductos());
+    
+    UtilProductos.BuscarProductosSituacion(Producto.situacion.PUBLICADO);
+    if (seleccionCategoria.getSelectedIndex() > 0){
+        UtilProductos.BuscarProductosCategoria(convertirCategoria((String) seleccionCategoria.getSelectedItem()));
+        
+    }
+    if (seleccionEstado.getSelectedIndex() > 0){
+        UtilProductos.BuscarProductosEstado(convertirEstado((String) seleccionEstado.getSelectedItem()));
+    }
+    if (palabrasClave.getText()!=""){
+        UtilProductos.BuscarProductosTitulo(palabrasClave.getText());
+    }
+    UtilProductos.OrdenarPorProximidad((Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado());
+    generarTabla();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -147,15 +169,25 @@ public class BusquedaProducto extends javax.swing.JPanel {
         precioDesde = new javax.swing.JSpinner();
         precioHasta = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
-        modeloLista = new javax.swing.JTextField();
+        palabrasClave = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
 
         jLabel2.setText("Categoria:");
 
         seleccionCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Moda y accesorios", "TV, audio, foto", "Móviles y telefonía", "Informática y electrónica", "Consolas y videojuegos", "Deporte y ocio" }));
+        seleccionCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seleccionCategoriaActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Agragar palabra clave:");
+
+        palabraNueva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                palabraNuevaActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Buscar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -180,20 +212,23 @@ public class BusquedaProducto extends javax.swing.JPanel {
         jLabel1.setText("Estado:");
 
         seleccionEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Nuevo", "Como nuevo", "Bueno", "Aceptable", "Regular" }));
+        seleccionEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seleccionEstadoActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Precio (Desde/Hasta):");
 
         jLabel5.setText("Palabras clave:");
 
-        modeloLista.addActionListener(new java.awt.event.ActionListener() {
+        palabrasClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modeloListaActionPerformed(evt);
+                palabrasClaveActionPerformed(evt);
             }
         });
 
         jButton2.setText("Limpiar filtros");
-
-        jButton3.setText("Consultar Producto");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -212,7 +247,7 @@ public class BusquedaProducto extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(palabraNueva)
-                                    .addComponent(modeloLista, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
+                                    .addComponent(palabrasClave, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
                                 .addGap(98, 98, 98)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
@@ -237,10 +272,6 @@ public class BusquedaProducto extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(precioHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(32, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(247, 247, 247)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,41 +301,50 @@ public class BusquedaProducto extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(modeloLista, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(palabrasClave, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2)))
                 .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        buscarProductos();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void modeloListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modeloListaActionPerformed
+    private void palabrasClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_palabrasClaveActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_modeloListaActionPerformed
+    }//GEN-LAST:event_palabrasClaveActionPerformed
+
+    private void seleccionCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionCategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_seleccionCategoriaActionPerformed
+
+    private void seleccionEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_seleccionEstadoActionPerformed
+
+    private void palabraNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_palabraNuevaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_palabraNuevaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField modeloLista;
     private javax.swing.JTextField palabraNueva;
+    private javax.swing.JTextField palabrasClave;
     private javax.swing.JSpinner precioDesde;
     private javax.swing.JSpinner precioHasta;
     private javax.swing.JComboBox<String> seleccionCategoria;
