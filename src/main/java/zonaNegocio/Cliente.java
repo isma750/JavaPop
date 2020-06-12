@@ -27,8 +27,19 @@ public class Cliente extends Usuario{
    
     public enum Estado {
         ACTIVO,
-        BAJA
+        BAJA;
         
+        @Override
+        public String toString() {
+            switch(this){
+                case ACTIVO:
+                    return "Activo";
+                case BAJA:
+                    return "Baja";
+            }
+            return null;
+                
+        }
     }
 
 
@@ -130,6 +141,14 @@ public class Cliente extends Usuario{
         Ventas = ventas;
     }
 
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+    
     @Override
     public String toString() {
             return "\n\tCliente{" + "nombre=" + nombre + ", dni=" + dni + ", codigo postal=" + codigoPostal +", ciudad= "+ ciudad +", tarjeta=" + tarjeta + "}";

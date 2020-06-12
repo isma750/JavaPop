@@ -93,7 +93,20 @@ public class JavaPop {
             }
         }
     }
-
+    /**
+     * Encuentra un usuario de la aplicacion por su correo
+     * @param correo Correo del usuario que queremos obtener
+     * @return Devuelve el usuario que buscamos o null si no hay ningun usuario en la aplicacion con el correo que buscamos
+     */
+    public Usuario getUsuario(String correo){
+        for (int i = 0; i < usuarios.size(); i++) {
+            if (usuarios.get(i).getCorreo().equals(correo)){
+                return usuarios.get(i);
+            }
+            
+        }
+        return null;
+    }
 
     public ArrayList<Venta> getVentas() {
         return ventas;

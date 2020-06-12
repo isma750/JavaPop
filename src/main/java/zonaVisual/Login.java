@@ -9,6 +9,7 @@ import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import zonaNegocio.Cliente;
 import zonaNegocio.Usuario;
 
 
@@ -167,13 +168,18 @@ public class Login extends javax.swing.JFrame {
             
         }
         if (valido){
-            ((VentanaPrincipal) getVentanaprincipal()).setUsuarioConectado(usuarioconectado);
-            ((VentanaPrincipal) getVentanaprincipal()).getUsuario().setText(Correo.getText());
-            ((VentanaPrincipal) getVentanaprincipal()).getUsuario().updateUI();
-            ((VentanaPrincipal) getVentanaprincipal()).actualizarMenus();
-            getVentanaprincipal().setVisible(true);
-            
-            this.dispose();
+            if (usuarioconectado.getClass().getSimpleName().equals("Administrador")||((Cliente)usuarioconectado).getEstado().equals(Cliente.Estado.ACTIVO)){
+                ((VentanaPrincipal) getVentanaprincipal()).setUsuarioConectado(usuarioconectado);
+                ((VentanaPrincipal) getVentanaprincipal()).getUsuario().setText(Correo.getText());
+                ((VentanaPrincipal) getVentanaprincipal()).getUsuario().updateUI();
+                ((VentanaPrincipal) getVentanaprincipal()).actualizarMenus();
+                getVentanaprincipal().setVisible(true);
+                this.dispose();
+            }else{
+       
+                JOptionPane.showMessageDialog(this,"Su usuario ha sido dado de baja, pongase en contacto con el administrador de la aplicación", "Error de identificacion",JOptionPane.ERROR_MESSAGE);
+
+            }
         }
         else {
             JOptionPane.showMessageDialog(this,"Usuario no identificado", "Error de identificacion",JOptionPane.ERROR_MESSAGE);

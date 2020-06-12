@@ -276,8 +276,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
     
     private void MostrarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarUsuariosActionPerformed
+        MostrarUsuarios mu= new MostrarUsuarios();
+        mu.setVentanaprincipal(this);
+        mu.generarTabla();
         jPanel1.removeAll();
-        jPanel1.add(new MostrarUsuarios());
+        jPanel1.add(mu);
         jPanel1.updateUI();
     }//GEN-LAST:event_MostrarUsuariosActionPerformed
 
