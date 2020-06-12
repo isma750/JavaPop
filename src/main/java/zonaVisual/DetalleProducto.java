@@ -591,7 +591,7 @@ public class DetalleProducto extends javax.swing.JFrame {
          campoDescripcion.setText(producto.getDescripcion());
          campoPostal.setText(Integer.toString(producto.getCodigoPostal()));
          campoPrecio.setText(Double.toString(producto.getPrecio()));
-         comboCategoria.setSelectedItem(indiceCategoria(producto.getCategoria()));
+         comboCategoria.setSelectedIndex(indiceCategoria(producto.getCategoria()));
          comboEstado.setSelectedIndex(indiceEstado(producto.getEstado()));
          checkUrgente.setSelected(producto.isUrgente());
          Imagen.setIcon(producto.getFotografia());

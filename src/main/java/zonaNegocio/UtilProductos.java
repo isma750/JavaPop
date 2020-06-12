@@ -25,8 +25,9 @@ public class UtilProductos {
     /**
      * Busca y establece los productos de utilProductos con productos cuyo titulo contenga una de las palabras clave del string
      * @param palabras Las palabras que se desean buscar separadas por espacios
+     * @param cliente El cliente que realiza la búsqueda
      */
-    public static void BuscarProductosTitulo(String palabras) { //Devuelve un arraylist
+    public static void BuscarProductosTitulo(String palabras,Cliente cliente) { //Devuelve un arraylist
         //Establecemos el comparador
         ArrayList<Producto> productosCoinciden = new ArrayList<>();
         String[] palabrasClave = palabras.split(" "); //Sacamos las palabras clave del titulo
@@ -35,7 +36,8 @@ public class UtilProductos {
             for (int j = 0; j < palabrasClave.length; j++) { // por cada palabra clave en el titulo
                 if (productos.get(i).getTitulo().toLowerCase().contains(palabrasClave[j].toLowerCase())) { // si el titulo contiene la palabra
                     if (!productosCoinciden.contains(productos.get(i))) { // si no esta en el arraylist de productos que buscamos
-                        productosCoinciden.add(productos.get(i)); // añadimos el producto al arraylist de productos que buscamos
+                        if (productos.get(i).getClienteAsociado()!=cliente){
+                                productosCoinciden.add(productos.get(i));}// añadimos el producto al arraylist de productos que buscamos
                     }
                 }
 
@@ -48,12 +50,14 @@ public class UtilProductos {
     /**
      * Busca y establece los productos de utilProductos con productos cuya categoría sea la especificada
      * @param categoria La categoria de los productos que queremos buscar
+     * @param cliente El cliente que realiza la búsqueda
      */
-    public static void BuscarProductosCategoria(Producto.categoria categoria) {
+    public static void BuscarProductosCategoria(Producto.categoria categoria,Cliente cliente) {
         ArrayList<Producto> productosCoinciden = new ArrayList<>();
         for (int i = 0; i < productos.size(); i++) {
             if (productos.get(i).getCategoria().equals(categoria)) {
-                productosCoinciden.add(productos.get(i));
+                if (productos.get(i).getClienteAsociado()!=cliente){
+                productosCoinciden.add(productos.get(i));}
             }
         }
         productos = productosCoinciden;
@@ -61,12 +65,14 @@ public class UtilProductos {
     /**
      * Busca y establece los productos de utilProductos con productos cuya situacion sea la especificada
      * @param situacion La situacion de los productos que queremos buscar
+     * @param cliente El cliente que realiza la búsqueda
      */
-    public static void BuscarProductosSituacion(Producto.situacion situacion) {
+    public static void BuscarProductosSituacion(Producto.situacion situacion,Cliente cliente) {
         ArrayList<Producto> productosCoinciden = new ArrayList<>();
         for (int i = 0; i < productos.size(); i++) {
             if (productos.get(i).getSituacion().equals(situacion)) {
-                productosCoinciden.add(productos.get(i));
+                if (productos.get(i).getClienteAsociado()!=cliente){
+                productosCoinciden.add(productos.get(i));}
             }
         }
         productos = productosCoinciden;
@@ -74,12 +80,14 @@ public class UtilProductos {
     /**
      * Busca y establece los productos de utilProductos con productos cuyo estado sea el especificado
      * @param estado La situacion de los productos que queremos buscar
+     * @param cliente El cliente que realiza la búsqueda
      */
-    public static void BuscarProductosEstado(Producto.estado estado) {
+    public static void BuscarProductosEstado(Producto.estado estado,Cliente cliente) {
         ArrayList<Producto> productosCoinciden = new ArrayList<>();
         for (int i = 0; i < productos.size(); i++) {
             if (productos.get(i).getEstado().equals(estado)) {
-                productosCoinciden.add(productos.get(i));
+                if (productos.get(i).getClienteAsociado()!=cliente){
+                productosCoinciden.add(productos.get(i));}
             }
         }
         productos = productosCoinciden;
@@ -120,11 +128,7 @@ public class UtilProductos {
 
             }
         };
-        for (int i=0; i<productos.size();i++){
-            if (productos.get(i).getClienteAsociado()==cliente){
-                productos.remove(i);
-            }
-        }
+        
         Collections.sort(productos, CompProximidad);
     }
 

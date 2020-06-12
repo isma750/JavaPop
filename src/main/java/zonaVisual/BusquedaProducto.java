@@ -48,7 +48,7 @@ public class BusquedaProducto extends javax.swing.JPanel {
             listaProductos[j][2] = UtilProductos.getProductos().get(j).getCategoria().toString();
             listaProductos[j][3] = UtilProductos.getProductos().get(j).getEstado().toString();
             listaProductos[j][4] = Double.toString(UtilProductos.getProductos().get(j).getPrecio());
-            listaProductos[j][5] = UtilProductos.getProductos().get(j).getCodigoPostal() + " " + ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(j).getCiudad();
+            listaProductos[j][5] = UtilProductos.getProductos().get(j).calcularProximidad((Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado());
             
         }
         DefaultTableModel model = new DefaultTableModel(listaProductos, nombreColumnas);
@@ -72,79 +72,25 @@ public class BusquedaProducto extends javax.swing.JPanel {
         this.palabrasClave.setText("");
         
     }
-    public void buscarProductos1(){
-        Cliente cliente = null;
-        boolean clienteValido = false;
-        boolean productoValido = false;
-        String palabra = "";
-        ArrayList<Producto> productosEncontrados = new ArrayList<Producto>();
-        ArrayList<Producto> productosOrdenados = new ArrayList<Producto>();
-        
-        for (Usuario cadaUsuario: ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getUsuarios()){
-            if (cadaUsuario instanceof Cliente){
-                cliente = (Cliente) cadaUsuario;
-                clienteValido = true;
-                //Validar que si el tipo de transaccion es una venta y el correo del usuarioConectado es distinto al correo del propiertario el clienteValido = false
-                //Si es una compra y coincide los correo clientevalido = false, porque un cliente no se puede comprar asi mismo
-                if(clienteValido){
-                    if(cliente.getProductos().size()>0){
-                        for (Producto cadaProducto : cliente.getProductos()){
-                            productoValido = true;
-                            //si el tipo de transaccion es una compra
-                            if(!(cadaProducto.getSituacion().equals(Producto.situacion.PUBLICADO))){
-                                productoValido = false;
-                            }
-                            if (productoValido){
-                                if (seleccionCategoria.getSelectedIndex() > 0){
-                                    if (!(cadaProducto.getCategoria().equals(seleccionCategoria.getSelectedIndex()- 1))){
-                                        productoValido = false;
-                                    }  
-                                }
-                                if (seleccionEstado.getSelectedIndex() > 0){
-                                    if (!(cadaProducto.getEstado().equals(seleccionEstado.getSelectedIndex()- 1))){
-                                        productoValido = false;
-                                    }
-                                }
-                                //Mirar (da error)
-                                /*if(modeloLista.getSize() > 0){
-                                    for (int i=0 ; i< modeloLista.getSize()); i++){
-                                        palabra = modeloLista.getName(i).toString();
-                                        if (cadaProducto.getDescripcion().toLowerCase().contains(palabra.toString().toLowerCase())){
-                                            productoValido = true;
-                                            break;
-                                        }
-                                    }  
-                                }*/
-                            }
-                            if (productoValido){
-                                productosEncontrados.add(cadaProducto);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        //Si la transaccion es una compra hayq ue usar el comparador de productos por Urgencia/distancia
-        generarTabla();
-        
-    }
+    
     public void buscarProductos(){
     UtilProductos UtilProductos = new UtilProductos();
-    System.out.println((((VentanaPrincipal) getVentanaprincipal()).getJavapop()).getProductos());
+    Cliente clienteBuscador = (Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado();
     UtilProductos.setProductos((((VentanaPrincipal) getVentanaprincipal()).getJavapop()).getProductos());
     
-    UtilProductos.BuscarProductosSituacion(Producto.situacion.PUBLICADO);
+    UtilProductos.BuscarProductosSituacion(Producto.situacion.PUBLICADO,clienteBuscador);
     if (seleccionCategoria.getSelectedIndex() > 0){
-        UtilProductos.BuscarProductosCategoria(convertirCategoria((String) seleccionCategoria.getSelectedItem()));
+        UtilProductos.BuscarProductosCategoria(convertirCategoria((String) seleccionCategoria.getSelectedItem()),clienteBuscador);
         
     }
     if (seleccionEstado.getSelectedIndex() > 0){
-        UtilProductos.BuscarProductosEstado(convertirEstado((String) seleccionEstado.getSelectedItem()));
+        UtilProductos.BuscarProductosEstado(convertirEstado((String) seleccionEstado.getSelectedItem()),clienteBuscador);
     }
     if (palabrasClave.getText()!=""){
-        UtilProductos.BuscarProductosTitulo(palabrasClave.getText());
+        UtilProductos.BuscarProductosTitulo(palabrasClave.getText(),clienteBuscador);
     }
     UtilProductos.OrdenarPorProximidad((Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado());
+    
     generarTabla();
     }
     public void getProductoSeleccionado(){
@@ -179,7 +125,7 @@ public class BusquedaProducto extends javax.swing.JPanel {
 
         jLabel2.setText("Categoria:");
 
-        seleccionCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Moda y accesorios", "TV, audio, foto", "Móviles y telefonía", "Informática y electrónica", "Consolas y videojuegos", "Deporte y ocio" }));
+        seleccionCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Moda y Accesorios", "TV, audio y foto", "Móviles y telefonía", "Informática y electrónica", "Consolas y videojuegos", "Deporte y ocio" }));
         seleccionCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 seleccionCategoriaActionPerformed(evt);
@@ -188,6 +134,7 @@ public class BusquedaProducto extends javax.swing.JPanel {
 
         jLabel3.setText("Agragar palabra clave:");
 
+        palabraNueva.setEditable(false);
         palabraNueva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 palabraNuevaActionPerformed(evt);
