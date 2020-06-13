@@ -109,6 +109,9 @@ public class JavaPop {
     }
 
     public ArrayList<Venta> getVentas() {
+        if (this.ventas== null){
+            this.ventas = new ArrayList<>();
+        }
         return ventas;
     }
 

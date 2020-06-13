@@ -5,6 +5,9 @@
  */
 package zonaVisual;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -24,7 +27,7 @@ public class Mostrarventas extends javax.swing.JPanel {
      */
     public Mostrarventas() {
         initComponents();
-        dibujarTabla();
+        
         
     }
     private JFrame ventanaprincipal;
@@ -39,6 +42,7 @@ public class Mostrarventas extends javax.swing.JPanel {
         this.ventanaprincipal = ventanaprincipal;
     }
     public void dibujarTabla(){
+       
         ArrayList<Venta> ventas = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getVentas();
         int j = 0;
         String listaVentas[][] = new String[ventas.size()][this.tabla.getColumnCount()];

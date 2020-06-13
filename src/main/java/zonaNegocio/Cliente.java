@@ -126,6 +126,9 @@ public class Cliente extends Usuario{
     }
 
     public ArrayList<Compra> getCompras() {
+        if (this.Compras == null) {
+            this.Compras = new ArrayList<Compra>();
+        }
         return Compras;
     }
 
@@ -134,6 +137,7 @@ public class Cliente extends Usuario{
     }
 
     public ArrayList<Venta> getVentas() {
+        
         return Ventas;
     }
 

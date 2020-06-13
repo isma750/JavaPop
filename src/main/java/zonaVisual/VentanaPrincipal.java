@@ -172,8 +172,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         usuario = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        Desconectar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuAdministrador = new javax.swing.JMenu();
         MostrarProductos = new javax.swing.JMenuItem();
@@ -186,6 +189,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Comprar = new javax.swing.JMenuItem();
         MiCuenta = new javax.swing.JMenuItem();
 
+        jMenuItem2.setText("jMenuItem2");
+
+        jMenuItem3.setText("jMenuItem3");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
 
@@ -193,6 +200,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         usuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jPanel1.setLayout(new java.awt.GridLayout(1, 1));
+
+        Desconectar.setText("Cerrar Sesión");
+        Desconectar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DesconectarActionPerformed(evt);
+            }
+        });
 
         MenuAdministrador.setText("Administrador");
 
@@ -269,7 +283,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(613, Short.MAX_VALUE)
+                .addContainerGap(506, Short.MAX_VALUE)
+                .addComponent(Desconectar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -277,9 +293,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Desconectar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(783, 506));
@@ -307,8 +325,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MostrarUsuariosActionPerformed
 
     private void MostrarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarVentasActionPerformed
+        Mostrarventas mv= new Mostrarventas();
+        mv.setVentanaprincipal(this);
+        mv.dibujarTabla();
         jPanel1.removeAll();
-        jPanel1.add(new Mostrarventas());
+        jPanel1.add(mv);
         jPanel1.updateUI();
     }//GEN-LAST:event_MostrarVentasActionPerformed
 
@@ -352,6 +373,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void DesconectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DesconectarActionPerformed
+        this.setVisible(false);
+        jPanel1.removeAll();
+        jPanel1.updateUI();
+        JFrame login = new Login(this);
+    }//GEN-LAST:event_DesconectarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -390,6 +418,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Comprar;
+    private javax.swing.JButton Desconectar;
     private javax.swing.JMenu MenuAdministrador;
     private javax.swing.JMenu MenuCliente;
     private javax.swing.JMenuItem MiCuenta;
@@ -400,6 +429,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem Vender;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables

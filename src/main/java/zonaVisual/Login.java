@@ -183,7 +183,7 @@ public class Login extends javax.swing.JFrame {
                          Compra compraActual = ((Cliente)usuarioconectado).getCompras().get(j);
                      if (!compraActual.isInformado()){
                         AceptacionVentas vender = new AceptacionVentas();
-                        vender.setVentanaprincipal(this);
+                        vender.setVentanaprincipal(this.getVentanaprincipal());
                         vender.setVisible(true);
                         vender.rellenarDatos(compraActual);
                      }
