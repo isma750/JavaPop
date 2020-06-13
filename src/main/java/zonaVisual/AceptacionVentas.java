@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import zonaNegocio.Cliente;
 import zonaNegocio.Producto;
+import zonaNegocio.Venta;
 
 /**
  *
@@ -332,6 +333,7 @@ public class AceptacionVentas extends javax.swing.JFrame {
     private void AceptarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarVentaActionPerformed
         Producto productosolicitado = null;
         productosolicitado.setSituacion(Producto.situacion.VENDIDO);
+        //Venta venta = new Venta();
         JOptionPane.showMessageDialog(this,"Se ha vendido el producto correctamente", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_AceptarVentaActionPerformed
 

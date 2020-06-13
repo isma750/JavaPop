@@ -331,6 +331,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1.removeAll();
         jPanel1.add(busqueda);
         jPanel1.updateUI();
+        //Compra compra = new Compra(LocalDateTime.now(),LocalDateTime.now(),Producto productosolicitado)
         
     }//GEN-LAST:event_ComprarActionPerformed
 
