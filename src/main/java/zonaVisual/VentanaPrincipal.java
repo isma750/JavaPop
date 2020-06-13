@@ -327,8 +327,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MiCuentaActionPerformed
 
     private void MostrarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarProductosActionPerformed
+        MostrarProductos mp = new MostrarProductos();
+        mp.setVentanaprincipal(this);
+        mp.generarTabla();
         jPanel1.removeAll();
-        jPanel1.add(new MostrarProductos());
+        jPanel1.add(mp);
         jPanel1.updateUI();
     }//GEN-LAST:event_MostrarProductosActionPerformed
 

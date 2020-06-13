@@ -68,7 +68,25 @@ public class Producto implements Comparable<Producto> {
         ACEPTADOVENTA,
         VENDIDO,
         RETIRADOVENTA,
-        RETIRADOADMINISTRADOR
+        RETIRADOADMINISTRADOR;
+        @Override
+        public String toString() {
+            switch(this){
+                case PUBLICADO:
+                    return "Publicado";
+                case SOLICITADO:
+                    return "Solicitado";
+                case ACEPTADOVENTA:
+                    return "Venta aceptada";
+                case VENDIDO:
+                    return "Vendido";
+                case RETIRADOVENTA:
+                    return "Retirado de venta";
+                case RETIRADOADMINISTRADOR:
+                    return "Retirado por administrador";
+            }
+            return null;
+        }
     }
     private estado estado;
     private double precio;

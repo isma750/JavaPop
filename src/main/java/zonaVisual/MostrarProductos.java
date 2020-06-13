@@ -5,6 +5,10 @@
  */
 package zonaVisual;
 
+import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
+import zonaNegocio.Cliente;
+
 /**
  *
  * @author ismae
@@ -14,11 +18,39 @@ public class MostrarProductos extends javax.swing.JPanel {
     /**
      * Creates new form MostrarProductos
      */
+     private JFrame ventanaprincipal;
+
+    public  JFrame getVentanaprincipal() {
+        
+        return ventanaprincipal;
+    }
+
+    
+    public void setVentanaprincipal(JFrame ventanaprincipal) {
+        this.ventanaprincipal = ventanaprincipal;
+    }
     
     public MostrarProductos() {
         initComponents();
     }
-
+    public void generarTabla(){
+       
+        int j = 0;
+        String listaProductos[][] = new String[((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().size()][this.tabla.getColumnCount()];       
+        String nombreColumnas[] = {"Titulo","Descripcion","Categoria","Precio","Situacion"};
+        for (j = 0; j < ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().size(); j++){
+            listaProductos[j][0] = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(j).getTitulo();
+            listaProductos[j][1] = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(j).getDescripcion();
+            listaProductos[j][2] = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(j).getCategoria().toString();
+            listaProductos[j][3] = Double.toString(((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(j).getPrecio());
+            listaProductos[j][4] = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(j).getSituacion().toString();
+                    
+            
+            
+        }
+        DefaultTableModel model = new DefaultTableModel(listaProductos, nombreColumnas);
+        tabla.setModel(model);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,13 +62,14 @@ public class MostrarProductos extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        tabla = new javax.swing.JTable();
+        consultarProducto = new javax.swing.JButton();
+        actualizar = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Productos Javapop");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -44,15 +77,22 @@ public class MostrarProductos extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Titulo", "Descripción", "Categoria", "Estado", "Precio"
+                "Titulo", "Descripción", "Categoria", "Precio", "Situacion"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabla);
 
-        jButton1.setText("Consultar Producto");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        consultarProducto.setText("Consultar Producto");
+        consultarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                consultarProductoActionPerformed(evt);
+            }
+        });
+
+        actualizar.setText("Actualizar Productos");
+        actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarActionPerformed(evt);
             }
         });
 
@@ -60,41 +100,56 @@ public class MostrarProductos extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(204, 204, 204))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(195, 195, 195)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(217, 217, 217)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGap(93, 93, 93)
+                .addComponent(consultarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
+                .addComponent(actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+                .addGap(47, 47, 47)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(consultarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void consultarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarProductoActionPerformed
+        if (tabla.getSelectedRowCount()!=0){
+        DetalleProducto verProducto = new DetalleProducto();
+        verProducto.setVentanaprincipal(getVentanaprincipal());
+        verProducto.setVisible(true);
+        verProducto.setModoAdministrador();
+        verProducto.MostrarProducto(((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(tabla.getSelectedRow()));
+        }
+    }//GEN-LAST:event_consultarProductoActionPerformed
+
+    private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
+       this.generarTabla();
+    }//GEN-LAST:event_actualizarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton actualizar;
+    private javax.swing.JButton consultarProducto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }
