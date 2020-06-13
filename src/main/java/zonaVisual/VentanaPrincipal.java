@@ -44,6 +44,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     private Administrador admin = null;
     private Usuario usuarioConectado;
+    private Cliente clienteConectado;
     private JavaPop javapop;
     private Producto producto;
     
@@ -60,7 +61,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
            
             Cliente cliente1 = new Cliente("Juan","03228447B",12345,"Guadlajara","juan@hotmail.com","juan","1234567899876541");
             Cliente cliente2 = new Cliente("Martin","03234567N",19003,"Guadalajara","martin@hotmail.com","hola","1234123412341234");
-           Producto producto1 = new Producto("Camiseta blanca","Buen estado", Producto.categoria.MODAYACCESORIOS,19003,"Guadalajara",true,cliente1,Producto.estado.BUENO, 15.00,LocalDateTime.now(),Producto.situacion.PUBLICADO);
+            Producto producto1 = new Producto("Camiseta blanca","Buen estado", Producto.categoria.MODAYACCESORIOS,19003,"Guadalajara",true,cliente1,Producto.estado.BUENO, 15.00,LocalDateTime.now(),Producto.situacion.PUBLICADO);
             Producto producto2 = new Producto("Camiseta negra","Muy nueva", Producto.categoria.MODAYACCESORIOS,19203,"Guadalajara",false,cliente1,Producto.estado.ACEPTABLE, 20.00,LocalDateTime.now(),Producto.situacion.PUBLICADO);
             Producto producto3 = new Producto("Raqueta de tenis","Muy poco uso", Producto.categoria.DEPORTEYOCIO,19004,"Guadalajara",true,cliente1, Producto.estado.COMONUEVO, 10.00, LocalDateTime.now(),Producto.situacion.PUBLICADO);
             Producto producto4 = new Producto("Playstation 5","Poco uso", Producto.categoria.CONSOLASYVIDEOJUEGOS,19004,"Guadalajara",true,cliente1, Producto.estado.BUENO, 150.00, LocalDateTime.now(),Producto.situacion.PUBLICADO);
@@ -81,6 +82,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         
         JFrame login = new Login(this);
+        
+        if (!getUsuarioConectado().equals(admin)){
+            for(int i = 0; i<getClienteConectado().getProductos().size(); i++){
+                if(getClienteConectado().getProductos().equals(Producto.situacion.SOLICITADO)){
+                     new AceptacionVentas();
+                }
+            }
+        }
         
         
     }
@@ -123,6 +132,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public void añadirUsuario(Usuario usuario){
         javapop.getUsuarios().add(usuario);
     }
+
+    public Cliente getClienteConectado() {
+        return clienteConectado;
+    }
+
+    public void setClienteConectado(Cliente clienteConectado) {
+        this.clienteConectado = clienteConectado;
+    }
+    
 
     
     

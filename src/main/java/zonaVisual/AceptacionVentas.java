@@ -5,7 +5,11 @@
  */
 package zonaVisual;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import zonaNegocio.Cliente;
 import zonaNegocio.Producto;
 
@@ -32,14 +36,16 @@ public class AceptacionVentas extends javax.swing.JFrame {
     public AceptacionVentas() {
         initComponents();
     }
-    public void rellenarDatos(){
-        Cliente clienteVendedor = (Cliente)((VentanaPrincipal) getVentanaprincipal()).getProducto().getClienteAsociado();
-        Producto productosolicitado = null;
-         AceptacionVentas aceptarventas = new AceptacionVentas();
-         aceptarventas.campoTitulo.setText(productosolicitado.getTitulo());
-         aceptarventas.campoDescripcion.setText(productosolicitado.getDescripcion());
-         //aceptarventas.campoCategoria.setText(productosolicitado.getCategoria());
-         //aceptarventas.campoEstado.setText(productosolicitado.getEstado());
+    public void rellenarDatos(Cliente clienteComprador,Producto productosolicitado){
+        
+         campoTitulo.setText(productosolicitado.getTitulo());
+         campoDescripcion.setText(productosolicitado.getDescripcion());
+         //campoCategoria.setText(indiceCategoria(productosolicitado.getCategoria().toString()));
+         //campoEstado.setText(indiceEstado(productosolicitado.getEstado())));
+         campoPrecio.setText(String.valueOf((productosolicitado.getPrecio())));
+         campoComprador.setText(clienteComprador.getNombre());
+         campoUbicacion.setText(clienteComprador.getCodigoPostal() + " " + clienteComprador.getCiudad());
+         campoFecha.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
     }
 
     /**
@@ -68,11 +74,11 @@ public class AceptacionVentas extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        campoComprador = new javax.swing.JTextField();
+        campoUbicacion = new javax.swing.JTextField();
+        campoFecha = new javax.swing.JTextField();
+        DenegarVenta = new javax.swing.JButton();
+        AceptarVenta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -182,23 +188,23 @@ public class AceptacionVentas extends javax.swing.JFrame {
 
         jLabel8.setText("Comprador:");
 
-        jLabel9.setText("Feecha:");
+        jLabel9.setText("Fecha:");
 
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        campoComprador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                campoCompradorActionPerformed(evt);
             }
         });
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        campoUbicacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                campoUbicacionActionPerformed(evt);
             }
         });
 
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        campoFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                campoFechaActionPerformed(evt);
             }
         });
 
@@ -212,15 +218,15 @@ public class AceptacionVentas extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(campoUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(campoComprador, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(campoFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -229,26 +235,31 @@ public class AceptacionVentas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoComprador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        jButton1.setText("Denegar Venta");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        DenegarVenta.setText("Denegar Venta");
+        DenegarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                DenegarVentaActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Aceptar venta");
+        AceptarVenta.setText("Aceptar venta");
+        AceptarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AceptarVentaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -268,9 +279,9 @@ public class AceptacionVentas extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(AceptarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(109, 109, 109)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(DenegarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(138, 138, 138))
         );
         layout.setVerticalGroup(
@@ -284,8 +295,8 @@ public class AceptacionVentas extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(AceptarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DenegarVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -300,21 +311,29 @@ public class AceptacionVentas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_campoDescripcionActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void campoCompradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCompradorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_campoCompradorActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void campoUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoUbicacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_campoUbicacionActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void campoFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoFechaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_campoFechaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void DenegarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DenegarVentaActionPerformed
+        Producto productosolicitado = null;
+        productosolicitado.setSituacion(Producto.situacion.PUBLICADO);
+        JOptionPane.showMessageDialog(this,"Se ha rechazado la venta", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_DenegarVentaActionPerformed
+
+    private void AceptarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarVentaActionPerformed
+        Producto productosolicitado = null;
+        productosolicitado.setSituacion(Producto.situacion.VENDIDO);
+        JOptionPane.showMessageDialog(this,"Se ha vendido el producto correctamente", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_AceptarVentaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -350,15 +369,50 @@ public class AceptacionVentas extends javax.swing.JFrame {
             }
         });
     }
+    public int indiceCategoria(Producto.categoria Categoria){ 
+         switch (Categoria){
+             case MODAYACCESORIOS:
+                 return 0;   
+             case TVAUDIOYFOTO:
+                 return 1;
+             case MOVILESYTELFONIA:
+                 return 2;
+             case INFORMATICAYELECTRONICA:
+                 return 3;
+             case CONSOLASYVIDEOJUEGOS:
+                 return 4;
+             case DEPORTEYOCIO:    
+                 return 5;
+         }
+         return 5; //...
+      }
+     public int indiceEstado(Producto.estado Estado){ 
+         switch (Estado){
+             case NUEVO:
+                 return 0;   
+             case COMONUEVO:
+                 return 1;
+             case BUENO:
+                 return 2;
+             case ACEPTABLE:
+                 return 3;
+             case REGULAR:
+                 return 4;
+         }
+         return 4; //...
+      } 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AceptarVenta;
+    private javax.swing.JButton DenegarVenta;
     private javax.swing.JTextField campoCategoria;
+    private javax.swing.JTextField campoComprador;
     private javax.swing.JTextField campoDescripcion;
     private javax.swing.JTextField campoEstado;
+    private javax.swing.JTextField campoFecha;
     private javax.swing.JTextField campoPrecio;
     private javax.swing.JTextField campoTitulo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JTextField campoUbicacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -371,8 +425,8 @@ public class AceptacionVentas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
+
+
 }
+
