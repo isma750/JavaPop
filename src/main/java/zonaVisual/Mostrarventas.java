@@ -43,7 +43,7 @@ public class Mostrarventas extends javax.swing.JPanel {
         int j = 0;
         String listaVentas[][] = new String[ventas.size()][this.tabla.getColumnCount()];
         String nombreColumnas[] = {"Comprador","Vendedor","Producto","Fecha de Venta"};
-        for (j = 0; j < UtilProductos.getProductos().size(); j++){
+        for (j = 0; j < ventas.size(); j++){
             listaVentas[j][0] = ventas.get(j).getComprador().getNombre();
             listaVentas[j][1] = ventas.get(j).getVendedor().getNombre();
             listaVentas[j][2] = ventas.get(j).getProducto().getTitulo();
