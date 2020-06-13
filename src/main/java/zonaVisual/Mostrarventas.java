@@ -5,6 +5,14 @@
  */
 package zonaVisual;
 
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
+import zonaNegocio.Cliente;
+import zonaNegocio.UtilProductos;
+import zonaNegocio.Venta;
+
 /**
  *
  * @author ismae
@@ -16,8 +24,35 @@ public class Mostrarventas extends javax.swing.JPanel {
      */
     public Mostrarventas() {
         initComponents();
+        dibujarTabla();
+        
+    }
+    private JFrame ventanaprincipal;
+
+    public  JFrame getVentanaprincipal() {
+        
+        return ventanaprincipal;
     }
 
+    
+    public void setVentanaprincipal(JFrame ventanaprincipal) {
+        this.ventanaprincipal = ventanaprincipal;
+    }
+    public void dibujarTabla(){
+        ArrayList<Venta> ventas = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getVentas();
+        int j = 0;
+        String listaVentas[][] = new String[ventas.size()][this.tabla.getColumnCount()];
+        String nombreColumnas[] = {"Comprador","Vendedor","Producto","Fecha de Venta"};
+        for (j = 0; j < UtilProductos.getProductos().size(); j++){
+            listaVentas[j][0] = ventas.get(j).getComprador().getNombre();
+            listaVentas[j][1] = ventas.get(j).getVendedor().getNombre();
+            listaVentas[j][2] = ventas.get(j).getProducto().getTitulo();
+            listaVentas[j][3] = ventas.get(j).getFechaVenta().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));      
+        }
+        DefaultTableModel model = new DefaultTableModel(listaVentas, nombreColumnas);
+        tabla.setModel(model);
+    
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,6 +73,7 @@ public class Mostrarventas extends javax.swing.JPanel {
         SpinnerAño = new javax.swing.JSpinner();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
+        mostrarVentas = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("VENTAS JAVAPOP");
@@ -106,6 +142,13 @@ public class Mostrarventas extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tabla);
 
+        mostrarVentas.setText("Mostrar Ventas");
+        mostrarVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarVentasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -120,7 +163,10 @@ public class Mostrarventas extends javax.swing.JPanel {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(290, 290, 290)
+                        .addComponent(mostrarVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -132,9 +178,15 @@ public class Mostrarventas extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60))
+                .addGap(18, 18, 18)
+                .addComponent(mostrarVentas)
+                .addGap(20, 20, 20))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mostrarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarVentasActionPerformed
+        dibujarTabla();
+    }//GEN-LAST:event_mostrarVentasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -148,6 +200,7 @@ public class Mostrarventas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton mostrarVentas;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }
