@@ -5,9 +5,13 @@
  */
 package zonaVisual;
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import zonaNegocio.Cliente;
+import zonaNegocio.Usuario;
+import zonaNegocio.UtilProductos;
 
 /**
  *
@@ -19,7 +23,8 @@ public class MostrarProductos extends javax.swing.JPanel {
      * Creates new form MostrarProductos
      */
      private JFrame ventanaprincipal;
-
+     private Usuario usuario;
+     
     public  JFrame getVentanaprincipal() {
         
         return ventanaprincipal;
@@ -33,8 +38,9 @@ public class MostrarProductos extends javax.swing.JPanel {
     public MostrarProductos() {
         initComponents();
     }
-    public void generarTabla(){
-       
+    public void generarTabla(Usuario usuario){
+      this.usuario = usuario;  
+      if (usuario.getClass().getSimpleName().equals("Administrador")){       
         int j = 0;
         String listaProductos[][] = new String[((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().size()][this.tabla.getColumnCount()];       
         String nombreColumnas[] = {"Titulo","Descripcion","Categoria","Precio","Situacion"};
@@ -50,7 +56,28 @@ public class MostrarProductos extends javax.swing.JPanel {
         }
         DefaultTableModel model = new DefaultTableModel(listaProductos, nombreColumnas);
         tabla.setModel(model);
+    }else{
+      int j = 0;
+        ((VentanaPrincipal) getVentanaprincipal()).getJavapop().setProductos();
+        UtilProductos.setProductos(((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos());
+        UtilProductos.BuscarProductosUsuario((Cliente) usuario);
+        String listaProductos[][] = new String[UtilProductos.getProductos().size()][this.tabla.getColumnCount()];       
+        String nombreColumnas[] = {"Titulo","Descripcion","Categoria","Precio","Situacion"};
+        for (j = 0; j < UtilProductos.getProductos().size(); j++){
+            listaProductos[j][0] = UtilProductos.getProductos().get(j).getTitulo();
+            listaProductos[j][1] = UtilProductos.getProductos().get(j).getDescripcion();
+            listaProductos[j][2] = UtilProductos.getProductos().get(j).getCategoria().toString();
+            listaProductos[j][3] = Double.toString(UtilProductos.getProductos().get(j).getPrecio());
+            listaProductos[j][4] = UtilProductos.getProductos().get(j).getSituacion().toString();
+                    
+            
+            
+        }
+        DefaultTableModel model = new DefaultTableModel(listaProductos, nombreColumnas);
+        tabla.setModel(model);
+      }
     }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -100,33 +127,35 @@ public class MostrarProductos extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(204, 204, 204))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(252, 252, 252)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(93, 93, 93)
                 .addComponent(consultarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
                 .addComponent(actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addGap(153, 153, 153))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addGap(44, 44, 44)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(consultarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42))
+                .addGap(43, 43, 43))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -135,13 +164,16 @@ public class MostrarProductos extends javax.swing.JPanel {
         DetalleProducto verProducto = new DetalleProducto();
         verProducto.setVentanaprincipal(getVentanaprincipal());
         verProducto.setVisible(true);
-        verProducto.setModoAdministrador();
+        if (usuario.getClass().getSimpleName().equals("Administrador")){   
+        verProducto.setModoAdministrador();}else{
+            verProducto.setModoVendedor();
+        }
         verProducto.MostrarProducto(((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(tabla.getSelectedRow()));
         }
     }//GEN-LAST:event_consultarProductoActionPerformed
 
     private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
-       this.generarTabla();
+       this.generarTabla(usuario);
     }//GEN-LAST:event_actualizarActionPerformed
 
 

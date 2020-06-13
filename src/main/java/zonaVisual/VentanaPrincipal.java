@@ -363,14 +363,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void MostrarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarProductosActionPerformed
         MostrarProductos mp = new MostrarProductos();
         mp.setVentanaprincipal(this);
-        mp.generarTabla();
+        mp.generarTabla(usuarioConectado);
         jPanel1.removeAll();
         jPanel1.add(mp);
         jPanel1.updateUI();
     }//GEN-LAST:event_MostrarProductosActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        MostrarProductos mp = new MostrarProductos();
+        mp.setVentanaprincipal(this);
+        mp.generarTabla(usuarioConectado);
+        jPanel1.removeAll();
+        jPanel1.add(mp);
+        jPanel1.updateUI();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void DesconectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DesconectarActionPerformed

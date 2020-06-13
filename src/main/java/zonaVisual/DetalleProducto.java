@@ -5,11 +5,11 @@
  */
 package zonaVisual;
 
-
-
 import java.awt.Image;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
@@ -31,16 +31,15 @@ public class DetalleProducto extends javax.swing.JFrame {
     /**
      * Creates new form AñadirProducto
      */
-     private JFrame ventanaprincipal;
-     private Producto productoMostrado;
-     private ArrayList<Producto> productosAMostrar;
+    private JFrame ventanaprincipal;
+    private Producto productoMostrado;
+    private ArrayList<Producto> productosAMostrar;
 
-    public  JFrame getVentanaprincipal() {
-        
+    public JFrame getVentanaprincipal() {
+
         return ventanaprincipal;
     }
 
-    
     public void setVentanaprincipal(JFrame ventanaprincipal) {
         this.ventanaprincipal = ventanaprincipal;
     }
@@ -52,7 +51,7 @@ public class DetalleProducto extends javax.swing.JFrame {
     public void setProductoMostrado(Producto productoMostrado) {
         this.productoMostrado = productoMostrado;
     }
-    
+
     public DetalleProducto() {
         initComponents();
         this.darDeBaja.setVisible(false);
@@ -171,7 +170,7 @@ public class DetalleProducto extends javax.swing.JFrame {
             }
         });
 
-        botonEliminar.setText("Eliminar Producto");
+        botonEliminar.setText("Retirar Producto");
         botonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonEliminarActionPerformed(evt);
@@ -223,9 +222,7 @@ public class DetalleProducto extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(botonAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                                .addComponent(botonModificar)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
                                 .addComponent(botonAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,13 +231,10 @@ public class DetalleProducto extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(49, 49, 49)
                                 .addComponent(darDeBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(333, 333, 333)
-                                        .addComponent(botonComprar, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(80, 80, 80)
-                                        .addComponent(botonGuardar)))))
+                                .addGap(91, 91, 91)
+                                .addComponent(botonGuardar)
+                                .addGap(120, 120, 120)
+                                .addComponent(botonComprar, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(31, 31, 31))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,7 +265,8 @@ public class DetalleProducto extends javax.swing.JFrame {
                                             .addComponent(campoPostal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(campoCiudad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(comboEstado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(campoPrecio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(campoPrecio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(botonModificar, javax.swing.GroupLayout.Alignment.TRAILING))))))
                         .addGap(160, 160, 160)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -371,61 +366,60 @@ public class DetalleProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_campoPostalActionPerformed
 
     private void botonAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAñadirActionPerformed
-         try {
-             verificarCampos();
-             verificarPostal();
-             verificarPrecio();
-             Cliente cliente = (Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado();
-             if (checkUrgente.isSelected()){                
-                 Producto producto = new Producto(campoTitulo.getText(),campoDescripcion.getText(),convertirCategoria(comboCategoria.getSelectedItem().toString()),Integer.parseInt(campoPostal.getText()),campoCiudad.getText(),true,cliente,convertirEstado(comboEstado.getSelectedItem().toString()),Double.parseDouble(campoPrecio.getText()),LocalDateTime.now(),Producto.situacion.PUBLICADO);
-                 Icon imagen = Imagen.getIcon();
-                 producto.setFotografia(imagen);
-                 ((VentanaPrincipal) getVentanaprincipal()).getJavapop().anadirProducto(producto);
-                 ((Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()).añadirProducto(producto);
-             }else{
-                 Producto producto = new Producto(campoTitulo.getText(),campoDescripcion.getText(),convertirCategoria(comboCategoria.getSelectedItem().toString()),Integer.parseInt(campoPostal.getText()),campoCiudad.getText(),false,cliente,convertirEstado(comboEstado.getSelectedItem().toString()),Double.parseDouble(campoPrecio.getText()),LocalDateTime.now(),Producto.situacion.PUBLICADO);
-                 Icon imagen = Imagen.getIcon();
-                 producto.setFotografia(imagen);
-                 ((VentanaPrincipal) getVentanaprincipal()).getJavapop().anadirProducto(producto);
-                 ((Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()).añadirProducto(producto);
-             }
-             JOptionPane.showMessageDialog(this,"Se ha publicado el producto correctamente", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
-             this.dispose();
-             
-         } catch (camposNoRellenados | ubicacionIncorrecta | precioIncorrecto | JavaPop.ProductoExiste e) {
-             JOptionPane.showMessageDialog(this, "Error: " + e.toString(), "Mensaje", JOptionPane.ERROR_MESSAGE);
-         }
+        try {
+            verificarCampos();
+            verificarPostal();
+            verificarPrecio();
+            Cliente cliente = (Cliente) ((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado();
+            if (checkUrgente.isSelected()) {
+                Producto producto = new Producto(campoTitulo.getText(), campoDescripcion.getText(), convertirCategoria(comboCategoria.getSelectedItem().toString()), Integer.parseInt(campoPostal.getText()), campoCiudad.getText(), true, cliente, convertirEstado(comboEstado.getSelectedItem().toString()), Double.parseDouble(campoPrecio.getText()), LocalDateTime.now(), Producto.situacion.PUBLICADO);
+                Icon imagen = Imagen.getIcon();
+                producto.setFotografia(imagen);
+                ((VentanaPrincipal) getVentanaprincipal()).getJavapop().anadirProducto(producto);
+                ((Cliente) ((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()).añadirProducto(producto);
+            } else {
+                Producto producto = new Producto(campoTitulo.getText(), campoDescripcion.getText(), convertirCategoria(comboCategoria.getSelectedItem().toString()), Integer.parseInt(campoPostal.getText()), campoCiudad.getText(), false, cliente, convertirEstado(comboEstado.getSelectedItem().toString()), Double.parseDouble(campoPrecio.getText()), LocalDateTime.now(), Producto.situacion.PUBLICADO);
+                Icon imagen = Imagen.getIcon();
+                producto.setFotografia(imagen);
+                ((VentanaPrincipal) getVentanaprincipal()).getJavapop().anadirProducto(producto);
+                ((Cliente) ((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()).añadirProducto(producto);
+            }
+            JOptionPane.showMessageDialog(this, "Se ha publicado el producto correctamente", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+
+        } catch (camposNoRellenados | ubicacionIncorrecta | precioIncorrecto | JavaPop.ProductoExiste e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.toString(), "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_botonAñadirActionPerformed
 
     private void checkUrgenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkUrgenteActionPerformed
-        if (checkUrgente.isSelected()){
-            JOptionPane.showMessageDialog(this,"Ha marcado el producto como urgente, se le cobrará 5€ al publicar el producto y destacará sobre el resto durante 7 días.", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
+        if (checkUrgente.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Ha marcado el producto como urgente, se le cobrará 5€ al publicar el producto y destacará sobre el resto durante 7 días.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_checkUrgenteActionPerformed
 
     private void buscarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarImagenActionPerformed
         //INCOMPLETO
-        
+
         JFileChooser fc = new JFileChooser();
-        
+
         FileNameExtensionFilter filtro = new FileNameExtensionFilter(
-        "Imagenes JPG y PNG", "jpg", "png");
-        fc.setFileFilter(filtro);        
-        
+                "Imagenes JPG y PNG", "jpg", "png");
+        fc.setFileFilter(filtro);
+
         fc.setMultiSelectionEnabled(true);
-        int pp = fc.showOpenDialog(this);    
-        
-        if(pp==JFileChooser.APPROVE_OPTION){
+        int pp = fc.showOpenDialog(this);
+
+        if (pp == JFileChooser.APPROVE_OPTION) {
             pp++;
             ImageIcon imagen = new ImageIcon(fc.getSelectedFile().getAbsolutePath());
-            ImageIcon imgRedimensionada = new ImageIcon(imagen.getImage().getScaledInstance(Imagen.getWidth(), Imagen.getHeight(), 1)); 
-            Imagen.setIcon(imgRedimensionada);                  
+            ImageIcon imgRedimensionada = new ImageIcon(imagen.getImage().getScaledInstance(Imagen.getWidth(), Imagen.getHeight(), 1));
+            Imagen.setIcon(imgRedimensionada);
+        } else {
+
         }
-        else {
-        
-        }
-        
-            
+
+
     }//GEN-LAST:event_buscarImagenActionPerformed
 
     private void botonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguienteActionPerformed
@@ -440,63 +434,62 @@ public class DetalleProducto extends javax.swing.JFrame {
         campoDescripcion.setEditable(true);
         comboEstado.setEditable(true);
         comboCategoria.setEditable(true);
-        checkUrgente.setEnabled(true);    
+        checkUrgente.setEnabled(true);
         botonGuardar.setVisible(true);
-        
+
     }//GEN-LAST:event_botonModificarActionPerformed
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-        ((Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()).quitarProducto(productoMostrado);
+
         try {
-             verificarCampos();
-             verificarPostal();
-             verificarPrecio();
-             Cliente cliente = (Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado();
-             if (checkUrgente.isSelected()){                
-                 Producto producto = new Producto(campoTitulo.getText(),campoDescripcion.getText(),convertirCategoria(comboCategoria.getSelectedItem().toString()),Integer.parseInt(campoPostal.getText()),campoCiudad.getText(),true,cliente,convertirEstado(comboEstado.getSelectedItem().toString()),Double.parseDouble(campoPrecio.getText()),LocalDateTime.now(),Producto.situacion.PUBLICADO);
-                 Icon imagen = Imagen.getIcon();
-                 producto.setFotografia(imagen);
-                 ((VentanaPrincipal) getVentanaprincipal()).getJavapop().anadirProducto(producto);
-                 ((Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()).añadirProducto(producto);
-             }else{
-                 Producto producto = new Producto(campoTitulo.getText(),campoDescripcion.getText(),convertirCategoria(comboCategoria.getSelectedItem().toString()),Integer.parseInt(campoPostal.getText()),campoCiudad.getText(),false,cliente,convertirEstado(comboEstado.getSelectedItem().toString()),Double.parseDouble(campoPrecio.getText()),LocalDateTime.now(),Producto.situacion.PUBLICADO);
-                 Icon imagen = Imagen.getIcon();
-                 producto.setFotografia(imagen);
-                 ((VentanaPrincipal) getVentanaprincipal()).getJavapop().anadirProducto(producto);
-                 ((Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()).añadirProducto(producto);
-             }
-             JOptionPane.showMessageDialog(this,"Se ha modificado el producto correctamente", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
-             this.dispose();
-             
-         } catch (camposNoRellenados | ubicacionIncorrecta | precioIncorrecto | JavaPop.ProductoExiste e) {
-             JOptionPane.showMessageDialog(this, "Error: " + e.toString(), "Mensaje", JOptionPane.ERROR_MESSAGE);
-         }
+            verificarCampos();
+            verificarPostal();
+            verificarPrecio();
+            Cliente cliente = (Cliente) ((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado();
+
+            productoMostrado.setCategoria(convertirCategoria(comboCategoria.getSelectedItem().toString()));
+            productoMostrado.setCiudad(campoCiudad.getText());
+            productoMostrado.setCodigoPostal(Integer.parseInt(campoPostal.getText()));
+            productoMostrado.setDescripcion(campoDescripcion.getText());
+            productoMostrado.setPrecio(Double.parseDouble(campoPrecio.getText()));
+            productoMostrado.setTitulo(campoTitulo.getText());
+            productoMostrado.setEstado(convertirEstado(comboEstado.getSelectedItem().toString()));
+            productoMostrado.setUrgente(checkUrgente.isSelected());
+            Icon imagen = Imagen.getIcon();
+            productoMostrado.setFotografia(imagen);
+
+            JOptionPane.showMessageDialog(this, "Se ha modificado el producto correctamente", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+
+        } catch (camposNoRellenados | ubicacionIncorrecta | precioIncorrecto e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.toString(), "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
-            int indiceProducto = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().indexOf(productoMostrado);
-            ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(indiceProducto).setSituacion(Producto.situacion.RETIRADOVENTA); 
-            JOptionPane.showMessageDialog(this,"Producto eliminado correctamente", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
-            this.dispose();
-        
-         
+        int indiceProducto = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().indexOf(productoMostrado);
+        ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(indiceProducto).setSituacion(Producto.situacion.RETIRADOVENTA);
+        JOptionPane.showMessageDialog(this, "Se ha retirado el producto de venta", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+        this.dispose();
+
+
     }//GEN-LAST:event_botonEliminarActionPerformed
 
     private void botonComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComprarActionPerformed
         int indiceProducto = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().indexOf(productoMostrado);
-        ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(indiceProducto).setSituacion(Producto.situacion.SOLICITADO); 
-        Compra compra = new Compra(LocalDateTime.now(),productoMostrado,productoMostrado.getClienteAsociado(), ((Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()), false);
-        ((Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()).getCompras().add(compra);
+        ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(indiceProducto).setSituacion(Producto.situacion.SOLICITADO);
+        Compra compra = new Compra(LocalDateTime.now(), productoMostrado, productoMostrado.getClienteAsociado(), ((Cliente) ((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()), false);
+        ((Cliente) ((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()).getCompras().add(compra);
         productoMostrado.getClienteAsociado().getCompras().add(compra);
-        JOptionPane.showMessageDialog(this,"Se ha marcado el producto para compra, una vez el vendedor acepte la venta recibirá su producto.", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Se ha marcado el producto para compra, una vez el vendedor acepte la venta recibirá su producto.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
-        
+
     }//GEN-LAST:event_botonComprarActionPerformed
 
     private void darDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_darDeBajaActionPerformed
         int indiceProducto = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().indexOf(productoMostrado);
         ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(indiceProducto).setSituacion(Producto.situacion.RETIRADOADMINISTRADOR); //revisar esto de productos y usuarios cada uno su array
-        JOptionPane.showMessageDialog(this,"Se ha dado de baja el producto correctamente", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Se ha dado de baja el producto correctamente", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
     }//GEN-LAST:event_darDeBajaActionPerformed
 
@@ -534,7 +527,7 @@ public class DetalleProducto extends javax.swing.JFrame {
             }
         });
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Imagen;
@@ -568,33 +561,46 @@ public class DetalleProducto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
-    public void verificarCampos() throws camposNoRellenados{
-        if (campoCiudad.getText().length()==0){throw new camposNoRellenados();}
-        if (campoDescripcion.getText().length()==0){throw new camposNoRellenados();}
-        if (campoPostal.getText().length()==0){throw new camposNoRellenados();}
-        if (campoPrecio.getText().length()==0){throw new camposNoRellenados();} 
-        if (campoTitulo.getText().length()==0){throw new camposNoRellenados();} 
+    public void verificarCampos() throws camposNoRellenados {
+        if (campoCiudad.getText().length() == 0) {
+            throw new camposNoRellenados();
+        }
+        if (campoDescripcion.getText().length() == 0) {
+            throw new camposNoRellenados();
+        }
+        if (campoPostal.getText().length() == 0) {
+            throw new camposNoRellenados();
+        }
+        if (campoPrecio.getText().length() == 0) {
+            throw new camposNoRellenados();
+        }
+        if (campoTitulo.getText().length() == 0) {
+            throw new camposNoRellenados();
+        }
     }
-    public void verificarPostal()throws ubicacionIncorrecta{ 
-        try{
+
+    public void verificarPostal() throws ubicacionIncorrecta {
+        try {
             Integer.parseInt(campoPostal.getText());
-            if (campoPostal.getText().length()!=5){
+            if (campoPostal.getText().length() != 5) {
                 throw new ubicacionIncorrecta();
             }
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             this.campoPostal.requestFocus();
             throw new ubicacionIncorrecta();
         }
     }
-     public void verificarPrecio()throws precioIncorrecto{ 
-        try{
+
+    public void verificarPrecio() throws precioIncorrecto {
+        try {
             Double.parseDouble(campoPrecio.getText());
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             this.campoPostal.requestFocus();
             throw new precioIncorrecto();
         }
     }
-     public void setModoNuevoProducto(){ //Para crear un nuevo producto
+
+    public void setModoNuevoProducto() { //Para crear un nuevo producto
         this.remove(botonAnterior);
         this.remove(botonSiguiente);
         this.remove(botonModificar);
@@ -608,9 +614,10 @@ public class DetalleProducto extends javax.swing.JFrame {
         campoDescripcion.setEditable(true);
         comboEstado.setEditable(true);
         comboCategoria.setEditable(true);
-        checkUrgente.setEnabled(true);        
+        checkUrgente.setEnabled(true);
     }
-     public void setModoComprador(){ //Para comprar un producto
+
+    public void setModoComprador() { //Para comprar un producto
         this.remove(botonModificar);
         this.remove(botonEliminar);
         this.remove(botonAñadir);
@@ -624,9 +631,10 @@ public class DetalleProducto extends javax.swing.JFrame {
         comboEstado.setEditable(false);
         comboCategoria.setEditable(false);
         checkUrgente.setEnabled(false);
-       
+
     }
-     public void setModoVendedor(){ //Para modificar un producto
+
+    public void setModoVendedor() { //Para modificar un producto
         this.remove(botonAñadir);
         this.remove(botonComprar);
         botonGuardar.setVisible(false);
@@ -640,7 +648,8 @@ public class DetalleProducto extends javax.swing.JFrame {
         checkUrgente.setEnabled(false);
         buscarImagen.setVisible(false);
     }
-     public void setModoAdministrador(){
+
+    public void setModoAdministrador() {
         this.remove(botonModificar);
         this.remove(botonEliminar);
         this.remove(botonAñadir);
@@ -656,91 +665,95 @@ public class DetalleProducto extends javax.swing.JFrame {
         comboEstado.setEditable(false);
         comboCategoria.setEditable(false);
         checkUrgente.setEnabled(false);
-     }
-     public void MostrarProducto(Producto producto){
-         setProductoMostrado(producto);
-         campoTitulo.setText(producto.getTitulo());
-         campoCiudad.setText(producto.getCiudad());
-         campoDescripcion.setText(producto.getDescripcion());
-         campoPostal.setText(Integer.toString(producto.getCodigoPostal()));
-         campoPrecio.setText(Double.toString(producto.getPrecio()));
-         comboCategoria.setSelectedIndex(indiceCategoria(producto.getCategoria()));
-         comboEstado.setSelectedIndex(indiceEstado(producto.getEstado()));
-         checkUrgente.setSelected(producto.isUrgente());
-         Imagen.setIcon(producto.getFotografia());
-     
-     }
-     public Producto.categoria convertirCategoria(String categoriaString){ 
-         switch (categoriaString){
-             case "Moda y Accesorios":
-                 return Producto.categoria.MODAYACCESORIOS;   
-             case "TV, audio y foto":
-                 return Producto.categoria.TVAUDIOYFOTO;
-             case "Móviles y telefonía":
-                 return Producto.categoria.MOVILESYTELFONIA;
-             case "Informática y electrónica":
-                 return Producto.categoria.INFORMATICAYELECTRONICA;
-             case "Consolas y videojuegos":
-                 return Producto.categoria.CONSOLASYVIDEOJUEGOS;
-             case "Deporte y ocio":    
-                 return Producto.categoria.DEPORTEYOCIO;
-         }
-         return Producto.categoria.DEPORTEYOCIO; //...
-      }
-     public Producto.estado convertirEstado(String categoriaEstado){ 
-         switch (categoriaEstado){
-             case "Nuevo":
-                 return Producto.estado.NUEVO;   
-             case "Como nuevo":
-                 return Producto.estado.COMONUEVO;
-             case "Bueno":
-                 return Producto.estado.BUENO;
-             case "Aceptable":
-                 return Producto.estado.ACEPTABLE;
-             case "Regular":
-                 return Producto.estado.REGULAR;
-         }
-         return Producto.estado.REGULAR; //...
-      }
-    public int indiceCategoria(Producto.categoria Categoria){ 
-         switch (Categoria){
-             case MODAYACCESORIOS:
-                 return 0;   
-             case TVAUDIOYFOTO:
-                 return 1;
-             case MOVILESYTELFONIA:
-                 return 2;
-             case INFORMATICAYELECTRONICA:
-                 return 3;
-             case CONSOLASYVIDEOJUEGOS:
-                 return 4;
-             case DEPORTEYOCIO:    
-                 return 5;
-         }
-         return 5; //...
-      }
-     public int indiceEstado(Producto.estado Estado){ 
-         switch (Estado){
-             case NUEVO:
-                 return 0;   
-             case COMONUEVO:
-                 return 1;
-             case BUENO:
-                 return 2;
-             case ACEPTABLE:
-                 return 3;
-             case REGULAR:
-                 return 4;
-         }
-         return 4; //...
-      } 
+    }
 
+    public void MostrarProducto(Producto producto) {
+        setProductoMostrado(producto);
+        campoTitulo.setText(producto.getTitulo());
+        campoCiudad.setText(producto.getCiudad());
+        campoDescripcion.setText(producto.getDescripcion());
+        campoPostal.setText(Integer.toString(producto.getCodigoPostal()));
+        campoPrecio.setText(Double.toString(producto.getPrecio()));
+        comboCategoria.setSelectedIndex(indiceCategoria(producto.getCategoria()));
+        comboEstado.setSelectedIndex(indiceEstado(producto.getEstado()));
+        checkUrgente.setSelected(producto.isUrgente());
+        Imagen.setIcon(producto.getFotografia());
 
+    }
 
+    public Producto.categoria convertirCategoria(String categoriaString) {
+        switch (categoriaString) {
+            case "Moda y Accesorios":
+                return Producto.categoria.MODAYACCESORIOS;
+            case "TV, audio y foto":
+                return Producto.categoria.TVAUDIOYFOTO;
+            case "Móviles y telefonía":
+                return Producto.categoria.MOVILESYTELFONIA;
+            case "Informática y electrónica":
+                return Producto.categoria.INFORMATICAYELECTRONICA;
+            case "Consolas y videojuegos":
+                return Producto.categoria.CONSOLASYVIDEOJUEGOS;
+            case "Deporte y ocio":
+                return Producto.categoria.DEPORTEYOCIO;
+        }
+        return Producto.categoria.DEPORTEYOCIO; //...
+    }
+
+    public Producto.estado convertirEstado(String categoriaEstado) {
+        switch (categoriaEstado) {
+            case "Nuevo":
+                return Producto.estado.NUEVO;
+            case "Como nuevo":
+                return Producto.estado.COMONUEVO;
+            case "Bueno":
+                return Producto.estado.BUENO;
+            case "Aceptable":
+                return Producto.estado.ACEPTABLE;
+            case "Regular":
+                return Producto.estado.REGULAR;
+        }
+        return Producto.estado.REGULAR; //...
+    }
+
+    public int indiceCategoria(Producto.categoria Categoria) {
+        switch (Categoria) {
+            case MODAYACCESORIOS:
+                return 0;
+            case TVAUDIOYFOTO:
+                return 1;
+            case MOVILESYTELFONIA:
+                return 2;
+            case INFORMATICAYELECTRONICA:
+                return 3;
+            case CONSOLASYVIDEOJUEGOS:
+                return 4;
+            case DEPORTEYOCIO:
+                return 5;
+        }
+        return 5; //...
+    }
+
+    public int indiceEstado(Producto.estado Estado) {
+        switch (Estado) {
+            case NUEVO:
+                return 0;
+            case COMONUEVO:
+                return 1;
+            case BUENO:
+                return 2;
+            case ACEPTABLE:
+                return 3;
+            case REGULAR:
+                return 4;
+        }
+        return 4; //...
+    }
 
 }
-class precioIncorrecto extends Exception{
-    public precioIncorrecto(){
+
+class precioIncorrecto extends Exception {
+
+    public precioIncorrecto() {
         super("ERROR: El precio del producto no es válido");
     }
 }
