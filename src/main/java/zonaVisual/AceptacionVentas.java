@@ -26,6 +26,7 @@ public class AceptacionVentas extends javax.swing.JFrame {
      */
     private JFrame ventanaprincipal;
     private Compra compra;
+    
     public JFrame getVentanaprincipal() {
         return ventanaprincipal;
     }
@@ -336,9 +337,8 @@ public class AceptacionVentas extends javax.swing.JFrame {
     private void AceptarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarVentaActionPerformed
         
         compra.setInformado(true);
-        compra.getProducto().setSituacion(Producto.situacion.VENDIDO);
-        Venta venta = new Venta(LocalDateTime.now(), compra.getProducto(), compra.getVendedor(), compra.getComprador());
-        ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getVentas().add(venta);
+        compra.getProducto().setSituacion(Producto.situacion.ACEPTADOVENTA);
+        ((VentanaPrincipal) getVentanaprincipal()).getJavapop().comprarProducto(compra.getComprador(), compra.getVendedor(), compra.getProducto());
         JOptionPane.showMessageDialog(this,"Se ha vendido el producto correctamente", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
     }//GEN-LAST:event_AceptarVentaActionPerformed

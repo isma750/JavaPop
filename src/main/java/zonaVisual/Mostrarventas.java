@@ -42,12 +42,13 @@ public class Mostrarventas extends javax.swing.JPanel {
         this.ventanaprincipal = ventanaprincipal;
     }
     public void dibujarTabla(){
-       
+         
         ArrayList<Venta> ventas = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getVentas();
         int j = 0;
         String listaVentas[][] = new String[ventas.size()][this.tabla.getColumnCount()];
         String nombreColumnas[] = {"Comprador","Vendedor","Producto","Fecha de Venta"};
         for (j = 0; j < ventas.size(); j++){
+            //verificar fecha
             listaVentas[j][0] = ventas.get(j).getComprador().getNombre();
             listaVentas[j][1] = ventas.get(j).getVendedor().getNombre();
             listaVentas[j][2] = ventas.get(j).getProducto().getTitulo();
