@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 public class Venta {
     private LocalDateTime fechaVenta;
     private Producto producto;
-    private String nombreVendedor;
-    private String nombreComprador;
+    private Cliente Vendedor;
+    private Cliente Comprador;
 
     public LocalDateTime getFechaVenta() {
         return fechaVenta;
@@ -23,26 +23,26 @@ public class Venta {
         this.producto = producto;
     }
 
-    public String getNombreVendedor() {
-        return nombreVendedor;
+    public Cliente getVendedor() {
+        return Vendedor;
     }
 
-    public void setNombreVendedor(String nombreVendedor) {
-        this.nombreVendedor = nombreVendedor;
+    public void setVendedor(Cliente Vendedor) {
+        this.Vendedor = Vendedor;
     }
 
-    public String getNombreComprador() {
-        return nombreComprador;
+    public Cliente getComprador() {
+        return Comprador;
     }
 
-    public void setNombreComprador(String nombreComprador) {
-        this.nombreComprador = nombreComprador;
+    public void setComprador(Cliente Comprador) {
+        this.Comprador = Comprador;
     }
 
-    public Venta(LocalDateTime fechaVenta, Producto producto, String nombreVendedor, String nombreComprador) {
+    public Venta(LocalDateTime fechaVenta, Producto producto, Cliente Vendedor, Cliente Comprador) {
         this.fechaVenta = fechaVenta;
         this.producto = producto;
-        this.nombreVendedor = nombreVendedor;
-        this.nombreComprador = nombreComprador;
+        this.Vendedor = Vendedor;
+        this.Comprador = Comprador;
     }
 }

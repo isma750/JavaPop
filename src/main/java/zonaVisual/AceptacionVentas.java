@@ -11,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import zonaNegocio.Cliente;
+import zonaNegocio.Compra;
 import zonaNegocio.Producto;
 import zonaNegocio.Venta;
 
@@ -24,7 +25,7 @@ public class AceptacionVentas extends javax.swing.JFrame {
      * Creates new form AceptacionVentas
      */
     private JFrame ventanaprincipal;
-
+    private Compra compra;
     public JFrame getVentanaprincipal() {
         return ventanaprincipal;
     }
@@ -37,16 +38,16 @@ public class AceptacionVentas extends javax.swing.JFrame {
     public AceptacionVentas() {
         initComponents();
     }
-    public void rellenarDatos(Cliente clienteComprador,Producto productosolicitado){
-        
-         campoTitulo.setText(productosolicitado.getTitulo());
-         campoDescripcion.setText(productosolicitado.getDescripcion());
-         campoCategoria.setText(productosolicitado.getCategoria().toString());
-         campoEstado.setText(productosolicitado.getEstado().toString());
-         campoPrecio.setText(String.valueOf((productosolicitado.getPrecio())));
-         campoComprador.setText(clienteComprador.getNombre());
-         campoUbicacion.setText(clienteComprador.getCodigoPostal() + " " + clienteComprador.getCiudad());
-         campoFecha.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+    public void rellenarDatos(Compra compra){
+         this.compra = compra;
+         campoTitulo.setText(compra.getProducto().getTitulo());
+         campoDescripcion.setText(compra.getProducto().getDescripcion());
+         campoCategoria.setText(compra.getProducto().getCategoria().toString());
+         campoEstado.setText(compra.getProducto().getEstado().toString());
+         campoPrecio.setText(String.valueOf((compra.getProducto().getPrecio())));
+         campoComprador.setText(compra.getComprador().getNombre());
+         campoUbicacion.setText(compra.getComprador().getCodigoPostal() + " " + compra.getComprador().getCiudad());
+         campoFecha.setText(compra.getFechaSolicitudComprador().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
     }
 
     /**
@@ -325,16 +326,21 @@ public class AceptacionVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_campoFechaActionPerformed
 
     private void DenegarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DenegarVentaActionPerformed
-        Producto productosolicitado = null;
-        productosolicitado.setSituacion(Producto.situacion.PUBLICADO);
+        
+        compra.setInformado(true);
+        compra.getProducto().setSituacion(Producto.situacion.PUBLICADO);
         JOptionPane.showMessageDialog(this,"Se ha rechazado la venta", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
+        this.dispose();
     }//GEN-LAST:event_DenegarVentaActionPerformed
 
     private void AceptarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarVentaActionPerformed
-        Producto productosolicitado = null;
-        productosolicitado.setSituacion(Producto.situacion.VENDIDO);
-        //Venta venta = new Venta();
+        
+        compra.setInformado(true);
+        compra.getProducto().setSituacion(Producto.situacion.VENDIDO);
+        Venta venta = new Venta(LocalDateTime.now(), compra.getProducto(), compra.getVendedor(), compra.getComprador());
+        ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getVentas().add(venta);
         JOptionPane.showMessageDialog(this,"Se ha vendido el producto correctamente", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
+        this.dispose();
     }//GEN-LAST:event_AceptarVentaActionPerformed
 
     /**

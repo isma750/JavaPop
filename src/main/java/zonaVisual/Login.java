@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import zonaNegocio.Cliente;
+import zonaNegocio.Compra;
+import zonaNegocio.Producto;
 import zonaNegocio.Usuario;
 
 
@@ -169,10 +171,27 @@ public class Login extends javax.swing.JFrame {
         }
         if (valido){
             if (usuarioconectado.getClass().getSimpleName().equals("Administrador")||((Cliente)usuarioconectado).getEstado().equals(Cliente.Estado.ACTIVO)){
+                
                 ((VentanaPrincipal) getVentanaprincipal()).setUsuarioConectado(usuarioconectado);
                 ((VentanaPrincipal) getVentanaprincipal()).getUsuario().setText(Correo.getText());
                 ((VentanaPrincipal) getVentanaprincipal()).getUsuario().updateUI();
                 ((VentanaPrincipal) getVentanaprincipal()).actualizarMenus();
+                if (!usuarioconectado.getClass().getSimpleName().equals("Administrador")){
+                    for(int i = 0; i<((Cliente)usuarioconectado).getProductos().size(); i++){
+                if(((Cliente)usuarioconectado).getProductos().get(i).getSituacion().equals(Producto.situacion.SOLICITADO)){
+                     for (int j=0; j<((Cliente)usuarioconectado).getCompras().size(); j++){
+                         Compra compraActual = ((Cliente)usuarioconectado).getCompras().get(j);
+                     if (!compraActual.isInformado()){
+                        AceptacionVentas vender = new AceptacionVentas();
+                        vender.setVentanaprincipal(this);
+                        vender.setVisible(true);
+                        vender.rellenarDatos(compraActual);
+                     }
+                     }
+                     
+                }
+            }
+                }
                 getVentanaprincipal().setVisible(true);
                 this.dispose();
             }else{

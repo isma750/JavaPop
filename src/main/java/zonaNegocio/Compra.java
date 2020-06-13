@@ -6,8 +6,8 @@ public class Compra {
     private LocalDateTime fechaSolicitudComprador;
     private LocalDateTime fechaDecisionVendedor;
     private Producto producto;
-    private String nombreVendedor;
-    private String nombreComprador;
+    private Cliente Vendedor;
+    private Cliente Comprador;
     public enum estado{
         SOLICITUD,
         ACEPTADOVENTA,
@@ -16,12 +16,12 @@ public class Compra {
     }
     private boolean informado;
     
-    public Compra(LocalDateTime fechaSolicitudComprador, LocalDateTime fechaDecisionVendedor, Producto producto, String nombreVendedor, String nombreComprador, boolean informado) {
+    public Compra(LocalDateTime fechaSolicitudComprador, Producto producto, Cliente Vendedor, Cliente Comprador, boolean informado) {
         this.fechaSolicitudComprador = fechaSolicitudComprador;
-        this.fechaDecisionVendedor = fechaDecisionVendedor;
+        
         this.producto = producto;
-        this.nombreVendedor = nombreVendedor;
-        this.nombreComprador = nombreComprador;
+        this.Vendedor = Vendedor;
+        this.Comprador = Comprador;
         this.informado = informado;
     }
 
@@ -57,26 +57,26 @@ public class Compra {
         this.producto = producto;
     }
 
-    public String getNombreVendedor() {
-        return nombreVendedor;
+    public Cliente getVendedor() {
+        return Vendedor;
     }
 
-    public void setNombreVendedor(String nombreVendedor) {
-        this.nombreVendedor = nombreVendedor;
+    public void setVendedor(Cliente Vendedor) {
+        this.Vendedor = Vendedor;
     }
 
-    public String getNombreComprador() {
-        return nombreComprador;
+    public Cliente getComprador() {
+        return Comprador;
     }
 
-    public void setNombreComprador(String nombreComprador) {
-        this.nombreComprador = nombreComprador;
+    public void setComprador(Cliente Comprador) {
+        this.Comprador = Comprador;
     }
     
 
     @Override
     public String toString(){
-        return "\n\tCompra{" + "nombre vendedor=" + nombreVendedor + ", nombre comprador=" + nombreComprador + ", producto =" + producto + ", fecha solicitud compra=" + fechaSolicitudComprador + ", fecha decision vendedor= " + fechaDecisionVendedor + ", informado = " + informado +"}";
+        return "\n\tCompra{" + "nombre vendedor=" + Vendedor + ", nombre comprador=" + Comprador + ", producto =" + producto + ", fecha solicitud compra=" + fechaSolicitudComprador + ", fecha decision vendedor= " + fechaDecisionVendedor + ", informado = " + informado +"}";
         
     }
 }

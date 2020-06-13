@@ -76,6 +76,7 @@ public class BusquedaProducto extends javax.swing.JPanel {
     public void buscarProductos(){
     UtilProductos UtilProductos = new UtilProductos();
     Cliente clienteBuscador = (Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado();
+    (((VentanaPrincipal) getVentanaprincipal()).getJavapop()).setProductos();
     UtilProductos.setProductos((((VentanaPrincipal) getVentanaprincipal()).getJavapop()).getProductos());
     
     UtilProductos.BuscarProductosSituacion(Producto.situacion.PUBLICADO,clienteBuscador);

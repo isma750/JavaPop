@@ -535,7 +535,11 @@ public class registro extends javax.swing.JFrame {
 
     private void botonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBajaActionPerformed
         ((Cliente)((VentanaPrincipal) getVentanaprincipal()).getJavapop().getUsuario(clienteMostrado.getCorreo())).setEstado(Cliente.Estado.BAJA);
-        JOptionPane.showMessageDialog(this,"Se ha dado de baja al usuario correctamente", "ATENCION",JOptionPane.INFORMATION_MESSAGE);      
+        ArrayList<Producto> productosCliente = ((Cliente)((VentanaPrincipal) getVentanaprincipal()).getJavapop().getUsuario(clienteMostrado.getCorreo())).getProductos();
+        for (int i=0; i<productosCliente.size(); i++){
+            productosCliente.get(i).setSituacion(Producto.situacion.RETIRADOADMINISTRADOR);
+                }
+        JOptionPane.showMessageDialog(this,"Se ha dado de baja al usuario y sus productos correctamente", "ATENCION",JOptionPane.INFORMATION_MESSAGE);      
         this.dispose();
     }//GEN-LAST:event_botonBajaActionPerformed
 

@@ -474,19 +474,20 @@ public class DetalleProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
-        ((Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()).quitarProducto(productoMostrado);
-         try {
-             ((VentanaPrincipal) getVentanaprincipal()).getJavapop().eliminarProducto(productoMostrado);
-             JOptionPane.showMessageDialog(this,"Producto eliminado correctamente", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
-             this.dispose();
-         } catch (JavaPop.ProductoNoExiste ex) {
-             
-         }
+            int indiceProducto = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().indexOf(productoMostrado);
+            ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(indiceProducto).setSituacion(Producto.situacion.RETIRADOVENTA); 
+            JOptionPane.showMessageDialog(this,"Producto eliminado correctamente", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+        
+         
     }//GEN-LAST:event_botonEliminarActionPerformed
 
     private void botonComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComprarActionPerformed
         int indiceProducto = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().indexOf(productoMostrado);
-        ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(indiceProducto).setSituacion(Producto.situacion.SOLICITADO);    //revisar esto de productos y usuarios cada uno su array
+        ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(indiceProducto).setSituacion(Producto.situacion.SOLICITADO); 
+        Compra compra = new Compra(LocalDateTime.now(),productoMostrado,productoMostrado.getClienteAsociado(), ((Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()), false);
+        ((Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()).getCompras().add(compra);
+        productoMostrado.getClienteAsociado().getCompras().add(compra);
         JOptionPane.showMessageDialog(this,"Se ha marcado el producto para compra, una vez el vendedor acepte la venta recibirá su producto.", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
         

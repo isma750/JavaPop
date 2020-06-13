@@ -52,7 +52,7 @@ public class JavaPop {
             } catch (Exception e){
                 e.printStackTrace();
             }
-            Venta venta = new Venta(LocalDateTime.now(),producto,vendedor.getNombre(),comprador.getNombre());
+            Venta venta = new Venta(LocalDateTime.now(),producto,vendedor,comprador);
             if (this.ventas == null){
                 this.ventas = new ArrayList<>();
             }
