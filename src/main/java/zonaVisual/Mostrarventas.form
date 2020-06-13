@@ -30,10 +30,6 @@
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="656" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="279" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="135" max="-2" attributes="0"/>
-                  </Group>
               </Group>
               <EmptySpace pref="27" max="32767" attributes="0"/>
           </Group>
@@ -46,11 +42,9 @@
               <Component id="jLabel1" min="-2" pref="38" max="-2" attributes="0"/>
               <EmptySpace pref="37" max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="130" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="36" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="154" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -82,15 +76,15 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" pref="41" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jSpinner1" min="-2" pref="44" max="-2" attributes="0"/>
+                  <Component id="SpinnerDia" min="-2" pref="44" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" pref="41" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="jSpinner2" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="SpinnerMes" min="-2" pref="45" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="jLabel5" min="-2" pref="41" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jSpinner3" min="-2" pref="66" max="-2" attributes="0"/>
+                  <Component id="SpinnerAño" min="-2" pref="66" max="-2" attributes="0"/>
                   <EmptySpace pref="91" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -103,9 +97,9 @@
                       <Component id="jLabel3" alignment="3" max="32767" attributes="0"/>
                       <Component id="jLabel4" alignment="3" max="32767" attributes="0"/>
                       <Component id="jLabel5" alignment="3" max="32767" attributes="0"/>
-                      <Component id="jSpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSpinner2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSpinner3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="SpinnerDia" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="SpinnerMes" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="SpinnerAño" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -115,7 +109,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="A parir de:"/>
+            <Property name="text" type="java.lang.String" value="A partir de:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -133,21 +127,21 @@
             <Property name="text" type="java.lang.String" value="A&#xf1;o:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="jSpinner1">
+        <Component class="javax.swing.JSpinner" name="SpinnerDia">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="1" maximum="31" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="jSpinner2">
+        <Component class="javax.swing.JSpinner" name="SpinnerMes">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="1" maximum="17" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="jSpinner3">
+        <Component class="javax.swing.JSpinner" name="SpinnerA&#xf1;o">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="1980" maximum="2020" minimum="1980" numberType="java.lang.Integer" stepSize="1" type="number"/>
@@ -163,11 +157,11 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable1">
+        <Component class="javax.swing.JTable" name="tabla">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="4">
-                <Column editable="true" title="Nobre Comprador" type="java.lang.Object"/>
+                <Column editable="true" title="Nombre Comprador" type="java.lang.Object"/>
                 <Column editable="true" title="Nombre Vendedor" type="java.lang.Object"/>
                 <Column editable="true" title="Producto" type="java.lang.Object"/>
                 <Column editable="true" title="fecha venta" type="java.lang.Object"/>
@@ -204,13 +198,5 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Consultar Venta"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
-      </Events>
-    </Component>
   </SubComponents>
 </Form>

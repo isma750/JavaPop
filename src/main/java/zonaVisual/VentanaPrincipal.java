@@ -83,13 +83,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         JFrame login = new Login(this);
         
-        if (!getUsuarioConectado().equals(admin)){
-            for(int i = 0; i<getClienteConectado().getProductos().size(); i++){
-                if(getClienteConectado().getProductos().equals(Producto.situacion.SOLICITADO)){
-                     new AceptacionVentas();
-                }
-            }
-        }
+        
         
         
     }
