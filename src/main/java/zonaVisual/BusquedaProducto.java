@@ -93,10 +93,7 @@ public class BusquedaProducto extends javax.swing.JPanel {
     
     generarTabla();
     }
-    public void getProductoSeleccionado(){
-       
     
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -181,6 +178,11 @@ public class BusquedaProducto extends javax.swing.JPanel {
         });
 
         jButton2.setText("Limpiar filtros");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         verProducto.setText("Ver producto seleccionado");
         verProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -307,7 +309,13 @@ public class BusquedaProducto extends javax.swing.JPanel {
         verProducto.setModoComprador();
         verProducto.MostrarProducto(UtilProductos.getProductos().get(tabla.getSelectedRow()));
         }
+        new AceptacionVentas();
+        
     }//GEN-LAST:event_verProductoActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        limpiarFiltros();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -45,6 +45,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private Administrador admin = null;
     private Usuario usuarioConectado;
     private JavaPop javapop;
+    private Producto producto;
     
     public VentanaPrincipal() {
         initComponents();
@@ -83,6 +84,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         
     }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+    
 
     public JavaPop getJavapop() {
         return javapop;
@@ -377,4 +387,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
+
+    
 }
