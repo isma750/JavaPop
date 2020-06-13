@@ -40,8 +40,8 @@ public class AceptacionVentas extends javax.swing.JFrame {
         
          campoTitulo.setText(productosolicitado.getTitulo());
          campoDescripcion.setText(productosolicitado.getDescripcion());
-         //campoCategoria.setText(indiceCategoria(productosolicitado.getCategoria().toString()));
-         //campoEstado.setText(indiceEstado(productosolicitado.getEstado())));
+         campoCategoria.setText(productosolicitado.getCategoria().toString());
+         campoEstado.setText(productosolicitado.getEstado().toString());
          campoPrecio.setText(String.valueOf((productosolicitado.getPrecio())));
          campoComprador.setText(clienteComprador.getNombre());
          campoUbicacion.setText(clienteComprador.getCodigoPostal() + " " + clienteComprador.getCiudad());
@@ -369,38 +369,7 @@ public class AceptacionVentas extends javax.swing.JFrame {
             }
         });
     }
-    public int indiceCategoria(Producto.categoria Categoria){ 
-         switch (Categoria){
-             case MODAYACCESORIOS:
-                 return 0;   
-             case TVAUDIOYFOTO:
-                 return 1;
-             case MOVILESYTELFONIA:
-                 return 2;
-             case INFORMATICAYELECTRONICA:
-                 return 3;
-             case CONSOLASYVIDEOJUEGOS:
-                 return 4;
-             case DEPORTEYOCIO:    
-                 return 5;
-         }
-         return 5; //...
-      }
-     public int indiceEstado(Producto.estado Estado){ 
-         switch (Estado){
-             case NUEVO:
-                 return 0;   
-             case COMONUEVO:
-                 return 1;
-             case BUENO:
-                 return 2;
-             case ACEPTABLE:
-                 return 3;
-             case REGULAR:
-                 return 4;
-         }
-         return 4; //...
-      } 
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AceptarVenta;
