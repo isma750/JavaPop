@@ -1,11 +1,12 @@
 package zonaNegocio;
 
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import javax.swing.Icon;
 
 
-public class Producto implements Comparable<Producto> {
+public class Producto implements Comparable<Producto>, Serializable{
     private String titulo;
     private String descripcion;
     private situacion situacion;

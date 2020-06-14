@@ -1,6 +1,7 @@
 package zonaNegocio;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -8,7 +9,7 @@ import java.util.ArrayList;
  * Clase general de las propiedades de los clientes de Javapop
  * Hereda de Usuario
  */
-public class Cliente extends Usuario{
+public class Cliente extends Usuario implements Serializable{
 
     private String nombre;
     private String dni;

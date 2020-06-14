@@ -1,6 +1,7 @@
 package zonaNegocio;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import zonaNegocio.Cliente;
 
@@ -9,7 +10,7 @@ import zonaNegocio.Cliente;
  * Clase con las propiedades de los clientes profesionales
  * Hereda de Cliente
  */
-public class ClienteProfesional extends Cliente {
+public class ClienteProfesional extends Cliente implements Serializable{
 
    private String descripcion;
    private String horario;

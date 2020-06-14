@@ -1,10 +1,12 @@
 package zonaNegocio;
 
+import java.io.Serializable;
+
 /**
  * 
  * Clase general con las propiedades de los usuarios que se pueden registrar en Javapop
  */
-public class Usuario{
+public class Usuario implements Serializable{
     public String correo;
     public String clave;
     

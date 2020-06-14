@@ -1,6 +1,7 @@
 package zonaNegocio;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -8,7 +9,7 @@ import java.util.ArrayList;
  * Clase con las propiedades para registrarse el administrador de Javapop
  * Hereda de Usuario
  */
-public class Administrador extends Usuario {
+public class Administrador extends Usuario implements Serializable {
 
     
     private ArrayList<Cliente> clientes;

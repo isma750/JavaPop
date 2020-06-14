@@ -3,6 +3,7 @@
 package zonaNegocio;
 
  
+import java.io.Serializable;
 import zonaNegocio.JavaPop;
 import zonaNegocio.ClienteProfesional;
 import zonaNegocio.Cliente;
@@ -12,7 +13,7 @@ import jdk.jshell.execution.Util;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class Main {
+public class Main implements Serializable{
     public static void main(String[] args) throws JavaPop.UsuarioExiste {
         //Creamos nuestra aplicacion
         JavaPop javaPop = new JavaPop();

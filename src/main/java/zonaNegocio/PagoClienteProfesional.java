@@ -1,10 +1,11 @@
 
 package zonaNegocio;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 
-public class PagoClienteProfesional {
+public class PagoClienteProfesional implements Serializable {
     private Usuario usuario;
     private LocalDateTime fechaPago;
     private double importePago;
