@@ -7,12 +7,14 @@ package zonaVisual;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.File;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -67,8 +69,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             Producto producto4 = new Producto("Playstation 5","Poco uso", Producto.categoria.CONSOLASYVIDEOJUEGOS,19004,"Guadalajara",true,cliente1, Producto.estado.BUENO, 150.00, LocalDateTime.now(),Producto.situacion.PUBLICADO);
             Producto producto5 = new Producto("Television 49 pulgadas Sony","Tiene un pequeño arañazo", Producto.categoria.TVAUDIOYFOTO,19004, "Guadalajara",false,cliente1, Producto.estado.ACEPTABLE, 250.00, LocalDateTime.now(),Producto.situacion.PUBLICADO);
             Producto producto6 = new Producto("Iphone X 64 gb","Tiene la pantalla rota", Producto.categoria.MOVILESYTELFONIA,19200,"Azuqueca de Henares",true,cliente1, Producto.estado.REGULAR, 400.00,LocalDateTime.now(),Producto.situacion.PUBLICADO);
+            ImageIcon iconoproducto1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/camisetablanca.jpg")));
+            producto1.setFotografia(iconoproducto1);
             productoscliente1.add(producto1);
-             productoscliente1.add(producto2);
+            productoscliente1.add(producto2);
             productoscliente1.add(producto3);
             productoscliente1.add(producto4);
             productoscliente1.add(producto5);
