@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.io.*;
 import javax.swing.JOptionPane;
 
-public class JavaPop implements Serializable {
+public class JavaPop  {
 
     private ArrayList<Usuario> usuarios;
     private ArrayList<Venta> ventas;
-    private ArrayList<Producto> productos; //este array sobra segun el nuevo modelo, de momento no lo quito, quiero consultarte antes
+    private ArrayList<Producto> productos; 
 
 
     /**
@@ -54,10 +54,8 @@ public class JavaPop implements Serializable {
                 e.printStackTrace();
             }
             Venta venta = new Venta(LocalDateTime.now(),producto,vendedor,comprador);
-            if (this.ventas == null){
-                this.ventas = new ArrayList<>();
-            }
-            ventas.add(venta); // registramos la venta
+            
+            vendedor.getVentas().add(venta); // registramos la venta
             producto.setSituacion(Producto.situacion.VENDIDO);
 
         }
@@ -116,8 +114,19 @@ public class JavaPop implements Serializable {
         return ventas;
     }
 
-    public void setVentas(ArrayList<Venta> ventas) {
-        this.ventas = ventas;
+    public void setVentas() {
+        this.ventas = new ArrayList<>();
+        for (int i = 0; i < usuarios.size(); i++) {
+            if (usuarios.get(i).getClass().getSimpleName().equals("Cliente") || usuarios.get(i).getClass().getSimpleName().equals("ClienteProfesional") ) {
+                Cliente cliente = (Cliente) usuarios.get(i);
+                ArrayList<Venta> ventasCliente = (cliente.getVentas());
+                for (int j = 0; j < ventasCliente.size(); j++) {
+                    this.ventas.add(ventasCliente.get(j));
+                }
+
+            }
+        }
+
     }
 
     /**
@@ -183,7 +192,42 @@ public class JavaPop implements Serializable {
             throw new ProductoNoExiste();
         }
     }
+    public void cargarDatos() {
+        try {
+            
+            FileInputStream istreamUsuarios = new FileInputStream("copiasegUsuarios.dat");
+            ObjectInputStream oisUsuarios = new ObjectInputStream(istreamUsuarios);
+            usuarios = (ArrayList) oisUsuarios.readObject();
+            istreamUsuarios.close();
+        } catch (IOException ioe) {
+            System.out.println("Error de IO: " + ioe.getMessage());
+        } catch (ClassNotFoundException cnfe) {
+            System.out.println("Error de clase no encontrada: " + cnfe.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+    public void guardarDatos() {
+        try {
+            
+            if (!usuarios.isEmpty()) {
+                
+                //Serialización de las personas
+                FileOutputStream ostreamUsuarios = new FileOutputStream("copiasegUsuarios.dat");
+                ObjectOutputStream oosUsuarios = new ObjectOutputStream(ostreamUsuarios);
+                //guardamos el array de usuarios
+                oosUsuarios.writeObject(usuarios);
+                ostreamUsuarios.close();
+            } else {
+                System.out.println("Error: No hay datos");
+            }
 
+        } catch (IOException ioe) {
+            System.out.println("Error de IO: " + ioe.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
     /**
      * El usuario ya existe
      */

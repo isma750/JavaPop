@@ -46,7 +46,7 @@ public class Mostrarventas extends javax.swing.JPanel {
     public void dibujarTabla(){
         try{
         LocalDateTime fecha = LocalDateTime.of((Integer) SpinnerAño.getValue(), (Integer) SpinnerMes.getValue(), (Integer) SpinnerDia.getValue(), 0, 0);
-        
+        ((VentanaPrincipal) getVentanaprincipal()).getJavapop().setVentas();
         ArrayList<Venta> ventas = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getVentas();
         int j = 0;
         String listaVentas[][] = new String[ventas.size()][this.tabla.getColumnCount()];

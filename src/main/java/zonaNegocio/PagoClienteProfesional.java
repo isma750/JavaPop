@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 
-public class PagoClienteProfesional implements Serializable {
+public class PagoClienteProfesional {
     private Usuario usuario;
     private LocalDateTime fechaPago;
     private double importePago;

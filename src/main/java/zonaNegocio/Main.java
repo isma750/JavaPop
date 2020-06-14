@@ -13,7 +13,7 @@ import jdk.jshell.execution.Util;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class Main implements Serializable{
+public class Main {
     public static void main(String[] args) throws JavaPop.UsuarioExiste {
         //Creamos nuestra aplicacion
         JavaPop javaPop = new JavaPop();

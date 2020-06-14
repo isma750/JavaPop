@@ -1,7 +1,7 @@
 package zonaNegocio;
 
 
-import java.io.Serializable;
+
 import zonaNegocio.Producto;
 import zonaNegocio.Cliente;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.Comparator;
 /**
  * Clase utilizada para realizar búsquedas y otras operaciones con los productos de la aplicacion
  */
-public class UtilProductos implements Serializable{
+public class UtilProductos {
     private static ArrayList<Producto> productos = new ArrayList<>();
 
     public static ArrayList<Producto> getProductos() { return productos; }
