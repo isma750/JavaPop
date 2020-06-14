@@ -308,7 +308,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Rellene con la informacion del producto"/>
+        <Property name="text" type="java.lang.String" value="Informaci&#xf3;n del Producto"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">

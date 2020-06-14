@@ -34,7 +34,7 @@ public class DetalleProducto extends javax.swing.JFrame {
      */
     private JFrame ventanaprincipal;
     private Producto productoMostrado;
-   
+
 
     public JFrame getVentanaprincipal() {
 
@@ -57,7 +57,6 @@ public class DetalleProducto extends javax.swing.JFrame {
         initComponents();
         this.setTitle("JAVAPOP");
         this.darDeBaja.setVisible(false);
-        
     }
 
     /**
@@ -153,7 +152,7 @@ public class DetalleProducto extends javax.swing.JFrame {
         });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel9.setText("Rellene con la informacion del producto");
+        jLabel9.setText("Información del Producto");
 
         jLabel10.setText("Imagen");
 
@@ -331,7 +330,6 @@ public class DetalleProducto extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(853, 535));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
     @Override
     public Image getIconImage() {
         try{
@@ -363,13 +361,13 @@ public class DetalleProducto extends javax.swing.JFrame {
             if (checkUrgente.isSelected()) {
                 Producto producto = new Producto(campoTitulo.getText(), campoDescripcion.getText(), convertirCategoria(comboCategoria.getSelectedItem().toString()), Integer.parseInt(campoPostal.getText()), campoCiudad.getText(), true, cliente, convertirEstado(comboEstado.getSelectedItem().toString()), Double.parseDouble(campoPrecio.getText()), LocalDateTime.now(), Producto.situacion.PUBLICADO);
                 Icon imagen = Imagen.getIcon();
-                producto.setFotografia(imagen);
+                producto.setFotografia(imagen);              
                 ((VentanaPrincipal) getVentanaprincipal()).getJavapop().anadirProducto(producto);
                 ((Cliente) ((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()).añadirProducto(producto);
             } else {
                 Producto producto = new Producto(campoTitulo.getText(), campoDescripcion.getText(), convertirCategoria(comboCategoria.getSelectedItem().toString()), Integer.parseInt(campoPostal.getText()), campoCiudad.getText(), false, cliente, convertirEstado(comboEstado.getSelectedItem().toString()), Double.parseDouble(campoPrecio.getText()), LocalDateTime.now(), Producto.situacion.PUBLICADO);
                 Icon imagen = Imagen.getIcon();
-                producto.setFotografia(imagen);
+                producto.setFotografia(imagen);              
                 ((VentanaPrincipal) getVentanaprincipal()).getJavapop().anadirProducto(producto);
                 ((Cliente) ((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()).añadirProducto(producto);
             }
@@ -477,7 +475,7 @@ public class DetalleProducto extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Se ha dado de baja el producto correctamente", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
     }//GEN-LAST:event_darDeBajaActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
@@ -584,7 +582,7 @@ public class DetalleProducto extends javax.swing.JFrame {
     }
 
     public void setModoNuevoProducto() { //Para crear un nuevo producto
-       
+        
         this.remove(botonModificar);
         this.remove(botonEliminar);
         this.remove(botonGuardar);
@@ -730,7 +728,6 @@ public class DetalleProducto extends javax.swing.JFrame {
         }
         return 4; //...
     }
-    
 
 }
 

@@ -170,10 +170,13 @@ public class MostrarProductos extends javax.swing.JPanel {
         verProducto.setVentanaprincipal(getVentanaprincipal());
         verProducto.setVisible(true);
         if (usuario.getClass().getSimpleName().equals("Administrador")){   
-        verProducto.setModoAdministrador();}else{
-            verProducto.setModoVendedor();
-        }
+        verProducto.setModoAdministrador();
         verProducto.MostrarProducto(((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(tabla.getSelectedRow()));
+        }else{
+            verProducto.setModoVendedor();
+            verProducto.MostrarProducto(UtilProductos.getProductos().get(tabla.getSelectedRow()));
+        }
+        
         }
     }//GEN-LAST:event_consultarProductoActionPerformed
 
