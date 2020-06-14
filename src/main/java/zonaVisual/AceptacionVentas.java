@@ -5,6 +5,8 @@
  */
 package zonaVisual;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -38,6 +40,7 @@ public class AceptacionVentas extends javax.swing.JFrame {
     
     public AceptacionVentas() {
         initComponents();
+        this.setTitle("JAVAPOP");
     }
     public void rellenarDatos(Compra compra){
          this.compra = compra;
@@ -305,7 +308,17 @@ public class AceptacionVentas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    @Override
+    public Image getIconImage() {
+        try{
+            Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/logojavapop.png"));
+            return retValue;
+        }
+        catch (Exception e){
+           return (null); 
+        }
+    }
     private void campoTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTituloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoTituloActionPerformed
@@ -342,7 +355,7 @@ public class AceptacionVentas extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this,"Se ha vendido el producto correctamente", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
     }//GEN-LAST:event_AceptarVentaActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */

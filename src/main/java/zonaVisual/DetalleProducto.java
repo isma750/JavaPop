@@ -6,6 +6,7 @@
 package zonaVisual;
 
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -33,7 +34,7 @@ public class DetalleProducto extends javax.swing.JFrame {
      */
     private JFrame ventanaprincipal;
     private Producto productoMostrado;
-    private ArrayList<Producto> productosAMostrar;
+   
 
     public JFrame getVentanaprincipal() {
 
@@ -54,7 +55,9 @@ public class DetalleProducto extends javax.swing.JFrame {
 
     public DetalleProducto() {
         initComponents();
+        this.setTitle("JAVAPOP");
         this.darDeBaja.setVisible(false);
+        
     }
 
     /**
@@ -328,7 +331,17 @@ public class DetalleProducto extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(853, 535));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    @Override
+    public Image getIconImage() {
+        try{
+            Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/logojavapop.png"));
+            return retValue;
+        }
+        catch (Exception e){
+           return (null); 
+        }
+    }
     private void campoTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTituloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoTituloActionPerformed
@@ -464,7 +477,7 @@ public class DetalleProducto extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Se ha dado de baja el producto correctamente", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
     }//GEN-LAST:event_darDeBajaActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -717,6 +730,7 @@ public class DetalleProducto extends javax.swing.JFrame {
         }
         return 4; //...
     }
+    
 
 }
 

@@ -8,6 +8,7 @@ package zonaVisual;
 import java.util.HashSet;
 import java.util.Set;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import zonaNegocio.Cliente;
 import zonaNegocio.Usuario;
@@ -50,12 +51,15 @@ public class MostrarProductos extends javax.swing.JPanel {
             listaProductos[j][2] = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(j).getCategoria().toString();
             listaProductos[j][3] = Double.toString(((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(j).getPrecio());
             listaProductos[j][4] = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(j).getSituacion().toString();
-                    
+           
             
             
         }
         DefaultTableModel model = new DefaultTableModel(listaProductos, nombreColumnas);
         tabla.setModel(model);
+         if (((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().size()==0){
+            JOptionPane.showMessageDialog(this, "No se ha encontrado ningún producto", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+        }  
     }else{
       int j = 0;
         ((VentanaPrincipal) getVentanaprincipal()).getJavapop().setProductos();
@@ -69,12 +73,15 @@ public class MostrarProductos extends javax.swing.JPanel {
             listaProductos[j][2] = UtilProductos.getProductos().get(j).getCategoria().toString();
             listaProductos[j][3] = Double.toString(UtilProductos.getProductos().get(j).getPrecio());
             listaProductos[j][4] = UtilProductos.getProductos().get(j).getSituacion().toString();
-                    
+                  
             
             
         }
         DefaultTableModel model = new DefaultTableModel(listaProductos, nombreColumnas);
         tabla.setModel(model);
+         if (UtilProductos.getProductos().size()==0){
+            JOptionPane.showMessageDialog(this, "No has registrado ningún producto en la aplicación, ¿Por qué no pruebas a registrar uno antes?, es muy sencillo :)", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+        } 
       }
     }
    
@@ -128,14 +135,8 @@ public class MostrarProductos extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(252, 252, 252)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addComponent(jScrollPane1)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(93, 93, 93)
@@ -143,6 +144,10 @@ public class MostrarProductos extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
                 .addComponent(actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(153, 153, 153))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(278, 278, 278))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

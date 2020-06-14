@@ -30,11 +30,12 @@ public class Login extends javax.swing.JFrame {
           
     public Login() {
         initComponents();
-        this.setTitle("JAVAPOP");
+       
     }
      public  Login(JFrame ventanaprincipal) {
         
         initComponents();  
+        this.setTitle("JAVAPOP");
         this.ventanaprincipal = ventanaprincipal;
         this.ventanaprincipal.setVisible(false);
         this.setVisible(true);
@@ -150,7 +151,7 @@ public class Login extends javax.swing.JFrame {
     @Override
     public Image getIconImage() {
         try{
-            Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/LOGO JAVAPOP.2.png"));
+            Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/logojavapop.png"));
             return retValue;
         }
         catch (Exception e){

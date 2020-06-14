@@ -8,6 +8,7 @@ package zonaVisual;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import zonaNegocio.*;
 
@@ -36,6 +37,8 @@ public class BusquedaProducto extends javax.swing.JPanel {
 
     public BusquedaProducto() {
         initComponents();
+        
+        
     }
     public void generarTabla() {
         int j = 0;
@@ -53,14 +56,10 @@ public class BusquedaProducto extends javax.swing.JPanel {
         }
         DefaultTableModel model = new DefaultTableModel(listaProductos, nombreColumnas);
         tabla.setModel(model);
-        
-        /*setFilasProducto(numeroFilas);
-        this.tabla.setModel(new MiModeloTabla(
-        listaProductos ,
-        new String[] {
-            "Titulo","Descripcion","Categoria","Estado","Precio","Localizacion"
+        if (UtilProductos.getProductos().size()==0){
+            JOptionPane.showMessageDialog(this, "No se ha encontrado ningún producto con los filtros seleccionados", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
         }
-        ));*/
+        
     }
     
     private void limpiarFiltros() {

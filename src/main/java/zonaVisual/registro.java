@@ -355,7 +355,7 @@ public class registro extends javax.swing.JFrame {
     @Override
     public Image getIconImage() {
         try{
-            Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/java.jpg"));
+            Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/logojavapop.png"));
             return retValue;
         }
         catch (Exception e){
