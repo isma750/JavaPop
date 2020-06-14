@@ -410,6 +410,7 @@ public class DetalleProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarImagenActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
+        buscarImagen.setVisible(true);
         campoTitulo.setEditable(true);
         campoCiudad.setEditable(true);
         campoPostal.setEditable(true);
@@ -626,7 +627,7 @@ public class DetalleProducto extends javax.swing.JFrame {
         comboEstado.setEditable(false);
         comboCategoria.setEditable(false);
         checkUrgente.setEnabled(false);
-        buscarImagen.setVisible(false);
+        
     }
 
     public void setModoAdministrador() {
