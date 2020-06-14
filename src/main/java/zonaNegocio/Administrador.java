@@ -12,8 +12,6 @@ import java.util.ArrayList;
 public class Administrador extends Usuario  {
 
     
-    private ArrayList<Cliente> clientes;
-    private ArrayList<Producto> productos;
     
     /**
      * Constructor

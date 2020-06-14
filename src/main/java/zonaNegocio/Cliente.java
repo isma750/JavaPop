@@ -18,11 +18,10 @@ public class Cliente extends Usuario {
     private String tarjeta;
     private double saldoTarjeta;
     private ArrayList<Producto> Productos;
-    private ArrayList<Producto> ProductosVendidos; //Esto igual habria q quitarlo, lo veo redundante ya q los productos vendidos se quedan en el array de productos con el estado vendido
-    private ArrayList<Producto> ProductosComprados;
+  
     private ArrayList<Compra> Compras;
     private ArrayList<Venta> Ventas;
-    private ArrayList<PagoClienteProfesional> pagosMensuales;
+    
     private Estado estado;
 
    
@@ -189,27 +188,7 @@ public class Cliente extends Usuario {
         producto.setSituacion(Producto.situacion.ACEPTADOVENTA);
     }
     
-    // Historial de los productos comprados por el cliente
-    public void ProductosComprados (Producto productoComprado) {
-        if (this.ProductosComprados == null){
-            this.ProductosComprados = new ArrayList<Producto>();
-        }
-        if (!(this.ProductosComprados).contains(productoComprado)) {
-            this.ProductosComprados.add(productoComprado);
-            System.out.println("Su producto comprado ha quedado registrado");
-        }
-    }
-    
-    // Historial de los productos vendidos por el cliente
-    public void ProductosVendidos (Producto productosVendidos) {
-        if (this.ProductosVendidos == null){
-            this.ProductosVendidos = new ArrayList<Producto>();
-        }
-        if (!(this.ProductosVendidos).contains(productosVendidos)){
-            this.ProductosVendidos.add(productosVendidos);
-            System.out.println("Su producto vendido ha quedado registrado");
-        }
-    }
+   
 
     
     

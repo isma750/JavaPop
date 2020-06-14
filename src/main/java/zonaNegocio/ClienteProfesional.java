@@ -16,7 +16,7 @@ public class ClienteProfesional extends Cliente {
    private String horario;
    private String telefono;
    private String web;
-   private ArrayList<PagoClienteProfesional> pagosMensuales;
+  
     
     /**
      * Constructor
