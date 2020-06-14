@@ -5,12 +5,14 @@
  */
 package zonaVisual;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import zonaNegocio.Cliente;
 import zonaNegocio.UtilProductos;
@@ -42,20 +44,26 @@ public class Mostrarventas extends javax.swing.JPanel {
         this.ventanaprincipal = ventanaprincipal;
     }
     public void dibujarTabla(){
-         
+        try{
+        LocalDateTime fecha = LocalDateTime.of((Integer) SpinnerAño.getValue(), (Integer) SpinnerMes.getValue(), (Integer) SpinnerDia.getValue(), 0, 0);
+        
         ArrayList<Venta> ventas = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getVentas();
         int j = 0;
         String listaVentas[][] = new String[ventas.size()][this.tabla.getColumnCount()];
         String nombreColumnas[] = {"Comprador","Vendedor","Producto","Fecha de Venta"};
         for (j = 0; j < ventas.size(); j++){
-            //verificar fecha
+            if (ventas.get(j).getFechaVenta().isAfter(fecha)){
             listaVentas[j][0] = ventas.get(j).getComprador().getNombre();
             listaVentas[j][1] = ventas.get(j).getVendedor().getNombre();
             listaVentas[j][2] = ventas.get(j).getProducto().getTitulo();
             listaVentas[j][3] = ventas.get(j).getFechaVenta().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));      
+            }
         }
         DefaultTableModel model = new DefaultTableModel(listaVentas, nombreColumnas);
-        tabla.setModel(model);
+        tabla.setModel(model);}
+        catch(DateTimeException e){
+            JOptionPane.showMessageDialog(this,"La fecha introducida no es válida, introduzca una fecha válida.", "ERROR",JOptionPane.ERROR_MESSAGE);
+        }
     
     }
     /**

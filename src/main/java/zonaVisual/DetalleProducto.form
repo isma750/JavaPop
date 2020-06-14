@@ -175,12 +175,8 @@
                           <Component id="campoPrecio" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel8" alignment="0" min="-2" pref="21" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="18" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="Imagen" min="-2" pref="272" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="Imagen" alignment="0" min="-2" pref="272" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">

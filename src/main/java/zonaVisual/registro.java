@@ -409,6 +409,7 @@ public class registro extends javax.swing.JFrame {
                
                 if (this.checkTienda.isSelected()){
                     verificarTelefono();
+                    JOptionPane.showMessageDialog(this,"Ha seleccionado registrarse como cliente profesional, se le cargarán 30€ a su tarjeta: "+campoTarjeta.getText(), "ATENCION",JOptionPane.ERROR_MESSAGE);
                     
                 }
                /* Login lgf = new Login();

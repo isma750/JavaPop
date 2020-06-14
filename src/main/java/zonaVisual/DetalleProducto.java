@@ -394,7 +394,7 @@ public class DetalleProducto extends javax.swing.JFrame {
 
     private void checkUrgenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkUrgenteActionPerformed
         if (checkUrgente.isSelected()) {
-            JOptionPane.showMessageDialog(this, "Ha marcado el producto como urgente, se le cobrará 5€ al publicar el producto y destacará sobre el resto durante 7 días.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ha marcado el producto como urgente, se le cobrará 5€ en su tarjeta de número "+ ((Cliente) ((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado()).getTarjeta() +" al publicar el producto y destacará sobre el resto durante 7 días.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_checkUrgenteActionPerformed
 
