@@ -150,7 +150,7 @@ public class Login extends javax.swing.JFrame {
     @Override
     public Image getIconImage() {
         try{
-            Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/java.jpg"));
+            Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/LOGO JAVAPOP.2.png"));
             return retValue;
         }
         catch (Exception e){
