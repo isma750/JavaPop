@@ -2,6 +2,7 @@ package zonaNegocio;
 
 
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import zonaNegocio.Cliente;
 
@@ -16,6 +17,8 @@ public class ClienteProfesional extends Cliente {
    private String horario;
    private String telefono;
    private String web;
+   private LocalDateTime fechaProximoPago;
+   private LocalDateTime fechaPago;
   
     
     /**
@@ -71,6 +74,22 @@ public class ClienteProfesional extends Cliente {
 
     public void setWeb(String web) {
         this.web = web;
+    }
+       public LocalDateTime getFechaPago() {
+        return fechaPago;
+    }
+
+    public void setFechaPago(LocalDateTime fechaPago) {
+        this.fechaPago = fechaPago;
+    }
+
+    public LocalDateTime getFechaProximoPago() {
+        this.fechaProximoPago = this.getFechaPago().plusMonths(1);
+        return fechaProximoPago;
+    }
+
+    public void setFechaProximoPago(LocalDateTime fechaProximoPago) {
+        this.fechaProximoPago = fechaProximoPago;
     }
    
    @Override

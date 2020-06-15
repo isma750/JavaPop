@@ -236,6 +236,9 @@ public class Producto implements Comparable<Producto>, Serializable{
     public void setFechaDestacado(LocalDateTime fechaDestacado) {
         this.fechaDestacado = fechaDestacado;
     }
+    public LocalDateTime getFechaFinDestacado(){
+        return this.fechaDestacado.plusDays(7);
+    }
 
     /**
      * Calcula la proximidad de un producto al cliente parametro, basandose en el codigo postal de la ciudad

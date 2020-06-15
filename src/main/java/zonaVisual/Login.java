@@ -6,10 +6,12 @@
 package zonaVisual;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import zonaNegocio.Cliente;
+import zonaNegocio.ClienteProfesional;
 import zonaNegocio.Compra;
 import zonaNegocio.Producto;
 import zonaNegocio.Usuario;
@@ -194,7 +196,17 @@ public class Login extends javax.swing.JFrame {
                      }
                      
                 }
+                if(((Cliente)usuarioconectado).getProductos().get(i).isUrgente()&&((Cliente)usuarioconectado).getProductos().get(i).getFechaFinDestacado().isBefore(LocalDateTime.now())){
+                    ((Cliente)usuarioconectado).getProductos().get(i).setUrgente(false);
+                    JOptionPane.showMessageDialog(this,"El producto "+ ((Cliente)usuarioconectado).getProductos().get(i).getTitulo()+ " ha dejado de ser urgente ya que han pasado 7 o mas días desde su publicación.", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
+                }
             }
+                if (usuarioconectado.getClass().getSimpleName().equals("ClienteProfesional")){
+                    if(((ClienteProfesional)usuarioconectado).getFechaProximoPago().isBefore(LocalDateTime.now())){
+                        ((ClienteProfesional)usuarioconectado).setFechaPago(LocalDateTime.now());
+                        JOptionPane.showMessageDialog(this,"Se le han cobrado 30€ a su tarjeta " +((ClienteProfesional)usuarioconectado).getTarjeta()+ " ya que ha pasado más de un mes desde la última vez que pagó su cuota." , "ATENCION",JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
                 }
                 getVentanaprincipal().setVisible(true);
                 this.dispose();
