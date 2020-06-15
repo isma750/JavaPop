@@ -20,7 +20,7 @@ public class JavaPop  {
      */
     public void comprarProducto(Cliente comprador,Cliente vendedor,Producto producto){
 
-        if (producto.getSituacion().equals(Producto.situacion.ACEPTADOVENTA)){
+        if (producto.getSituacion().equals(Producto.situacion.VENDIDO)){
 
             try {
                 String ruta = "C:\\Users\\ismae\\OneDrive\\Escritorio\\texto\\factura.txt"; // Sustituir por ruta en la que queremos que se genere el fichero
@@ -56,7 +56,7 @@ public class JavaPop  {
             Venta venta = new Venta(LocalDateTime.now(),producto,vendedor,comprador);
             
             vendedor.getVentas().add(venta); // registramos la venta
-            producto.setSituacion(Producto.situacion.VENDIDO);
+            producto.setSituacion(Producto.situacion.ACEPTADOVENTA);
 
         }
 

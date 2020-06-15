@@ -66,8 +66,8 @@ public class Producto implements Comparable<Producto>, Serializable{
     public enum situacion {
         PUBLICADO,
         SOLICITADO,
-        ACEPTADOVENTA, //uno de estos dos no hace falta
-        VENDIDO,//uno de estos dos no hace falta
+        VENDIDO,
+        ACEPTADOVENTA,
         RETIRADOVENTA,
         RETIRADOADMINISTRADOR;
         @Override
