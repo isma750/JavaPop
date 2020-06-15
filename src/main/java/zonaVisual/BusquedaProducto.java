@@ -14,8 +14,8 @@ import zonaNegocio.*;
 
 
 /**
- *
- * @author ismae
+ * JPanel
+ * Permite buscar productos en Javapop 
  */
 public class BusquedaProducto extends javax.swing.JPanel {
     private JFrame ventanaprincipal;

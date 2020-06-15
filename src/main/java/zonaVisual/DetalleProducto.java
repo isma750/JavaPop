@@ -24,14 +24,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import zonaNegocio.*;
 
 /**
- *
- * @author ismae
+ * JFrame
+ * Muestra los datos del producto seleccionado en Javapop
  */
 public class DetalleProducto extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AñadirProducto
-     */
+   
     private JFrame ventanaprincipal;
     private Producto productoMostrado;
 

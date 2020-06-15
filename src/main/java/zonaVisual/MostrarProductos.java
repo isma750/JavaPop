@@ -15,8 +15,8 @@ import zonaNegocio.Usuario;
 import zonaNegocio.UtilProductos;
 
 /**
- *
- * @author ismae
+ * JPanel
+ * Muestra los productos de la aplicacion al administrador
  */
 public class MostrarProductos extends javax.swing.JPanel {
 

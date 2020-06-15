@@ -19,8 +19,8 @@ import zonaNegocio.Producto;
 import zonaNegocio.Venta;
 
 /**
- *
- * @author ismae
+ * JFrame
+ * Ventana que muestra al vendedor si algun producto suyo está ofertado
  */
 public class AceptacionVentas extends javax.swing.JFrame {
 

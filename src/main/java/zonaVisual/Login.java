@@ -14,7 +14,10 @@ import zonaNegocio.Compra;
 import zonaNegocio.Producto;
 import zonaNegocio.Usuario;
 
-
+/**
+ * JFrame
+ * Ventana inicial para iniciar sesion en Javapop.
+ */
 public class Login extends javax.swing.JFrame {
     private JFrame ventanaprincipal;
 

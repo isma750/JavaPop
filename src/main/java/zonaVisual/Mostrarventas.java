@@ -19,8 +19,8 @@ import zonaNegocio.UtilProductos;
 import zonaNegocio.Venta;
 
 /**
- *
- * @author ismae
+ * JPanel
+ * Muestra al administrador las ventas realizadas
  */
 public class Mostrarventas extends javax.swing.JPanel {
 

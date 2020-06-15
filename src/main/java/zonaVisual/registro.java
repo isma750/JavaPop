@@ -17,6 +17,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import zonaNegocio.*;
+/**
+ * JFrame
+ * Permite registrarse un usuario nuevo y mostrar los datos del cliente conectado
+ */
 
 public class registro extends javax.swing.JFrame {
 
@@ -36,7 +40,7 @@ public class registro extends javax.swing.JFrame {
     
     public registro() {
         initComponents();
-        this.setTitle("JAVAPOP");
+        this.setTitle("JAVAPOP. La nueva forma de comprar y vender");
         botonModificar.setVisible(false);
         botonGuardar.setVisible(false);
         botonBaja.setVisible(false);
@@ -92,6 +96,7 @@ public class registro extends javax.swing.JFrame {
         Titulo.setFont(new java.awt.Font("Verdana Pro Cond Black", 0, 14)); // NOI18N
         Titulo.setText("REGISTRO DE USUARIO");
 
+        saludo.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         saludo.setText("Por favor rellene los siguientes campos:");
 
         jLabel3.setText("Nombre:");
@@ -247,7 +252,7 @@ public class registro extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(botonRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 41, Short.MAX_VALUE))
+                                        .addGap(0, 47, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(4, 4, 4)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -419,11 +424,7 @@ public class registro extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this,"Ha seleccionado registrarse como cliente profesional, se le cargarán 30€ a su tarjeta: "+campoTarjeta.getText(), "ATENCION",JOptionPane.ERROR_MESSAGE);
                     
                 }
-               /* Login lgf = new Login();
-                lgf.setVentanaprincipal(ventanaprincipal);
-                lgf.setVisible(true);
-                lgf.setLocationRelativeTo(null);
-                this.dispose();*/
+              
                if (this.checkTienda.isSelected()){
                   ClienteProfesional clienteProfesional = new ClienteProfesional(campoNombre.getText(),
                                                                                  campoDNI.getText(),
@@ -465,19 +466,6 @@ public class registro extends javax.swing.JFrame {
                 
             }
             
-            
-            
-            /*if (!(String.valueOf(this.campoClave.getPassword()).equals(String.valueOf(this.campoRepiteContraseña.getPassword())))){
-             JOptionPane.showMessageDialog(this,"La contraseña y la repeticion de la contraseña deben coincidir","Error de validacion", JOptionPane.ERROR_MESSAGE);
-             this.campoClave.requestFocus();
-             return;
-            }*/
-            
-    
-            
-        
-            
-       
     }//GEN-LAST:event_botonRegistroActionPerformed
 
     private void campoErrorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoErrorActionPerformed
@@ -732,6 +720,8 @@ public class registro extends javax.swing.JFrame {
         botonBaja.setVisible(true);
     }
 }
+
+//Declaracion de las excepciones de la clase
 class TarjetaIncorrecta extends Exception{
     public TarjetaIncorrecta(){
         super("ERROR: La tarjeta debe componerse por 16 números");

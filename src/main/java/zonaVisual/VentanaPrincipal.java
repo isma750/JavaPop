@@ -21,8 +21,9 @@ import javax.swing.JPanel;
 import zonaNegocio.*;
 
 /**
- *
- * @author ismae
+ * JFrame
+ * Ventana principal donde se desarrolla la funcionalidad de Javapop
+ * 
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
@@ -31,19 +32,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     
     private JFrame registro;
-
-    public JFrame getRegistro() {
-        return registro;
-    }
-
-    public void setRegistro(JFrame registro) {
-        this.registro = registro;
-    }
-    
-    
-    
-    
-    
     private Administrador admin = null;
     private Usuario usuarioConectado;
     private Cliente clienteConectado;
@@ -52,7 +40,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     public VentanaPrincipal() {
         initComponents();
-        this.setTitle("JAVAPOP");
+        this.setTitle("JAVAPOP. La nueva forma de comprar y vender");
         this.javapop = new JavaPop(); 
         this.javapop.cargarDatos();
         // Traer informacion disco duro (Serializacion)
@@ -60,9 +48,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
            this.admin = new Administrador();
            this.javapop.getUsuarios().add(admin);
            ArrayList<Producto> productoscliente1 = new ArrayList<>();
-           
-            Cliente cliente1 = new Cliente("Juan","03228447B",12345,"Guadlajara","juan@hotmail.com","juan","1234567899876541");
+            
+            //Se crean los clientes y los productos
+            Cliente cliente1 = new Cliente("Juan","03228447B",19001,"Guadalajara","juan@hotmail.com","juan","1234567899876541");
             Cliente cliente2 = new Cliente("Martin","03234567N",19003,"Guadalajara","martin@hotmail.com","hola","1234123412341234");
+            Cliente cliente3 = new Cliente("Andrea","05789447Z",28801,"Alcalá","andrea@hotmail.com","andrea","9876543210321654");
+            Cliente cliente4 = new Cliente("Pedro","06879412N",28001,"Madrid","pedro@hotmail.com","pedro","1234567899876542");
+            
             Producto producto1 = new Producto("Camiseta blanca","Buen estado", Producto.categoria.MODAYACCESORIOS,19003,"Guadalajara",true,cliente1,Producto.estado.BUENO, 15.00,LocalDateTime.now(),Producto.situacion.PUBLICADO);
             Producto producto2 = new Producto("Camiseta negra","Muy nueva", Producto.categoria.MODAYACCESORIOS,19203,"Guadalajara",false,cliente1,Producto.estado.ACEPTABLE, 20.00,LocalDateTime.now(),Producto.situacion.PUBLICADO);
             Producto producto3 = new Producto("Raqueta de tenis","Muy poco uso", Producto.categoria.DEPORTEYOCIO,19004,"Guadalajara",true,cliente1, Producto.estado.COMONUEVO, 10.00, LocalDateTime.now(),Producto.situacion.PUBLICADO);
@@ -85,11 +77,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             
         }
         
-        JFrame login = new Login(this);
+        JFrame login = new Login(this);    
         
-        
-        
-        
+    }
+    //Se realizan los getter y setter
+    
+    public JFrame getRegistro() {
+        return registro;
+    }
+
+    public void setRegistro(JFrame registro) {
+        this.registro = registro;
     }
 
     public Producto getProducto() {
@@ -139,9 +137,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.clienteConectado = clienteConectado;
     }
     
-
-    
-    
     public Administrador getAdmin() {
         return admin;
     }
@@ -157,16 +152,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             MenuCliente.setVisible(false);
             MenuAdministrador.setVisible(true);
         }
-        /*if (!getUsuarioConectado().getClass().getSimpleName().equals("ClienteProfesional")){
-            MiCuenta.setVisible(false);
-        } else {
-            MiCuenta.setVisible(true);
-        }*/
     }
    
-    
-   
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -294,12 +281,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 500, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 466, Short.MAX_VALUE)
                         .addComponent(Desconectar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -309,7 +296,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Desconectar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(783, 506));
@@ -358,7 +345,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1.removeAll();
         jPanel1.add(busqueda);
         jPanel1.updateUI();
-        //Compra compra = new Compra(LocalDateTime.now(),LocalDateTime.now(),Producto productosolicitado)
         
     }//GEN-LAST:event_ComprarActionPerformed
 
