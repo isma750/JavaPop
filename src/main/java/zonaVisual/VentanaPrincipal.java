@@ -74,11 +74,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
            this.javapop.getUsuarios().add(cliente1);
            this.javapop.getUsuarios().add(cliente2);
            this.javapop.getUsuarios().add(cliente5);
-           this.javapop.setProductos();
-           System.out.println(this.javapop.getProductos());
+           
+           
             
         }
-        
+        this.javapop.setProductos();
         JFrame login = new Login(this);    
         
     }

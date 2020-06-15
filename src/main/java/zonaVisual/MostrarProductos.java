@@ -46,6 +46,7 @@ public class MostrarProductos extends javax.swing.JPanel {
      */
     public void generarTabla(Usuario usuario){
       this.usuario = usuario;  
+      
       if (usuario.getClass().getSimpleName().equals("Administrador")){ //Si es un administrador le mostramos todos los productos de la aplicacion
         int j = 0;
         String listaProductos[][] = new String[((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().size()][this.tabla.getColumnCount()];       
