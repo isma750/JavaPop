@@ -321,7 +321,8 @@ public class AceptacionVentas extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(599, 499));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     
     @Override

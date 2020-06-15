@@ -384,7 +384,7 @@ public class DetalleProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_checkUrgenteActionPerformed
 
     private void buscarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarImagenActionPerformed
-        //INCOMPLETO
+
 
         JFileChooser fc = new JFileChooser();
 
