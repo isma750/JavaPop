@@ -470,7 +470,7 @@ public class DetalleProducto extends javax.swing.JFrame {
 
     private void darDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_darDeBajaActionPerformed
         int indiceProducto = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().indexOf(productoMostrado);
-        ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(indiceProducto).setSituacion(Producto.situacion.RETIRADOADMINISTRADOR); //revisar esto de productos y usuarios cada uno su array
+        ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().get(indiceProducto).setSituacion(Producto.situacion.RETIRADOADMINISTRADOR);
         JOptionPane.showMessageDialog(this, "Se ha dado de baja el producto correctamente", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
     }//GEN-LAST:event_darDeBajaActionPerformed
