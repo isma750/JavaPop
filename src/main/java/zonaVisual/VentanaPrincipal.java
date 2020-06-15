@@ -55,7 +55,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             Cliente cliente2 = new Cliente("Martin","03234567N",19003,"Guadalajara","martin@hotmail.com","hola","1234123412341234");
             Cliente cliente3 = new Cliente("Andrea","05789447Z",28801,"Alcalá","andrea@hotmail.com","andrea","9876543210321654");
             Cliente cliente4 = new Cliente("Pedro","06879412N",28001,"Madrid","pedro@hotmail.com","pedro","1234567899876542");
-            
+            ClienteProfesional cliente5 = new ClienteProfesional("Miguel", "03214554X", "miguel@gmail.com", "miguelon", 19004, "Guadalajara", "1234123412341234", "tienda chula", "10:00-14:00", "949220412", "latiendademiguel.com", LocalDateTime.of(2019, Month.MARCH, 1, 0, 0));
             Producto producto1 = new Producto("Camiseta blanca","Buen estado", Producto.categoria.MODAYACCESORIOS,19003,"Guadalajara",true,cliente1,Producto.estado.BUENO, 15.00,LocalDateTime.now(),LocalDateTime.now(),Producto.situacion.PUBLICADO);
             Producto producto2 = new Producto("Camiseta negra","Muy nueva", Producto.categoria.MODAYACCESORIOS,19203,"Guadalajara",false,cliente1,Producto.estado.ACEPTABLE, 20.00,LocalDateTime.now(),Producto.situacion.PUBLICADO);
             Producto producto3 = new Producto("Raqueta de tenis","Muy poco uso", Producto.categoria.DEPORTEYOCIO,19004,"Guadalajara",true,cliente1, Producto.estado.COMONUEVO, 10.00, LocalDateTime.now(),LocalDateTime.of(2019, Month.MARCH, 1, 0, 0),Producto.situacion.PUBLICADO);
@@ -73,6 +73,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             cliente1.setProductos(productoscliente1);
            this.javapop.getUsuarios().add(cliente1);
            this.javapop.getUsuarios().add(cliente2);
+           this.javapop.getUsuarios().add(cliente5);
            this.javapop.setProductos();
            System.out.println(this.javapop.getProductos());
             

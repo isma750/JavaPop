@@ -8,6 +8,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -436,7 +437,7 @@ public class registro extends javax.swing.JFrame {
                                                                                  campoDescripcion.getText(),
                                                                                  campoHorario.getText(),
                                                                                  campoTelefono.getText(),
-                                                                                 campoWeb.getText());
+                                                                                 campoWeb.getText(),LocalDateTime.now());
                  ((VentanaPrincipal) getVentanaprincipal()).añadirUsuario(clienteProfesional); 
                  ((VentanaPrincipal) getVentanaprincipal()).setUsuarioConectado(clienteProfesional);
                 }

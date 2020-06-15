@@ -25,7 +25,7 @@ public class Main {
         javaPop.anadirUsuario(cliente1);
         Cliente cliente2 = new Cliente("Fernando","24020971R",19003,"Guadalajara","fernando20@yahoo.com","fernandoguay888","5181430738982130");
         javaPop.anadirUsuario(cliente2);
-        ClienteProfesional cliente3 = new ClienteProfesional ("Andrea","75612062Z","andrea_21@hotmail.com","225547",19200,"Azuqueca de Henares","4626392065351394","Venta de moviles","9:00-20:00","626789432","movilesAzuqeca.com");
+        ClienteProfesional cliente3 = new ClienteProfesional ("Andrea","75612062Z","andrea_21@hotmail.com","225547",19200,"Azuqueca de Henares","4626392065351394","Venta de moviles","9:00-20:00","626789432","movilesAzuqeca.com",LocalDateTime.now());
         javaPop.anadirUsuario(cliente3);
         Administrador admin = new Administrador();
         javaPop.anadirUsuario(admin);
