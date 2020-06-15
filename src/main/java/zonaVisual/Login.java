@@ -167,8 +167,8 @@ public class Login extends javax.swing.JFrame {
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
         Usuario usuarioconectado = null;
         boolean valido = false;
-        for(Usuario cadausuario : ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getUsuarios()){        
-            if((cadausuario.getCorreo().equals(Correo.getText())) && (cadausuario.getClave().equals(String.valueOf(Clave.getPassword())))){
+        for(Usuario cadausuario : ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getUsuarios()){   //Para cada usuario de la aplicacion
+            if((cadausuario.getCorreo().equals(Correo.getText())) && (cadausuario.getClave().equals(String.valueOf(Clave.getPassword())))){ //si el correo y la clave se corresponden con un usuario de la aplicacion
                 valido = true;
                 usuarioconectado = cadausuario;
                 break;               
@@ -176,42 +176,40 @@ public class Login extends javax.swing.JFrame {
             
         }
         if (valido){
-            if (usuarioconectado.getClass().getSimpleName().equals("Administrador")||((Cliente)usuarioconectado).getEstado().equals(Cliente.Estado.ACTIVO)){
+            if (usuarioconectado.getClass().getSimpleName().equals("Administrador")||((Cliente)usuarioconectado).getEstado().equals(Cliente.Estado.ACTIVO)){ //Si es el administrador o un cliente que no ha sido dado de baja
                 
-                ((VentanaPrincipal) getVentanaprincipal()).setUsuarioConectado(usuarioconectado);
-                ((VentanaPrincipal) getVentanaprincipal()).getUsuario().setText(Correo.getText());
+                ((VentanaPrincipal) getVentanaprincipal()).setUsuarioConectado(usuarioconectado); //establecemos el usuario de la aplicacion
+                ((VentanaPrincipal) getVentanaprincipal()).getUsuario().setText(Correo.getText()); //establecemos el campo del correo de la ventanaprincipal con su correo
                 ((VentanaPrincipal) getVentanaprincipal()).getUsuario().updateUI();
                 ((VentanaPrincipal) getVentanaprincipal()).actualizarMenus();
-                if (!usuarioconectado.getClass().getSimpleName().equals("Administrador")){
+                if (!usuarioconectado.getClass().getSimpleName().equals("Administrador")){ // si no es el administrador
                     for(int i = 0; i<((Cliente)usuarioconectado).getProductos().size(); i++){
-                if(((Cliente)usuarioconectado).getProductos().get(i).getSituacion().equals(Producto.situacion.SOLICITADO)){
-                     for (int j=0; j<((Cliente)usuarioconectado).getCompras().size(); j++){
-                         Compra compraActual = ((Cliente)usuarioconectado).getCompras().get(j);
-                     if (!compraActual.isInformado()){
-                        AceptacionVentas vender = new AceptacionVentas();
-                        vender.setVentanaprincipal(this.getVentanaprincipal());
-                        vender.setVisible(true);
-                        vender.rellenarDatos(compraActual);
-                     }
-                     }
-                     
-                }
-                if(((Cliente)usuarioconectado).getProductos().get(i).isUrgente()&&((Cliente)usuarioconectado).getProductos().get(i).getFechaFinDestacado().isBefore(LocalDateTime.now())){
+
+                if(((Cliente)usuarioconectado).getProductos().get(i).isUrgente()&&((Cliente)usuarioconectado).getProductos().get(i).getFechaFinDestacado().isBefore(LocalDateTime.now())){ //Buscamos si algun producto es urgente y debe de dejar de serlo
                     ((Cliente)usuarioconectado).getProductos().get(i).setUrgente(false);
                     JOptionPane.showMessageDialog(this,"El producto "+ ((Cliente)usuarioconectado).getProductos().get(i).getTitulo()+ " ha dejado de ser urgente ya que han pasado 7 o mas días desde su publicación.", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
                 }
             }
-                if (usuarioconectado.getClass().getSimpleName().equals("ClienteProfesional")){
+                if (usuarioconectado.getClass().getSimpleName().equals("ClienteProfesional")){ //Si es un cliente profesional buscamos si debe de pagar su cuota
                     if(((ClienteProfesional)usuarioconectado).getFechaProximoPago().isBefore(LocalDateTime.now())){
                         ((ClienteProfesional)usuarioconectado).setFechaPago(LocalDateTime.now());
                         JOptionPane.showMessageDialog(this,"Se le han cobrado 30€ a su tarjeta " +((ClienteProfesional)usuarioconectado).getTarjeta()+ " ya que ha pasado más de un mes desde la última vez que pagó su cuota." , "ATENCION",JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
+                    for (int j=0; j<((Cliente)usuarioconectado).getCompras().size(); j++){ //obtenemos las compras del cliente
+                        Compra compraActual = ((Cliente)usuarioconectado).getCompras().get(j);
+                        if (!compraActual.isInformado()){ //si no ha sido informado de alguna compra se la mostramos
+                            AceptacionVentas vender = new AceptacionVentas();
+                            vender.setVentanaprincipal(this.getVentanaprincipal());
+                            vender.setVisible(true);
+                            vender.rellenarDatos(compraActual);
+                        }
+                    }
                 }
                 getVentanaprincipal().setVisible(true);
                 this.dispose();
             }else{
-       
+                //Si es un usuario dado de baja le informamos de ello
                 JOptionPane.showMessageDialog(this,"Su usuario ha sido dado de baja, pongase en contacto con el administrador de la aplicación", "Error de identificacion",JOptionPane.ERROR_MESSAGE);
 
             }

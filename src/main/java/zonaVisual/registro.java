@@ -578,12 +578,24 @@ public class registro extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JLabel saludo;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Verifica que el campo de tarjeta tenga escrito un numero de tarjeta valido (es válido si tiene 16 digitos)
+     * @param tarjeta
+     * @throws TarjetaIncorrecta
+     */
     public void verificarTarjeta(String tarjeta)throws TarjetaIncorrecta{
         if (tarjeta.trim().length()!=16){
             this.campoTarjeta.requestFocus();
             throw new TarjetaIncorrecta();
         }
     }
+
+    /**
+     * Verifica que el campo del codigo postal contenga un codigo postal
+     * @param postal
+     * @throws ubicacionIncorrecta
+     */
      public void verificarPostal(String postal)throws ubicacionIncorrecta{ 
         try{
             Integer.parseInt(postal);
@@ -595,6 +607,11 @@ public class registro extends javax.swing.JFrame {
             throw new ubicacionIncorrecta();
         }
     }
+
+    /**
+     * Verifica que el campo del telefono contenga un telefono
+     * @throws telefonoIncorrecto
+     */
     public void verificarTelefono() throws telefonoIncorrecto{
         try{
             Long.parseLong(campoTelefono.getText());
@@ -606,6 +623,11 @@ public class registro extends javax.swing.JFrame {
             throw new telefonoIncorrecto();
         }
     }
+
+    /**
+     * Verifica que el campo del correo contenga un correo
+     * @throws correoIncorrecto
+     */
     public void verificarCorreo() throws correoIncorrecto{
         String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
         if (!campoCorreo.getText().matches(regex)){
@@ -614,30 +636,40 @@ public class registro extends javax.swing.JFrame {
         }
     
     }
-     public void verificarURL() throws URLIncorrecta{
-        try{
-            URL url = new URL(campoWeb.getText());
-        } catch (MalformedURLException e) {
-             throw new URLIncorrecta();
-         }
-     }
-          
+
+
+
+    /**
+     *  Verifica que los campos de contraseña y repetir contraseña contengan lo mismo
+      * @throws contraseñasNoCoinciden
+     */
     public void verificarContraseñas() throws contraseñasNoCoinciden{
         if (!(String.valueOf(this.campoClave.getPassword()).equals(String.valueOf(this.campoRepiteContraseña.getPassword())))){
              this.campoClave.requestFocus();
              throw new contraseñasNoCoinciden();       
             }
     }
+
+    /**
+     * Verifica que no exista un usuario con el mismo correo que el introducido
+     * @param correo
+     * @throws usuarioExiste
+     */
      public void verificarUsuario(String correo) throws usuarioExiste{ 
         ArrayList<Usuario> usuarios = ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getUsuarios();
-        //ordenar usuarios por la razon del algoritmo
-        for (int i=0; i<usuarios.size();i++){ //Sustituir por codigo del algoritmo
+
+        for (int i=0; i<usuarios.size();i++){
             String correoUsuario = usuarios.get(i).getCorreo();
             if (correo.equals(correoUsuario)){
                 throw new usuarioExiste();
             }  
         }
      }
+
+    /**
+     * Verifica que todos los campos esten rellenados
+     * @throws camposNoRellenados
+     */
     public void camposRellenados() throws camposNoRellenados{ 
         if (campoClave.getPassword().length==0){throw new camposNoRellenados();}
         if (campoDNI.getText().length()==0){throw new camposNoRellenados();}
@@ -654,7 +686,11 @@ public class registro extends javax.swing.JFrame {
         } 
     
     }
-    
+
+    /**
+     * Establece los campos con los datos del cliente parametro
+     * @param cliente
+     */
     public void mostrarDatosCliente(Cliente cliente){
         Titulo.setText("DATOS");
         saludo.setVisible(false);
@@ -761,10 +797,5 @@ class usuarioExiste extends Exception{
 class telefonoIncorrecto extends Exception{
     public telefonoIncorrecto(){
         super("ERROR: El telefono debe de componerse de nueve digitos");
-    }
-}
-class URLIncorrecta extends Exception{
-    public URLIncorrecta(){
-        super("ERROR: La URL de la web de la tienda no es válida");
     }
 }

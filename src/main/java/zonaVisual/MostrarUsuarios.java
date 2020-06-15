@@ -28,10 +28,14 @@ public class MostrarUsuarios extends javax.swing.JPanel {
     public MostrarUsuarios() {
         initComponents();
     }
-    
+
+    /**
+     * Genera la tabla con los usuarios de la apliación
+     */
     public void generarTabla(){
        
         int j = 0;
+        //Aquí quitamos 1 al tamaño de la aplicacion ya que el administrador no debe de aparecer en la tabla.
         String listaProductos[][] = new String[((VentanaPrincipal) getVentanaprincipal()).getJavapop().getUsuarios().size()-1][this.tabla.getColumnCount()];       
         String nombreColumnas[] = {"Nombre","DNI","Tipo","Correo","Estado"};
         for (j = 1; j < ((VentanaPrincipal) getVentanaprincipal()).getJavapop().getUsuarios().size(); j++){

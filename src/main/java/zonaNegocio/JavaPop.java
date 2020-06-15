@@ -19,7 +19,7 @@ public class JavaPop  {
      * @param producto Producto que se va a comprar
      */
     public void comprarProducto(Cliente comprador,Cliente vendedor,Producto producto){
-        // He pensado este metodo, no ponerlo en ninguna clase, si no en la interfaz de usuario, al darle al boton de comprar q haga lo q hace aqui, habría que copiarlo y pegarlo donde este el boton de comprar
+
         if (producto.getSituacion().equals(Producto.situacion.ACEPTADOVENTA)){
 
             try {
@@ -192,6 +192,10 @@ public class JavaPop  {
             throw new ProductoNoExiste();
         }
     }
+
+    /**
+     * Carga los datos guardados de la aplicación
+     */
     public void cargarDatos() {
         try {
             
@@ -207,6 +211,10 @@ public class JavaPop  {
             System.out.println("Error: " + e.getMessage());
         }
     }
+
+    /**
+     * Guarda los datos de la aplicación
+     */
     public void guardarDatos() {
         try {
             

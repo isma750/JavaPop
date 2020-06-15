@@ -39,9 +39,14 @@ public class MostrarProductos extends javax.swing.JPanel {
     public MostrarProductos() {
         initComponents();
     }
+
+    /**
+     * genera la tabla de productos para un usuario
+     * @param usuario el usuario al que queremos mostrar
+     */
     public void generarTabla(Usuario usuario){
       this.usuario = usuario;  
-      if (usuario.getClass().getSimpleName().equals("Administrador")){       
+      if (usuario.getClass().getSimpleName().equals("Administrador")){ //Si es un administrador le mostramos todos los productos de la aplicacion
         int j = 0;
         String listaProductos[][] = new String[((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().size()][this.tabla.getColumnCount()];       
         String nombreColumnas[] = {"Titulo","Descripcion","Categoria","Precio","Situacion"};
@@ -60,7 +65,7 @@ public class MostrarProductos extends javax.swing.JPanel {
          if (((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos().size()==0){
             JOptionPane.showMessageDialog(this, "No se ha encontrado ningún producto", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
         }  
-    }else{
+    }else{ //Si es un cliente le mostramos sus productos utilizando la clase utilproductos
       int j = 0;
         ((VentanaPrincipal) getVentanaprincipal()).getJavapop().setProductos();
         UtilProductos.setProductos(((VentanaPrincipal) getVentanaprincipal()).getJavapop().getProductos());

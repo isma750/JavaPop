@@ -43,6 +43,11 @@ public class AceptacionVentas extends javax.swing.JFrame {
         initComponents();
         this.setTitle("JAVAPOP");
     }
+
+    /**
+     * Rellena la ventana con los datos de la compra que queramos mostrar al usuario
+     * @param compra La compra que se quiere mostrar
+     */
     public void rellenarDatos(Compra compra){
          this.compra = compra;
          campoTitulo.setText(compra.getProducto().getTitulo());
@@ -350,18 +355,18 @@ public class AceptacionVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_campoFechaActionPerformed
 
     private void DenegarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DenegarVentaActionPerformed
-        
-        compra.setInformado(true);
-        compra.getProducto().setSituacion(Producto.situacion.PUBLICADO);
+
+        compra.setInformado(true); // La posible venta se ha informado al vendedor
+        compra.getProducto().setSituacion(Producto.situacion.PUBLICADO); //Volvemos a poner el producto como publicado para que aparezca en busquedas
         JOptionPane.showMessageDialog(this,"Se ha rechazado la venta", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
     }//GEN-LAST:event_DenegarVentaActionPerformed
 
     private void AceptarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarVentaActionPerformed
         
-        compra.setInformado(true);
-        compra.getProducto().setSituacion(Producto.situacion.ACEPTADOVENTA);
-        ((VentanaPrincipal) getVentanaprincipal()).getJavapop().comprarProducto(compra.getComprador(), compra.getVendedor(), compra.getProducto());
+        compra.setInformado(true); //La posible venta se ha informado al vendedor
+        compra.getProducto().setSituacion(Producto.situacion.ACEPTADOVENTA); // Establecemos la situación del producto como aceptado para venderse
+        ((VentanaPrincipal) getVentanaprincipal()).getJavapop().comprarProducto(compra.getComprador(), compra.getVendedor(), compra.getProducto()); //Generamos una venta nueva y creamos el archivo de texto con los datos de la compra
         JOptionPane.showMessageDialog(this,"Se ha vendido el producto correctamente", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
     }//GEN-LAST:event_AceptarVentaActionPerformed

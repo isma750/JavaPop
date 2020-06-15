@@ -40,6 +40,10 @@ public class BusquedaProducto extends javax.swing.JPanel {
         
         
     }
+
+    /**
+     * Genera la tabla de productos, si no hay ninguno se muestra un JOptionPane para informar al usuario
+     */
     public void generarTabla() {
         int j = 0;
         String listaProductos[][] = new String[UtilProductos.getProductos().size()][this.tabla.getColumnCount()];
@@ -61,14 +65,20 @@ public class BusquedaProducto extends javax.swing.JPanel {
         }
         
     }
-    
+
+    /**
+     * Limpia los campos de los filtros
+     */
     private void limpiarFiltros() {
         this.seleccionCategoria.setSelectedIndex(0);
         this.seleccionEstado.setSelectedIndex(0);      
         this.palabrasClave.setText("");
         
     }
-    
+
+    /**
+     * Busca y establece UtilProductos según los filtros que hayamos establecido
+     */
     public void buscarProductos(){
     UtilProductos UtilProductos = new UtilProductos();
     Cliente clienteBuscador = (Cliente)((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado();
@@ -276,6 +286,11 @@ public class BusquedaProducto extends javax.swing.JPanel {
     private javax.swing.JButton verProducto;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Pasa un String a su categoría equivalente
+     * @param categoriaString El string que queremos convertir
+     * @return la categoría que se corresponde al string o null si no se corresponde con ninguno
+     */
     public Producto.categoria convertirCategoria(String categoriaString){ 
          switch (categoriaString){
              case "Moda y Accesorios":
@@ -291,9 +306,14 @@ public class BusquedaProducto extends javax.swing.JPanel {
              case "Deporte y ocio":    
                  return Producto.categoria.DEPORTEYOCIO;
          }
-         return Producto.categoria.DEPORTEYOCIO; //...
+         return null; //...
     }
-    
+
+    /**
+     * Convierte un string en su Estado equivalente.
+     * @param categoriaEstado El string que queremos convertir
+     * @return El estado que se corresponde o null si no se corresponde con ninguno
+     */
      public Producto.estado convertirEstado(String categoriaEstado){ 
          switch (categoriaEstado){
              case "Nuevo":
@@ -307,8 +327,14 @@ public class BusquedaProducto extends javax.swing.JPanel {
              case "Regular":
                  return Producto.estado.REGULAR;
          }
-         return Producto.estado.REGULAR; //...
+         return null; //...
       }
+
+    /**
+     * Convierte un string en su Situacion equivalente.
+     * @param situacionProducto El string que queremos convertir
+     * @return La situacion que se corresponde o null si no se corresponde con ninguna
+     */
      public Producto.situacion situacion(String situacionProducto){
          switch (situacionProducto){
              case "Publicado":

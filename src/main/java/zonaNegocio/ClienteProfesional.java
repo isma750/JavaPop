@@ -84,11 +84,20 @@ public class ClienteProfesional extends Cliente {
         this.fechaPago = fechaPago;
     }
 
+    /**
+     * Devuelve la fecha en la que el cliente profesional tiene que pagar su cuota para seguir siendo cliente profesional
+     * @return La fecha en un mes desde que se pagó por última vez
+     */
+
     public LocalDateTime getFechaProximoPago() {
         this.fechaProximoPago = this.getFechaPago().plusMonths(1);
         return fechaProximoPago;
     }
 
+    /**
+     * Establece la fecha del proximo pago
+     * @param fechaProximoPago
+     */
     public void setFechaProximoPago(LocalDateTime fechaProximoPago) {
         this.fechaProximoPago = fechaProximoPago;
     }

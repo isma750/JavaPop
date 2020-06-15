@@ -541,6 +541,11 @@ public class DetalleProducto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Verifica que todos los campos están rellenados, si no lanza una excepcion.
+     * @throws camposNoRellenados
+     */
     public void verificarCampos() throws camposNoRellenados {
         if (campoCiudad.getText().length() == 0) {
             throw new camposNoRellenados();
@@ -559,6 +564,10 @@ public class DetalleProducto extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Verifica que el texto introducido en el codigo postal sea un codigo postal válido
+     * @throws ubicacionIncorrecta
+     */
     public void verificarPostal() throws ubicacionIncorrecta {
         try {
             Integer.parseInt(campoPostal.getText());
@@ -571,6 +580,10 @@ public class DetalleProducto extends javax.swing.JFrame {
         }
     }
 
+    /**
+     *
+     * @throws precioIncorrecto
+     */
     public void verificarPrecio() throws precioIncorrecto {
         try {
             Double.parseDouble(campoPrecio.getText());
@@ -580,7 +593,10 @@ public class DetalleProducto extends javax.swing.JFrame {
         }
     }
 
-    public void setModoNuevoProducto() { //Para crear un nuevo producto
+    /**
+     * Establece los campos y botones de la ventana para crear un nuevo producto.
+     */
+    public void setModoNuevoProducto() {
         
         this.remove(botonModificar);
         this.remove(botonEliminar);
@@ -596,6 +612,9 @@ public class DetalleProducto extends javax.swing.JFrame {
         checkUrgente.setEnabled(true);
     }
 
+    /**
+     * Establece los campos y botones de la ventana según deben de aparecer si se muestra un producto a un comprador
+     */
     public void setModoComprador() { //Para comprar un producto
         this.remove(botonModificar);
         this.remove(botonEliminar);
@@ -613,6 +632,9 @@ public class DetalleProducto extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Establece los campos y botones de la venta según deben de aparecer si se muestra un producto a un comprador
+     */
     public void setModoVendedor() { //Para modificar un producto
         this.remove(botonAñadir);
         this.remove(botonComprar);
@@ -628,6 +650,9 @@ public class DetalleProducto extends javax.swing.JFrame {
         
     }
 
+    /**
+     * Establece los campos y botones de la venta según deben de aparecer si se muestra un producto al administrador
+     */
     public void setModoAdministrador() {
         this.remove(botonModificar);
         this.remove(botonEliminar);
@@ -646,6 +671,10 @@ public class DetalleProducto extends javax.swing.JFrame {
         checkUrgente.setEnabled(false);
     }
 
+    /**
+     * Establece los campos de la ventana segun el producto que se quiera mostrar.
+     * @param producto El producto que se quiere mostrar.
+     */
     public void MostrarProducto(Producto producto) {
         setProductoMostrado(producto);
         campoTitulo.setText(producto.getTitulo());
@@ -659,7 +688,11 @@ public class DetalleProducto extends javax.swing.JFrame {
         Imagen.setIcon(producto.getFotografia());
 
     }
-
+    /**
+     * Pasa un String a su categoría equivalente
+     * @param categoriaString El string que queremos convertir
+     * @return la categoría que se corresponde al string o null si no se corresponde con ninguno
+     */
     public Producto.categoria convertirCategoria(String categoriaString) {
         switch (categoriaString) {
             case "Moda y Accesorios":
@@ -677,7 +710,11 @@ public class DetalleProducto extends javax.swing.JFrame {
         }
         return Producto.categoria.DEPORTEYOCIO; //...
     }
-
+    /**
+     * Convierte un string en su Estado equivalente.
+     * @param categoriaEstado El string que queremos convertir
+     * @return El estado que se corresponde o null si no se corresponde con ninguno
+     */
     public Producto.estado convertirEstado(String categoriaEstado) {
         switch (categoriaEstado) {
             case "Nuevo":
@@ -694,6 +731,11 @@ public class DetalleProducto extends javax.swing.JFrame {
         return Producto.estado.REGULAR; //...
     }
 
+    /**
+     * Devuelve el indice que se corresponde a una categoría en el combobox de categorias
+     * @param Categoria
+     * @return el indice que corresponde
+     */
     public int indiceCategoria(Producto.categoria Categoria) {
         switch (Categoria) {
             case MODAYACCESORIOS:
@@ -709,9 +751,14 @@ public class DetalleProducto extends javax.swing.JFrame {
             case DEPORTEYOCIO:
                 return 5;
         }
-        return 5; //...
+        return 5;
     }
 
+    /**
+     * Devuelve el indice que se corresponde a un estado en el combobox de estados
+     * @param Estado
+     * @return el indice que corresponde
+     */
     public int indiceEstado(Producto.estado Estado) {
         switch (Estado) {
             case NUEVO:
@@ -725,7 +772,7 @@ public class DetalleProducto extends javax.swing.JFrame {
             case REGULAR:
                 return 4;
         }
-        return 4; //...
+        return 4;
     }
 
 }

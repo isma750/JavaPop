@@ -43,6 +43,10 @@ public class Mostrarventas extends javax.swing.JPanel {
     public void setVentanaprincipal(JFrame ventanaprincipal) {
         this.ventanaprincipal = ventanaprincipal;
     }
+
+    /**
+     * Dibuja la tabla con las ventas desde la fecha establecida con los JSpinners
+     */
     public void dibujarTabla(){
         try{
         LocalDateTime fecha = LocalDateTime.of((Integer) SpinnerAño.getValue(), (Integer) SpinnerMes.getValue(), (Integer) SpinnerDia.getValue(), 0, 0);

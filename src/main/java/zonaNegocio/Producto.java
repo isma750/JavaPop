@@ -236,6 +236,11 @@ public class Producto implements Comparable<Producto>, Serializable{
     public void setFechaDestacado(LocalDateTime fechaDestacado) {
         this.fechaDestacado = fechaDestacado;
     }
+
+    /**
+     * Devuelve la fecha en la que el producto debe de dejar de estar destacado
+     * @return la fecha en 7 dias desde que se destacó
+     */
     public LocalDateTime getFechaFinDestacado(){
         return this.fechaDestacado.plusDays(7);
     }

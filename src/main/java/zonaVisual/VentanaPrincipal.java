@@ -146,6 +146,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public void setAdmin(Administrador admin) {
         this.admin = admin;
     }
+
+    /**
+     * Establece los menus de la aplicación segun si el usuario conectado es un administrador o otro usuario
+     */
     public void actualizarMenus(){
     if (!getUsuarioConectado().equals(admin)){
             MenuAdministrador.setVisible(false);
