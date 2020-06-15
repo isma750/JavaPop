@@ -10,6 +10,7 @@ import java.awt.Toolkit;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,6 +19,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import zonaNegocio.*;
 
@@ -41,6 +43,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     public VentanaPrincipal() {
         initComponents();
+        this.pagarCuota.setVisible(false);
         this.setTitle("JAVAPOP. La nueva forma de comprar y vender");
         this.javapop = new JavaPop(); 
         this.javapop.cargarDatos();
@@ -154,6 +157,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     if (!getUsuarioConectado().getClass().getSimpleName().equals("Administrador")){
             MenuAdministrador.setVisible(false);
             MenuCliente.setVisible(true);
+            if (getUsuarioConectado().getClass().getSimpleName().equals("ClienteProfesional")){
+                pagarCuota.setVisible(true);
+            }
         } else {
             MenuCliente.setVisible(false);
             MenuAdministrador.setVisible(true);
@@ -185,6 +191,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         Comprar = new javax.swing.JMenuItem();
         MiCuenta = new javax.swing.JMenuItem();
+        pagarCuota = new javax.swing.JMenuItem();
 
         jMenuItem2.setText("jMenuItem2");
 
@@ -275,6 +282,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
         MenuCliente.add(MiCuenta);
+
+        pagarCuota.setText("Pagar Cuota");
+        pagarCuota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pagarCuotaActionPerformed(evt);
+            }
+        });
+        MenuCliente.add(pagarCuota);
 
         jMenuBar1.add(MenuCliente);
 
@@ -393,6 +408,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.getJavapop().guardarDatos();
     }//GEN-LAST:event_formWindowClosing
 
+    private void pagarCuotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagarCuotaActionPerformed
+        ((ClienteProfesional)this.getUsuarioConectado()).setFechaPago(LocalDateTime.now());
+        JOptionPane.showMessageDialog(this,"Se le han cobrado 30€ a su tarjeta " +((ClienteProfesional)this.getUsuarioConectado()).getTarjeta()+ " deberá pagar de nuevo en la fecha: " + (((ClienteProfesional)this.getUsuarioConectado()).getFechaProximoPago().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))), "ATENCION",JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_pagarCuotaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -445,6 +465,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem pagarCuota;
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 
