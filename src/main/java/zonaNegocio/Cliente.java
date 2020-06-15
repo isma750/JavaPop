@@ -16,7 +16,6 @@ public class Cliente extends Usuario {
     private int codigoPostal;
     private String ciudad;
     private String tarjeta;
-    private double saldoTarjeta;
     private ArrayList<Producto> Productos;
   
     private ArrayList<Compra> Compras;
@@ -117,13 +116,7 @@ public class Cliente extends Usuario {
         Productos = productos;
     }
 
-    public double getSaldoTarjeta() {
-        return saldoTarjeta;
-    }
-
-    public void setSaldoTarjeta(int saldoTarjeta) {
-        this.saldoTarjeta = saldoTarjeta;
-    }
+   
 
     public ArrayList<Compra> getCompras() {
         if (this.Compras == null) {
