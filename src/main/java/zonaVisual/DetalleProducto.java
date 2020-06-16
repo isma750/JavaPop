@@ -358,7 +358,7 @@ public class DetalleProducto extends javax.swing.JFrame {
             verificarPrecio();
             Cliente cliente = (Cliente) ((VentanaPrincipal) getVentanaprincipal()).getUsuarioConectado();
             if (checkUrgente.isSelected()) {
-                Producto producto = new Producto(campoTitulo.getText(), campoDescripcion.getText(), convertirCategoria(comboCategoria.getSelectedItem().toString()), Integer.parseInt(campoPostal.getText()), campoCiudad.getText(), true, cliente, convertirEstado(comboEstado.getSelectedItem().toString()), Double.parseDouble(campoPrecio.getText()), LocalDateTime.now(), Producto.situacion.PUBLICADO);
+                Producto producto = new Producto(campoTitulo.getText(), campoDescripcion.getText(), convertirCategoria(comboCategoria.getSelectedItem().toString()), Integer.parseInt(campoPostal.getText()), campoCiudad.getText(), true, cliente, convertirEstado(comboEstado.getSelectedItem().toString()), Double.parseDouble(campoPrecio.getText()), LocalDateTime.now(),LocalDateTime.now(), Producto.situacion.PUBLICADO);
                 Icon imagen = Imagen.getIcon();
                 producto.setFotografia(imagen);              
                 ((VentanaPrincipal) getVentanaprincipal()).getJavapop().anadirProducto(producto);

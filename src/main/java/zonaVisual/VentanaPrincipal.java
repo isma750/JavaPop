@@ -51,39 +51,41 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if (javapop.getUsuarios().isEmpty()){
            this.admin = new Administrador();
            this.javapop.getUsuarios().add(admin);
-           ArrayList<Producto> productoscliente1 = new ArrayList<>();
-            
+           
             //Se crean los clientes y los productos
             Cliente cliente1 = new Cliente("Juan","03228447B",19001,"Guadalajara","juan@hotmail.com","juan","1234567899876541");
             Cliente cliente2 = new Cliente("Martin","03234567N",19003,"Guadalajara","martin@hotmail.com","hola","1234123412341234");
             Cliente cliente3 = new Cliente("Andrea","05789447Z",28801,"Alcalá","andrea@hotmail.com","andrea","9876543210321654");
             Cliente cliente4 = new Cliente("Pedro","06879412N",28001,"Madrid","pedro@hotmail.com","pedro","1234567899876542");
             ClienteProfesional cliente5 = new ClienteProfesional("Miguel", "03214554X", "miguel@gmail.com", "miguelon", 19004, "Guadalajara", "1234123412341234", "tienda chula", "10:00-14:00", "949220412", "latiendademiguel.com", LocalDateTime.of(2019, Month.MARCH, 1, 0, 0));
-            Producto producto1 = new Producto("Camiseta blanca","Buen estado", Producto.categoria.MODAYACCESORIOS,19003,"Guadalajara",true,cliente1,Producto.estado.BUENO, 15.00,LocalDateTime.now(),LocalDateTime.now(),Producto.situacion.PUBLICADO);
-            Producto producto2 = new Producto("Camiseta negra","Muy nueva", Producto.categoria.MODAYACCESORIOS,19203,"Guadalajara",false,cliente1,Producto.estado.ACEPTABLE, 20.00,LocalDateTime.now(),Producto.situacion.PUBLICADO);
-            Producto producto3 = new Producto("Raqueta de tenis","Muy poco uso", Producto.categoria.DEPORTEYOCIO,19004,"Guadalajara",true,cliente1, Producto.estado.COMONUEVO, 10.00, LocalDateTime.now(),LocalDateTime.of(2019, Month.MARCH, 1, 0, 0),Producto.situacion.PUBLICADO);
-            Producto producto4 = new Producto("Playstation 5","Poco uso", Producto.categoria.CONSOLASYVIDEOJUEGOS,19004,"Guadalajara",true,cliente1, Producto.estado.BUENO, 150.00, LocalDateTime.now(),LocalDateTime.now(),Producto.situacion.PUBLICADO);
-            Producto producto5 = new Producto("Television 49 pulgadas Sony","Tiene un pequeño arañazo", Producto.categoria.TVAUDIOYFOTO,19004, "Guadalajara",false,cliente1, Producto.estado.ACEPTABLE, 250.00, LocalDateTime.now(),Producto.situacion.PUBLICADO);
-            Producto producto6 = new Producto("Iphone X 64 gb","Tiene la pantalla rota", Producto.categoria.MOVILESYTELFONIA,19200,"Azuqueca de Henares",true,cliente1, Producto.estado.REGULAR, 400.00,LocalDateTime.now(),LocalDateTime.now(),Producto.situacion.PUBLICADO);
-            Producto producto7 = new Producto("Pelota de Fútbol","pelota oficial",Producto.categoria.DEPORTEYOCIO,28001,"Madrid",false,cliente3,Producto.estado.BUENO,15.00,LocalDateTime.now(),LocalDateTime.now(),Producto.situacion.PUBLICADO);
-            Producto producto8 = new Producto("Portatil hp","8 GB RAM y procador i7",Producto.categoria.INFORMATICAYELECTRONICA,28821,"Coslada",true,cliente4,Producto.estado.COMONUEVO,300.00,LocalDateTime.now(),LocalDateTime.now(),Producto.situacion.PUBLICADO);
-            Producto producto9 = new Producto("Gafas de sol","protección UV400",Producto.categoria.MODAYACCESORIOS,19120,"Sacedón",false,cliente5,Producto.estado.NUEVO,40.00,LocalDateTime.now(),LocalDateTime.now(),Producto.situacion.PUBLICADO);
-            Producto producto10 = new Producto("Bicicleta de montaña","Btwin 560",Producto.categoria.DEPORTEYOCIO,19001,"Guadalajara",true,cliente5,Producto.estado.BUENO,250.00,LocalDateTime.now(),LocalDateTime.now(),Producto.situacion.PUBLICADO);
-            ImageIcon iconoproducto1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/camisetablanca.jpg")));
-            producto1.setFotografia(iconoproducto1);
-            productoscliente1.add(producto1);
-            productoscliente1.add(producto2);
-            productoscliente1.add(producto3);
-            productoscliente1.add(producto4);
-            productoscliente1.add(producto5);
-            productoscliente1.add(producto6);
-            cliente1.setProductos(productoscliente1);
+            Producto producto1 = new Producto("Camiseta blanca","Buen estado", Producto.categoria.MODAYACCESORIOS,19003,"Guadalajara",true,cliente1,Producto.estado.BUENO, 15.00,LocalDateTime.now(),LocalDateTime.now(),Producto.situacion.PUBLICADO,new ImageIcon(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/camisetablanca.jpg"))));
+            Producto producto2 = new Producto("Camiseta negra","Muy nueva", Producto.categoria.MODAYACCESORIOS,19203,"Guadalajara",false,cliente1,Producto.estado.ACEPTABLE, 20.00,LocalDateTime.now(),Producto.situacion.PUBLICADO,new ImageIcon(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/camisetanegra.jpg"))));
+            Producto producto3 = new Producto("Raqueta de tenis","Muy poco uso", Producto.categoria.DEPORTEYOCIO,19004,"Guadalajara",true,cliente1, Producto.estado.COMONUEVO, 10.00, LocalDateTime.now(),LocalDateTime.of(2019, Month.MARCH, 1, 0, 0),Producto.situacion.PUBLICADO,new ImageIcon(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/raqueta.jpg"))));
+            Producto producto4 = new Producto("Playstation 5","Poco uso", Producto.categoria.CONSOLASYVIDEOJUEGOS,19004,"Guadalajara",true,cliente1, Producto.estado.BUENO, 150.00, LocalDateTime.now(),LocalDateTime.now(),Producto.situacion.PUBLICADO,new ImageIcon(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/playstation.jpg"))));
+            Producto producto5 = new Producto("Television 49 pulgadas Sony","Tiene un pequeño arañazo", Producto.categoria.TVAUDIOYFOTO,19004, "Guadalajara",false,cliente1, Producto.estado.ACEPTABLE, 250.00, LocalDateTime.now(),Producto.situacion.PUBLICADO,new ImageIcon(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/tele.jpg"))));
+            Producto producto6 = new Producto("Iphone X 64 gb","Tiene la pantalla rota", Producto.categoria.MOVILESYTELFONIA,19200,"Azuqueca de Henares",true,cliente1, Producto.estado.REGULAR, 400.00,LocalDateTime.now(),LocalDateTime.now(),Producto.situacion.PUBLICADO,new ImageIcon(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/iphone.jpg"))));
+            Producto producto7 = new Producto("Pelota de Fútbol","pelota oficial",Producto.categoria.DEPORTEYOCIO,28001,"Madrid",false,cliente3,Producto.estado.BUENO,15.00,LocalDateTime.now(),LocalDateTime.now(),Producto.situacion.PUBLICADO,new ImageIcon(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/balon.jpg"))));
+            Producto producto8 = new Producto("Portatil hp","8 GB RAM y procador i7",Producto.categoria.INFORMATICAYELECTRONICA,28821,"Coslada",true,cliente4,Producto.estado.COMONUEVO,300.00,LocalDateTime.now(),LocalDateTime.now(),Producto.situacion.PUBLICADO,new ImageIcon(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/portatil.jpg"))));
+            Producto producto9 = new Producto("Gafas de sol","protección UV400",Producto.categoria.MODAYACCESORIOS,19120,"Sacedón",false,cliente5,Producto.estado.NUEVO,40.00,LocalDateTime.now(),LocalDateTime.now(),Producto.situacion.PUBLICADO,new ImageIcon(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/gafas.jpg"))));
+            Producto producto10 = new Producto("Bicicleta de montaña","Btwin 560",Producto.categoria.DEPORTEYOCIO,19001,"Guadalajara",true,cliente5,Producto.estado.BUENO,250.00,LocalDateTime.now(),LocalDateTime.now(),Producto.situacion.PUBLICADO,new ImageIcon(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/bici.jpg"))));
+         
+            cliente1.añadirProducto(producto1);
+            cliente1.añadirProducto(producto2);
+            cliente2.añadirProducto(producto3);
+            cliente2.añadirProducto(producto4);
+            cliente3.añadirProducto(producto5);
+            cliente3.añadirProducto(producto6);
+            cliente4.añadirProducto(producto7);
+            cliente4.añadirProducto(producto8);
+            cliente5.añadirProducto(producto9);
+            cliente5.añadirProducto(producto10);
+            
            this.javapop.getUsuarios().add(cliente1);
            this.javapop.getUsuarios().add(cliente2);
+           this.javapop.getUsuarios().add(cliente3);
+           this.javapop.getUsuarios().add(cliente4);
            this.javapop.getUsuarios().add(cliente5);
-           
-           
-            
+       
         }
         this.javapop.setProductos();
         JFrame login = new Login(this);    
@@ -472,6 +474,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem pagarCuota;
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
+
+    
 
     
 }

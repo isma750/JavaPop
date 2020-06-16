@@ -117,6 +117,22 @@ public class Producto implements Comparable<Producto>, Serializable{
      * @param fechaDestacado
      * @param situacion 
      */
+    public Producto(String titulo, String descripcion, categoria categoria, int codigoPostal, String ciudad, boolean urgente, Cliente clienteAsociado, estado estado, double precio, LocalDateTime fechaPublicacion,LocalDateTime fechaDestacado, situacion situacion,Icon icon) {
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.codigoPostal = codigoPostal;
+        this.ciudad = ciudad;
+        this.urgente = urgente;
+        this.clienteAsociado = clienteAsociado;
+        this.estado = estado;
+        this.precio = precio;
+        this.fechaPublicacion = fechaPublicacion;
+        this.fechaDestacado = fechaDestacado;
+        this.situacion = situacion;
+        this.fotografia = icon;
+        
+    }
     public Producto(String titulo, String descripcion, categoria categoria, int codigoPostal, String ciudad, boolean urgente, Cliente clienteAsociado, estado estado, double precio, LocalDateTime fechaPublicacion,LocalDateTime fechaDestacado, situacion situacion) {
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -131,8 +147,22 @@ public class Producto implements Comparable<Producto>, Serializable{
         this.fechaDestacado = fechaDestacado;
         this.situacion = situacion;
         
+        
     }
-
+    public Producto(String titulo, String descripcion, Producto.categoria categoria, int codigoPostal,String ciudad, boolean urgente,Cliente clienteAsociado, Producto.estado estado, double precio, LocalDateTime fechaPublicacion,situacion situacion,Icon icon) {
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.estado = estado;
+        this.precio = precio;
+        this.fechaPublicacion = fechaPublicacion;
+        this.codigoPostal = codigoPostal;
+        this.ciudad = ciudad;
+        this.urgente = urgente;
+        this.clienteAsociado = clienteAsociado;
+        this.situacion = situacion;
+        this.fotografia = icon;
+    }
     public Producto(String titulo, String descripcion, Producto.categoria categoria, int codigoPostal,String ciudad, boolean urgente,Cliente clienteAsociado, Producto.estado estado, double precio, LocalDateTime fechaPublicacion,situacion situacion) {
         this.titulo = titulo;
         this.descripcion = descripcion;
