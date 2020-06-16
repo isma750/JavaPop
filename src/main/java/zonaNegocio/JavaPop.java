@@ -20,7 +20,7 @@ public class JavaPop  {
      */
     public void comprarProducto(Cliente comprador,Cliente vendedor,Producto producto){
 
-        if (producto.getSituacion().equals(Producto.situacion.VENDIDO)){
+        if (producto.getSituacion().equals(Producto.situacion.ACEPTADOVENTA)){
 
             try {
                 String ruta = "C:\\Users\\ismae\\OneDrive\\Escritorio\\texto\\factura.txt"; // Sustituir por ruta en la que queremos que se genere el fichero
