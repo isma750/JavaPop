@@ -5,7 +5,10 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import javax.swing.Icon;
 
-
+/**
+ * Clase que recoge las caracteristicas de todos los productos de la aplicacion.
+ * 
+ */
 public class Producto implements Comparable<Producto>, Serializable{
     private String titulo;
     private String descripcion;
@@ -99,7 +102,21 @@ public class Producto implements Comparable<Producto>, Serializable{
     private boolean urgente;
     private Cliente clienteAsociado; 
 
-
+    /**
+     * Constructor
+     * @param titulo
+     * @param descripcion
+     * @param categoria
+     * @param codigoPostal
+     * @param ciudad
+     * @param urgente
+     * @param clienteAsociado
+     * @param estado
+     * @param precio
+     * @param fechaPublicacion
+     * @param fechaDestacado
+     * @param situacion 
+     */
     public Producto(String titulo, String descripcion, categoria categoria, int codigoPostal, String ciudad, boolean urgente, Cliente clienteAsociado, estado estado, double precio, LocalDateTime fechaPublicacion,LocalDateTime fechaDestacado, situacion situacion) {
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -131,7 +148,7 @@ public class Producto implements Comparable<Producto>, Serializable{
     }
 
 
-
+    //Realizamos los getter y setter
 
     public String getTitulo() {
         return titulo;

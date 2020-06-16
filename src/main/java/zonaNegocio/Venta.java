@@ -11,6 +11,7 @@ public class Venta implements Serializable{
     private Cliente Vendedor;
     private Cliente Comprador;
 
+    //Realizamos los getter y setter
     public LocalDateTime getFechaVenta() {
         return fechaVenta;
     }
@@ -42,7 +43,13 @@ public class Venta implements Serializable{
     public void setComprador(Cliente Comprador) {
         this.Comprador = Comprador;
     }
-
+    /**
+     * Constructor
+     * @param fechaVenta
+     * @param producto
+     * @param Vendedor
+     * @param Comprador 
+     */
     public Venta(LocalDateTime fechaVenta, Producto producto, Cliente Vendedor, Cliente Comprador) {
         this.fechaVenta = fechaVenta;
         this.producto = producto;

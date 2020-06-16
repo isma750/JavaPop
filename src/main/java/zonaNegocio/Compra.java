@@ -3,6 +3,10 @@ package zonaNegocio;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+/**
+ * Clase que registra las compras que se producen en Javapop
+ * 
+ */
 public class Compra implements  Serializable{
     private LocalDateTime fechaSolicitudComprador;
     private LocalDateTime fechaDecisionVendedor;
@@ -16,7 +20,14 @@ public class Compra implements  Serializable{
         ANULADAVENTA,
     }
     private boolean informado;
-    
+    /**
+     * Constructor
+     * @param fechaSolicitudComprador
+     * @param producto
+     * @param Vendedor
+     * @param Comprador
+     * @param informado 
+     */
     public Compra(LocalDateTime fechaSolicitudComprador, Producto producto, Cliente Vendedor, Cliente Comprador, boolean informado) {
         this.fechaSolicitudComprador = fechaSolicitudComprador;
         
@@ -25,7 +36,7 @@ public class Compra implements  Serializable{
         this.Comprador = Comprador;
         this.informado = informado;
     }
-
+    //Realizamos los getter y setter
     public LocalDateTime getFechaSolicitudComprador() {
         return fechaSolicitudComprador;
     }
