@@ -54,6 +54,7 @@ public class DetalleProducto extends javax.swing.JFrame {
     public DetalleProducto() {
         initComponents();
         this.setTitle("JAVAPOP");
+        setIcono();
         this.darDeBaja.setVisible(false);
     }
 
@@ -773,6 +774,12 @@ public class DetalleProducto extends javax.swing.JFrame {
                 return 4;
         }
         return 4;
+    }
+    /**
+     * Establece el icono de la aplicacion
+     */
+    private void setIcono() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/logojavapop.png")));
     }
 
 }

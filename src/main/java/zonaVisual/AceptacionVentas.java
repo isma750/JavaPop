@@ -10,6 +10,8 @@ import java.awt.Toolkit;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -41,6 +43,7 @@ public class AceptacionVentas extends javax.swing.JFrame {
     
     public AceptacionVentas() {
         initComponents();
+        setIcono();        
         this.setTitle("JAVAPOP");
     }
 
@@ -371,7 +374,12 @@ public class AceptacionVentas extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this,"Se ha vendido el producto correctamente", "ATENCION",JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
     }//GEN-LAST:event_AceptarVentaActionPerformed
-    
+    /**
+     * Establece el icono de la aplicacion
+     */
+    private void setIcono() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/logojavapop.png")));
+    }
     /**
      * @param args the command line arguments
      */
