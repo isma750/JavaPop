@@ -374,9 +374,7 @@ public class AceptacionVentas extends javax.swing.JFrame {
     private void setIcono() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("contents/logojavapop.png")));
     }
-    /**
-     * @param args the command line arguments
-     */
+    
     
    
 

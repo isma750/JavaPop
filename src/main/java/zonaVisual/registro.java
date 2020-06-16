@@ -533,9 +533,7 @@ public class registro extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botonBajaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

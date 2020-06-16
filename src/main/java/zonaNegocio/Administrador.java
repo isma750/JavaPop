@@ -9,11 +9,7 @@ public class Administrador extends Usuario  {
 
     
     
-    /**
-     * Constructor
-     * @param correo  para registrarse el administrador
-     * @param clave para registrarse el administrador
-     */
+   
     public Administrador (){
        super("admin@javapop.com","admin");
        

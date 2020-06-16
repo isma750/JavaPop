@@ -470,9 +470,7 @@ public class DetalleProducto extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_darDeBajaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+   
    
 
 
