@@ -1,7 +1,10 @@
 package zonaNegocio;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-
+/**
+ * Clase que representa la venta de un producto
+ * 
+ */
 public class Venta implements Serializable{
     private LocalDateTime fechaVenta;
     private Producto producto;
