@@ -6,16 +6,12 @@
 package zonaVisual;
 
 import java.time.DateTimeException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import zonaNegocio.Cliente;
-import zonaNegocio.UtilProductos;
 import zonaNegocio.Venta;
 
 /**

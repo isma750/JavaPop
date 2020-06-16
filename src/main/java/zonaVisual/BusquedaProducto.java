@@ -5,8 +5,6 @@
  */
 package zonaVisual;
 
-import java.util.ArrayList;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;

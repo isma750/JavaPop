@@ -5,8 +5,6 @@
  */
 package zonaVisual;
 
-import java.util.HashSet;
-import java.util.Set;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;

@@ -6,17 +6,10 @@
 package zonaVisual;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 import zonaNegocio.*;
 /**
  * JFrame

@@ -1,9 +1,5 @@
 package zonaNegocio;
 
-
-
-import java.util.ArrayList;
-
 /**
  * 
  * Clase con las propiedades para registrarse el administrador de Javapop

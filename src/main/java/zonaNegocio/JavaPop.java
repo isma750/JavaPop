@@ -3,7 +3,6 @@ package zonaNegocio;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.io.*;
-import javax.swing.JOptionPane;
 
 public class JavaPop  {
 

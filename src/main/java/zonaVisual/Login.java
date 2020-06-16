@@ -7,13 +7,11 @@ package zonaVisual;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import zonaNegocio.Cliente;
 import zonaNegocio.ClienteProfesional;
 import zonaNegocio.Compra;
-import zonaNegocio.Producto;
 import zonaNegocio.Usuario;
 
 /**

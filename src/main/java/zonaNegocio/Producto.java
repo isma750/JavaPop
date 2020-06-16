@@ -1,6 +1,5 @@
 package zonaNegocio;
 
-import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import javax.swing.Icon;
