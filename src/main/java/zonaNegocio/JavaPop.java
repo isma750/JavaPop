@@ -271,36 +271,5 @@ public class JavaPop  {
             super ("ERROR:El producto especificado no existe.");
         }
     }
-    public static void guardarCadaDato(String Javapop, Usuario usuario){
-        FileOutputStream fileOutputStream = null;
-        ObjectOutputStream objectOutputStream = null;
-        
-        try{
-            fileOutputStream = new FileOutputStream(Javapop);
-            objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(usuario);
-            fileOutputStream.close();
-        }
-        catch (Exception e){
-            JOptionPane.showMessageDialog(null, e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-    
-    public static Object leerCadaDato(String Javapop){
-        FileInputStream fileInputStream = null;
-        ObjectInputStream objectInputStream = null;
-        Object objeto = null;
-        
-        try {
-            fileInputStream = new FileInputStream(Javapop);
-            objectInputStream = new ObjectInputStream(fileInputStream);
-            objeto =objectInputStream.readObject();
-            fileInputStream.close();
-            
-        }
-        catch (Exception e){
-            JOptionPane.showMessageDialog(null, e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
-        }
-        return Javapop;
-    }
+   
 }
